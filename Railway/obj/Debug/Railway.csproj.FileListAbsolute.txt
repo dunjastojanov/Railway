@@ -1,0 +1,140 @@
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.csproj.AssemblyReference.cache
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddingStation.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTimetable.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTrain.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTrainRoute.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AdminPage.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\BuyTicket.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Login.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\MainWindow.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ManagerPage.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\MonthlyReport.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTimetable.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTrain.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTrainRoute.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\RailwayNetworkOverview.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTimetable.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTrain.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTrainRoute.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Reports.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\RouteReport.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\SearchRoute.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\SeatButton.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\TicketHistory.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\TrainSeats.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\App.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway_MarkupCompile.cache
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway_MarkupCompile.lref
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadStations.g.cs
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\Railway.exe.config
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\Railway.exe
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\Railway.pdb
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\MaterialDesignColors.dll
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\App.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddingStation.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTimetable.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTrain.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AddTrainRoute.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\AdminPage.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\BuyTicket.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Login.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\MainWindow.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ManagerPage.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\MonthlyReport.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTimetable.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTrain.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\OneTrainRoute.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\RailwayNetworkOverview.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTimetable.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTrain.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadTrainRoute.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Reports.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\RouteReport.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\SearchRoute.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\SeatButton.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\TicketHistory.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\TrainSeats.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\ReadStations.baml
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.g.resources
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.Properties.Resources.resources
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.csproj.GenerateResource.cache
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.csproj.CoreCompileInputs.cache
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.csproj.CopyComplete
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.exe
+C:\Users\Dunja\Desktop\dunja prestani da glumis debila\Railway\Railway\obj\Debug\Railway.pdb
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\Railway.exe.config
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\Railway.exe
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\Railway.pdb
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\MaterialDesignColors.dll
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.csproj.AssemblyReference.cache
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddingStation.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTimetable.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTrain.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTrainRoute.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AdminPage.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\BuyTicket.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Login.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\MainWindow.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ManagerPage.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\MonthlyReport.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTimetable.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTrain.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTrainRoute.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\RailwayNetworkOverview.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadStations.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTimetable.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTrain.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTrainRoute.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Reports.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\RouteReport.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\SearchRoute.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\SeatButton.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\TicketHistory.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\TrainSeats.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\App.g.cs
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway_MarkupCompile.cache
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway_MarkupCompile.lref
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\App.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddingStation.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTimetable.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTrain.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AddTrainRoute.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\AdminPage.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\BuyTicket.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Login.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\MainWindow.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ManagerPage.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\MonthlyReport.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTimetable.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTrain.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\OneTrainRoute.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\RailwayNetworkOverview.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadStations.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTimetable.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTrain.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\ReadTrainRoute.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Reports.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\RouteReport.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\SearchRoute.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\SeatButton.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\TicketHistory.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\TrainSeats.baml
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.g.resources
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.Properties.Resources.resources
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.csproj.GenerateResource.cache
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.csproj.CoreCompileInputs.cache
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.csproj.CopyComplete
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.exe
+C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\Railway.pdb
