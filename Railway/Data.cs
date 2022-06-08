@@ -379,6 +379,87 @@ namespace Railway
 
         }
 
+        internal static void deleteTimetable(Timetable timetable)
+        {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            Trainline trainline = newRailway.FindTrainline(timetable.Trainline.Name);
+
+            List<Timetable> timetables = new List<Timetable>();
+
+            foreach (Timetable t in trainline.Timetables)
+            {
+                if (t.Name != timetable.Name)
+                {
+                    timetables.Add(t);
+                }
+            }
+
+            trainline.Timetables = timetables;
+
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+
+        internal static void editTimetable(Train chosenTrain, DateTime chosenStartTime, DateTime chosenEndTime, List<string> days, Timetable oldTimetable)
+        {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            
+
+            List<Trainline> trainlines = newRailway.TrainLines;
+            foreach (Trainline trainline in trainlines)
+            {
+                if (trainline.Name == oldTimetable.Trainline.Name)
+                {
+
+                    for (int i = 0; i<trainline.Timetables.Count; i++)
+                    {
+                        if (trainline.Timetables[i].Name.Equals(oldTimetable.Name))
+                        {
+                            Timetable timetable = trainline.Timetables[i].DeepCopy(trainline);
+                            timetable.Train = chosenTrain;
+                            timetable.TimeFromFirstStation = chosenStartTime;
+                            timetable.TimeFromLastStation = chosenEndTime;
+                            timetable.Days = days;
+                            trainline.Timetables[i] = timetable;
+                        }
+                    }
+                }
+            }
+
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+
+        internal static void AddTimetable(Train chosenTrain, Trainline chosenTrainline, DateTime chosenStartTime, DateTime chosenEndTime, List<string> days)
+        {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            Timetable timetable = new Timetable(chosenTrain, days, chosenStartTime, chosenEndTime);
+
+            List<Trainline> trainlines = newRailway.TrainLines;
+            foreach (Trainline trainline in trainlines)
+            {
+                if (trainline.Name == chosenTrainline.Name)
+                {
+                    timetable.Trainline = trainline;
+                    trainline.Timetables.Add(timetable);
+
+                }
+            }
+
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+
         public static List<Station> getStations()
         {
             return Stations.Values.ToList();
@@ -491,6 +572,18 @@ namespace Railway
                 }
             }
             return trains;
+        }
+
+        public static Train GetTrain(String name)
+        {
+            foreach (Train train in GetTrains())
+            {
+                if (train.Name.Equals(name))
+                {
+                    return train;
+                }
+            }
+            return null;
         }
 
         internal static void deleteTrainRoute(string name)
@@ -697,6 +790,18 @@ namespace Railway
         {
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
             return railway.TrainLines;
+        }
+
+        public static Trainline GetTrainLine(String name)
+        {
+            foreach (Trainline trainline in GetTrainLines())
+            {
+                if (trainline.Name == name)
+                {
+                    return trainline;
+                }
+            }
+            return null;
         }
         public static List<QuickReservation> GetQuickReservations(string startStation, string endStation, DateTime travelDate, int numOfTickets)
         {

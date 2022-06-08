@@ -22,23 +22,28 @@ namespace Railway
     /// </summary>
     public partial class OneTimetable : Grid
     {
-        Frame managerContentFrame;
+        Railway.MainWindow Window { get; set; }
+        Timetable timetable;
 
         int row;
         
-        public OneTimetable(Frame managerContentFrame, Timetable timetable)
+        public OneTimetable(Railway.MainWindow window, Timetable timetable)
         {
             InitializeComponent();
-            this.managerContentFrame = managerContentFrame;
-            NameLabel.Content = timetable.Trainline.Name;
-            string days = "";
+            Window = window;
+            NameLabel.Content = "Name: " + timetable.Name;
+            TrainlineLabel.Content = "Trainline: " + timetable.Trainline.Name;
+            TrainLabel.Content = "Train: " + timetable.Train.Name;
+
+            this.timetable = timetable;
+            string days = "Days: ";
             foreach (string day in timetable.Days)
             {
-                days += day + "\t";
+                days += day + " ";
             }
             DaysLabel.Content = days;
 
-            row = 0;
+            row = 1;
 
             addRowPixels(StationsGrid, 30);
             addRowPixels(StationsGrid, 5);
@@ -72,11 +77,66 @@ namespace Railway
                 addRowPixels(StationsGrid, 5);
 
             }
+
+            Label s = new Label();
+            s.Content = station.Name;
+            s.Foreground = Brushes.White;
+            Grid.SetColumn(s, 1);
+            Grid.SetRow(s, row);
+            StationsGrid.Children.Add(s);
+
+            Label t = new Label();
+            t.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+            t.Foreground = Brushes.White;
+            Grid.SetColumn(t, 0);
+            Grid.SetRow(t, row);
+            StationsGrid.Children.Add(t);
+
+            row = 1;
+
+            station = timetable.Trainline.LastStation;
+
+            while (station.PathToPreviousStation != null)
+            {
+                Label stationName = new Label();
+                stationName.Content = station.Name;
+                stationName.Foreground = Brushes.White;
+                Grid.SetColumn(stationName, 3);
+                Grid.SetRow(stationName, row);
+                StationsGrid.Children.Add(stationName);
+
+                Label time = new Label();
+                time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+                time.Foreground = Brushes.White;
+                Grid.SetColumn(time, 2);
+                Grid.SetRow(time, row);
+                StationsGrid.Children.Add(time);
+
+                path = station.PathToPreviousStation;
+                datetime = datetime.AddMinutes((double)path.Duration);
+                station = path.PreviousStation;
+                row++;
+
+            }
+
+            Label sn = new Label();
+            sn.Content = station.Name;
+            sn.Foreground = Brushes.White;
+            Grid.SetColumn(sn, 3);
+            Grid.SetRow(sn, row);
+            StationsGrid.Children.Add(sn);
+
+            Label tn = new Label();
+            tn.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+            tn.Foreground = Brushes.White;
+            Grid.SetColumn(tn, 2);
+            Grid.SetRow(tn, row);
+            StationsGrid.Children.Add(tn);
         }
 
         internal double getHeight()
         {
-            return row * 35 + 60;
+            return row * 35 + 90;
         }
 
         private void addRowPixels(Grid grid, double height)
@@ -88,12 +148,22 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Window.Frame.Content = new AddTimetable(Window, timetable);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            int response = (int)MessageBox.Show($"Are you sure you want to delete timetable {timetable.Name}?\n", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (response == 6)
+            {
+                Data.deleteTimetable(timetable);
+                int ok = (int)MessageBox.Show("Timetable successfully deleted!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                Window.ShowReadTimetable(true);
+            }
+            else
+            {
+                MessageBox.Show("Timetable deleting cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

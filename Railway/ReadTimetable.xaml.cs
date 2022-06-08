@@ -39,7 +39,7 @@ namespace Railway
             {
                 foreach (Timetable timetable in trainline.Timetables)
                 {
-                    OneTimetable oneTimetable = new OneTimetable(Window.MainFrame, timetable);
+                    OneTimetable oneTimetable = new OneTimetable(Window, timetable);
                     addRowPixels(ReadTimetableGrid, oneTimetable.getHeight());
                     Grid.SetRow(oneTimetable, timetableIndex);
 
@@ -61,7 +61,7 @@ namespace Railway
 
         private void AddNewTimetable_Click(object sender, RoutedEventArgs e)
         {
-            Window.Content = new AddTimetable(Window);
+            Window.Frame.Content = new AddTimetable(Window);
         }
         public void RefreshPage()
         {

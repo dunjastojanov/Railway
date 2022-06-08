@@ -8,6 +8,7 @@ namespace Railway.Model
 {
     public class Trainline
     {
+        private static int index = 1;
         public string Name { get; set; }
         public Station FirstStation { get; set; }
         public Station LastStation { get; set; }
@@ -19,7 +20,8 @@ namespace Railway.Model
 
         public Trainline(string name, Station firstStation, Station lastStation, List<Timetable> timetables)
         {
-            Name = name;
+            Name = $"Trainline {index}";
+            index++;
             FirstStation = firstStation;
             LastStation = lastStation;
             Timetables = timetables;

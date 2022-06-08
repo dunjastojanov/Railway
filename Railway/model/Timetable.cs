@@ -8,6 +8,7 @@ namespace Railway.Model
 {
     public class Timetable
     {
+        public static int index = 1;
         public string Name { get; set; }
         public Train Train { get; set; }
         public Trainline Trainline { get; set; }
@@ -42,9 +43,22 @@ namespace Railway.Model
         {
             BoughtTickets.Add(ticket);
         }
-        public Timetable(string name, Train train, List<string> days, DateTime firstTime, DateTime lastTime, List<Ticket> boughtTickets)
+        public Timetable(Train train, List<string> days, DateTime firstTime, DateTime lastTime)
         {
-            Name = name;
+            this.Name = $"Timetable {index}";
+            index++;
+            Train = train;
+            Trainline = null;
+            Days = days;
+            TimeFromFirstStation = firstTime;
+            TimeFromLastStation = lastTime;
+            BoughtTickets = new List<Ticket>();
+        }
+
+        public Timetable(String name, Train train, List<string> days, DateTime firstTime, DateTime lastTime, List<Ticket> boughtTickets)
+        {
+            this.Name = $"Timetable {index}";
+            index++;
             Train = train;
             Trainline = null;
             Days = days;

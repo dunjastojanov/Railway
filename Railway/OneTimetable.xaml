@@ -8,7 +8,8 @@
       d:DesignHeight="430" d:DesignWidth="650">
     <Grid.RowDefinitions>
         <RowDefinition Height="5"></RowDefinition>
-        <RowDefinition Height="25"></RowDefinition>
+        <RowDefinition Height="30"></RowDefinition>
+        <RowDefinition Height="30"></RowDefinition>
         <RowDefinition Height="5"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="10"></RowDefinition>
@@ -21,34 +22,50 @@
     </Grid.ColumnDefinitions>
 
 
-    <Grid Grid.Row="1" Grid.Column="1" x:Name="TitleGrid"  Background="#333338">
+    <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="TitleGrid"  Background="#333338">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="60"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="60"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
             
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
 
-        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click" ></Button>
-        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click"></Button>
-        <Label x:Name="NameLabel" Grid.Row="1" Grid.Column="5" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
-        <Label x:Name="DaysLabel" Grid.Column="7" Grid.Row="1" Foreground="White" VerticalAlignment="Center"></Label>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Click="EditButton_Click" ></Button>
+        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Click="DeleteButton_Click"></Button>
+        <Label x:Name="NameLabel" Grid.Row="0" Grid.Column="5" Foreground="White" VerticalAlignment="Center"></Label>
+        <Label x:Name="DaysLabel" Grid.Column="7" Grid.Row="0" Foreground="White" VerticalAlignment="Center"></Label>
+        <Label x:Name="TrainLabel" Grid.Column="5" Grid.Row="3" Foreground="White" VerticalAlignment="Center"></Label>
+        <Label x:Name="TrainlineLabel" Grid.Column="7" Grid.Row="3" Foreground="White" VerticalAlignment="Center"></Label>
     </Grid>
 
 
-    <Grid  x:Name="StationsGrid" Grid.Row="3" Grid.Column="1" Background="#333338">
+    <Grid  x:Name="StationsGrid" Grid.Row="4" Grid.Column="1" Background="#333338">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition Width="40*"></ColumnDefinition>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1" Content="Classic route" Foreground="White"></Label>
+        <Label Grid.Row="0" Grid.Column="3" Content="Return route" Foreground="White"></Label>
     </Grid>
 
 </Grid>
