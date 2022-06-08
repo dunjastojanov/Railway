@@ -29,10 +29,10 @@ namespace Railway
             this.Train = train;
             Window = window;
 
-            NumberOfWagonsLabel.Content = train.seats.numberOfWagons.ToString();
-            NumberOfColumnsLabel.Content = train.seats.numberOfColumns.ToString();
-            NumberOfRowsLabel.Content = train.seats.numberOfSeatsPerColumn.ToString();
-            NameLabel.Content = train.Name;
+            NumberOfWagonsLabel.Content = $"Number of wagons: {train.seats.numberOfWagons.ToString()}";
+            NumberOfColumnsLabel.Content = $"Number of columns: {train.seats.numberOfColumns.ToString()}";
+            NumberOfRowsLabel.Content = $"Number of rows: {train.seats.numberOfSeatsPerColumn.ToString()}";
+            NameLabel.Content = $"Name: {train.Name}";
         }
 
         public int getHeight()
@@ -51,7 +51,7 @@ namespace Railway
             }
             else
             {
-                MessageBox.Show($"Train route {Train.Name} deletion cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Train {Train.Name} deletion cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

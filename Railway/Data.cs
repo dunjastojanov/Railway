@@ -379,6 +379,28 @@ namespace Railway
 
         }
 
+        internal static void deleteStation(Station station)
+        {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+            Stations.Remove(station.Name);
+
+            List<Trainline> trainlines = new List<Trainline>();
+            foreach (Trainline trainline in newRailway.TrainLines)
+            {
+                if (!trainline.ContainsStation(station))
+                {
+                    trainlines.Add(trainline);
+                    
+                }
+            }
+
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+
         internal static void deleteTimetable(Timetable timetable)
         {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Railway.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,27 @@ namespace Railway
             InitializeComponent();
             Window = window;
 
+            int trainIndex = 1;
+
+            foreach (Station station in Data.getStations())
+            {
+                OneStation oneStation = new OneStation(Window, station);
+
+                addRowPixels(ReadStationsGrid, oneStation.getHeight());
+
+                Grid.SetRow(oneStation, trainIndex);
+
+                ReadStationsGrid.Children.Add(oneStation);
+                trainIndex++;
+            }
+
+        }
+
+        private void addRowPixels(Grid grid, double height)
+        {
+            var rd = new RowDefinition();
+            rd.Height = new GridLength(height);
+            grid.RowDefinitions.Add(rd);
         }
 
         private void AddNewStation_Click(object sender, RoutedEventArgs e)
@@ -35,7 +57,7 @@ namespace Railway
 
         internal void RefreshPage()
         {
-            
+
         }
     }
 }

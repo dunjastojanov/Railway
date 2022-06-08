@@ -27,9 +27,9 @@
             <Button x:Name="RedoStations" Grid.Column="5" FontSize="16" Content="Redo"></Button>
         </Grid>
 
-        <ScrollViewer Grid.Row="1" x:Name="ReadTrainScrollViewer">
-            <StackPanel x:Name="ReadTrainStackPanel">
-                <Grid x:Name="ReadTrainGrid">
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <Grid x:Name="ReadStationsGrid">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>

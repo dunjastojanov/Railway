@@ -98,6 +98,9 @@
     <Compile Include="MonthlyReport.xaml.cs">
       <DependentUpon>MonthlyReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OneStation.xaml.cs">
+      <DependentUpon>OneStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OneTimetable.xaml.cs">
       <DependentUpon>OneTimetable.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MonthlyReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OneStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

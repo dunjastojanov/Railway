@@ -272,5 +272,28 @@ namespace Railway.Model
             stations.Add(endStation);
             return stations;
         }
+
+        internal bool ContainsStation(Station station)
+        {
+            bool contains = false;
+
+            Station currentStation = FirstStation;
+            while (currentStation.PathToNextStation != null)
+            {
+                if (currentStation.Name.Equals(station.Name))
+                {
+                    contains = true;
+                }
+                
+                currentStation = currentStation.PathToNextStation.NextStation;
+
+            }
+            if (currentStation.Name.Equals(station.Name))
+            {
+                contains = true;
+            }
+
+            return contains;
+        }
     }
 }
