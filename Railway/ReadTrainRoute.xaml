@@ -1,0 +1,63 @@
+﻿<Page x:Class="Railway.ReadTrainRoute"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Railway"
+      mc:Ignorable="d" 
+      d:DesignHeight="430" d:DesignWidth="750"
+      Title="AddTrainRoute">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="92*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid x:Name="readTrainRoutePanel" Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="22*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddNewTrainRoute" Grid.Column="1" Content="Add New Route" FontSize="16"  Click="AddNewTrainRoute_Click"></Button>
+            <Button x:Name="UndoDeleteTrainRoute" Grid.Column="3" FontSize="16" Content="Undo" Click="UndoDeleteTrainRoute_Click"></Button>
+            <Button x:Name="RedoDeleteTrainRoute" Grid.Column="5" FontSize="16" Content="Redo" Click="RedoDeleteTrainRoute_Click"></Button>
+        </Grid>
+        
+        <ScrollViewer Grid.Row="1" x:Name="ReadTrainRouteScrollViewer">
+            <StackPanel x:Name="ReadTrainRouteStackPanel">
+                <Grid x:Name="ReadTrainRouteGrid">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                            <ColumnDefinition Width="49*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+
+
+
+
+    </Grid>
+</Page>

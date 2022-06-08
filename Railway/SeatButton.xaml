@@ -1,0 +1,16 @@
+﻿<Button x:Class="Railway.SeatButton"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Railway"
+      mc:Ignorable="d" 
+      d:DesignHeight="20" BorderThickness="0" Background="#343438"
+      >
+
+        <StackPanel >
+            <Image Height="18" Grid.Column="1" Grid.Row="1" Source="./images/icons8-bus-seat-top-view-24.png"></Image>
+
+        </StackPanel>
+
+</Button>

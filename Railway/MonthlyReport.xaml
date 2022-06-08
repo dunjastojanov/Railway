@@ -1,0 +1,45 @@
+﻿<Page x:Class="Railway.MonthlyReport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Railway"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="637"
+      Title="MonthlyReport">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="78*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="monthLabel" Grid.Column="1" Grid.Row="0" Content="Choose month" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="18"/>
+            <Label x:Name="yearLabel" Grid.Column="3" Grid.Row="0" Content="Choose year" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="18"/>
+            <ComboBox x:Name="monthBox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+            <ComboBox x:Name="yearBox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
+            <Button x:Name="showMonthlyReport" Content="Show" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18"/>
+        </Grid>
+
+        <ScrollViewer x:Name="MonthlyReportScrollView"  Grid.Column="1" Grid.Row="1">
+            <StackPanel x:Name="MonthlyReportStackPanel">
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

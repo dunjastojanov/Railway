@@ -1,0 +1,32 @@
+﻿<Window x:Class="Railway.ManagerPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Railway"
+        mc:Ignorable="d"
+        Title="ManagerPage" Height="430" Width="750"  Background="#222228">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="ManagerNavigation">
+                <Button x:Name="Routes" Content="Routes" Height="30" Click="Routes_Click"/>
+                <Button x:Name="Trains"  Content="Trains" Height="30" Click="Trains_Click"/>
+                <Button x:Name="Stations"  Content="Stations" Height="30" Click="Stations_Click"/>
+                <Button x:Name="Schedules"  Content="Schedules" Height="30" Click="Schedules_Click"/>
+
+            </StackPanel>
+
+            <Frame x:Name="ManagerContentFrame" Grid.Column="1">
+
+
+            </Frame>
+
+        </Grid>
+
+    </Grid>
+</Window>
