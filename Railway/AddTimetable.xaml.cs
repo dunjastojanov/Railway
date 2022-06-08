@@ -20,9 +20,11 @@ namespace Railway
     /// </summary>
     public partial class AddTimetable : Page
     {
-        public AddTimetable()
-        {
+        Railway.MainWindow Window { get; set; }
+        public AddTimetable(Railway.MainWindow window)
+        {    
             InitializeComponent();
+            Window = window;
         }
     }
 }

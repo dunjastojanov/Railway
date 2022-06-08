@@ -61,7 +61,7 @@ namespace Railway
 
         private void AddNewTimetable_Click(object sender, RoutedEventArgs e)
         {
-
+            Window.Content = new AddTimetable(Window);
         }
         public void RefreshPage()
         {
