@@ -44,6 +44,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddingStation.xaml.cs">
+      <DependentUpon>AddingStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTimetable.xaml.cs">
       <DependentUpon>AddTimetable.xaml</DependentUpon>
     </Compile>
@@ -101,6 +107,12 @@
     <Compile Include="OneTrainRoute.xaml.cs">
       <DependentUpon>OneTrainRoute.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RailwayNetworkOverview.xaml.cs">
+      <DependentUpon>RailwayNetworkOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadStations.xaml.cs">
+      <DependentUpon>ReadStations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReadTimetable.xaml.cs">
       <DependentUpon>ReadTimetable.xaml</DependentUpon>
     </Compile>
@@ -128,6 +140,10 @@
     <Compile Include="TrainSeats.xaml.cs">
       <DependentUpon>TrainSeats.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddingStation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,6 +197,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="OneTrainRoute.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RailwayNetworkOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReadStations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

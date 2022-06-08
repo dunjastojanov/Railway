@@ -15,9 +15,7 @@ namespace Railway
         private static int CurrentRailwayIndex { get; set; }
         private static int UpperRailwayIndexBound { get; set; }
         public static List<Seats> seats { get; set; }
-
         public static List<Train> trains { get; set; }
-
         private static Dictionary<String, Station> Stations { get; set; }
 
 
@@ -379,6 +377,11 @@ namespace Railway
             Data.UpperRailwayIndexBound = 0;
             return railway;
 
+        }
+
+        public static List<Station> getStations()
+        {
+            return Stations.Values.ToList();
         }
 
         internal static void AddTrain(Seats chosenSeats, string name, int numberOfWagons)

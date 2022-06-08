@@ -160,7 +160,7 @@ namespace Railway
 
         private void ViewMapButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Window.MainFrame.Content = new RailwayNetworkOverview(Window.MainFrame, trainline);
         }
     }
 }

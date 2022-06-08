@@ -30,6 +30,7 @@ namespace Railway
         public ReadTrainRoute ReadTrainRoute { get; set; }
         public ReadTrain ReadTrain { get; set; }
         public ReadTimetable ReadTimetable { get; set; }
+        public ReadStations ReadStations { get; set; }
         public Reports Reports { get; set; }
         public Frame Frame { get; set; }    
         public User LogedUser { get; set; }
@@ -58,6 +59,7 @@ namespace Railway
             ReadTrainRoute = new ReadTrainRoute(this);
             ReadTrain = new ReadTrain(this);
             ReadTimetable = new ReadTimetable(this);
+            ReadStations = new ReadStations(this);
             Reports = new Reports(this);
         }
        
@@ -261,6 +263,15 @@ namespace Railway
             MainFrame.Content = ReadTimetable;
         }
 
+        public void ShowReadStations(bool needsReset)
+        {
+            if (needsReset)
+                Data.ResetCurrentIndex();
+            CurrentPage = "ReadStations";
+            ReadStations.RefreshPage();
+            MainFrame.Content = ReadStations;
+        }
+
         private void Button_Click_ShowSearchRoute(object sender, RoutedEventArgs e)
         {       
             MainFrame.Content = SearchRoute;
@@ -288,7 +299,7 @@ namespace Railway
 
         private void Stations_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowReadStations(true);
         }
 
         private void Schedules_Click(object sender, RoutedEventArgs e)

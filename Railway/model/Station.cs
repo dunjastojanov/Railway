@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Railway.Model
         public string Name { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
+
+        public Location Location { get; set; }
         public Path PathToNextStation { get; set; }
         public Path PathToPreviousStation { get; set; }
 
@@ -41,16 +44,19 @@ namespace Railway.Model
             PathToPreviousStation = pathToPreviousStation;
         }
 
-        public override string ToString()
-        {
-            return "Name: " + Name;
-        }
-
         public Station(string name, double longitude, double latitude)
         {
             Name = name;
             Longitude = longitude;
             Latitude = latitude;
+            Location = new Location(latitude, longitude);
         }
+
+        public override string ToString()
+        {
+            return "Name: " + Name;
+        }
+
+
     }
 }
