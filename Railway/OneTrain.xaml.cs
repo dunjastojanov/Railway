@@ -37,7 +37,7 @@ namespace Railway
 
         public int getHeight()
         {
-            return 75;
+            return 120;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

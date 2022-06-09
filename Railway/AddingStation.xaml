@@ -44,7 +44,7 @@
         <Label Content="Add station" Margin="10,10,10,0" Grid.Column="1" Grid.Row="1"  Height="60" Width="285" Foreground="#FFFCFCFC" FontSize="36" />
         <Button x:Name="addStation" Click="addStation_Click" HorizontalAlignment="Center" 
             Content="Add new station" Grid.Column="1" Grid.Row="6" Width="285" FontSize="24" Background="#FFFD9B00" Foreground="White" Margin="10,10,10,10" />
-        <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="4" TextWrapping="Wrap" Width="285" Margin="10" TextAlignment="Justify" FontSize="16"/>
+        <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="4" TextWrapping="Wrap" Width="285" Margin="10" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
         <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="2" TextWrapping="Wrap" Text="To add a station drag and drop the icon" Width="285" Foreground="White" FontSize="22" />
         <Grid x:Name="point" Grid.Column="1" Grid.Row="5" Grid.RowSpan="1" >
             <Grid.ColumnDefinitions>

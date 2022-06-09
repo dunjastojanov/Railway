@@ -27,6 +27,7 @@ namespace Railway
         public SeatButton(int numberOfWagon, char column, int numberOfSeat)
         {
             InitializeComponent();
+            SeatPanel.ToolTip = $"{numberOfSeat}{column.ToString().ToUpper()}";
             this.numberOfWagon = numberOfWagon;
             this.column = column;
             this.numberOfSeat = numberOfSeat;

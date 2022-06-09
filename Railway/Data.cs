@@ -43,10 +43,10 @@ namespace Railway
             Seats seats1 = new Seats(5, 4, 12);
             Data.seats.Add(seats1);
 
-            Seats seats2 = new Seats(6, 4, 20);
+            Seats seats2 = new Seats(6, 4, 16);
             Data.seats.Add(seats2);
 
-            Seats seats3 = new Seats(3, 5, 24);
+            Seats seats3 = new Seats(3, 5, 14);
             Data.seats.Add(seats3);
 
             Seats seats4 = new Seats(8, 2, 12);

@@ -41,12 +41,12 @@ namespace Railway
 
         public int getHeight()
         {
-            return 75;
+            return 120;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            int response = (int)MessageBox.Show($"Are you sure you want to delete station {Station.Name}?\n", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            int response = (int)MessageBox.Show($"Are you sure you want to delete station {Station.Name}?\nThis would mean deleting all of the trainlines in which contain the station.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
                 Data.deleteStation(Station);

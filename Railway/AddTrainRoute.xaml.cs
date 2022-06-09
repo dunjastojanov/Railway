@@ -26,13 +26,13 @@ namespace Railway
         List<Dictionary<String, object>> infoBetweenStations;
         List<String> addedStations;
         Railway.MainWindow Window;
-    
+
         public AddTrainRoute(Railway.MainWindow window)
         {
             this.Window = window;
             InitializeComponent();
             TryDisableUndoRedo();
-            
+
 
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
@@ -52,7 +52,7 @@ namespace Railway
         {
             this.Window = window;
             InitializeComponent();
-           
+
 
             this.trainline = trainline;
 
@@ -72,7 +72,7 @@ namespace Railway
 
             Station station = trainline.FirstStation;
             Model.Path path;
-       
+
 
             while (station.PathToNextStation != null)
             {
@@ -117,6 +117,29 @@ namespace Railway
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (addedStations.Count > 0)
+            {
+
+                if (StationComboBox.SelectedItem.ToString() == addedStations[addedStations.Count-1])
+                {
+                    MessageBox.Show("You cannot add the same station two times in a row.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+                else
+                {
+                    fillInfo();
+                }
+            }
+            else
+            {
+                fillInfo();
+
+            }
+
+        }
+
+        private void fillInfo()
+        {
             AddedStationsInfoGrid.Height = AddedStationsInfoGrid.Height + 30 + 90;
 
             if (StationComboBox.SelectedItem != null)
@@ -124,7 +147,7 @@ namespace Railway
                 string parameter = StationComboBox.SelectedItem.ToString();
                 int response = (int)MessageBox.Show("Are you sure you want to add station " + parameter + "?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)
-                {             
+                {
                     addedStations.Add(StationComboBox.SelectedItem.ToString());
                     addRowPixels(AddedStationsInfoGrid, 90);
 
@@ -134,7 +157,7 @@ namespace Railway
                     }
                     addStationLabel();
                     addRowPixels(AddedStationsInfoGrid, 30);
-                
+
 
                     lastStationLabelRow += 2;
                 }
@@ -142,14 +165,12 @@ namespace Railway
                 {
                     MessageBox.Show("Adding station to the train route cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("Station must be chosen before clicking ADD button.", "Station not found.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
 
         private void addBetweenStationInfoGrid(int price, int duration)
@@ -176,6 +197,7 @@ namespace Railway
             durationTextBox.Text = duration.ToString();
             Grid.SetRow(durationTextBox, 1);
             Grid.SetColumn(durationTextBox, 2);
+            durationTextBox.ToolTip = "Duration of the trip beetwen the stations above and below.";
             grid.Children.Add(durationTextBox);
 
             Label priceLabel = new Label();
@@ -190,6 +212,7 @@ namespace Railway
             priceTextBox.Text = price.ToString();
             Grid.SetRow(priceTextBox, 2);
             Grid.SetColumn(priceTextBox, 2);
+            priceTextBox.ToolTip = "Price for the trip between the stations above and below.";
             grid.Children.Add(priceTextBox);
 
             Grid.SetRow(grid, lastStationLabelRow + 1);
@@ -427,19 +450,19 @@ namespace Railway
                     MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.ShowReadTrainRoute(true);
                 }
-               
+
             }
 
             else
             {
-                int response = (int)MessageBox.Show("Are you sure you want to cancel train route editing?" , "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                int response = (int)MessageBox.Show("Are you sure you want to cancel train route editing?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)
                 {
 
                     MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.ShowReadTrainRoute(true);
                 }
-               
+
             }
         }
         public void RefreshPage()

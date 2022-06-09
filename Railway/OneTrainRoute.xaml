@@ -13,7 +13,7 @@
 
     <Grid.RowDefinitions>
         <RowDefinition Height="5"></RowDefinition>
-        <RowDefinition Height="25"></RowDefinition>
+        <RowDefinition Height="60"></RowDefinition>
         <RowDefinition Height="5"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="10"></RowDefinition>
@@ -26,34 +26,42 @@
     </Grid.ColumnDefinitions>
 
 
-    <Grid Grid.Row="1" Grid.Column="1" x:Name="TitleGrid"  Background="#333338">
+    <Grid Grid.Row="1" Grid.Column="1" x:Name="TitleGrid">
+
+        <Grid.Background>
+            <SolidColorBrush Color="#333338" Opacity="0.6"></SolidColorBrush>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="60"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="60"></ColumnDefinition>
+            <ColumnDefinition Width="95"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="60"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
             <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
+            <ColumnDefinition Width="125"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click"></Button>
-        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click"></Button>
-        <Button x:Name="ViewMapButton" Content="View Map" Grid.Column="5" Grid.Row="1" Click="ViewMapButton_Click"></Button>
+        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the trainline."></Button>
+        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the trainline."></Button>
+        <Button x:Name="ViewMapButton" Content="View Map" Grid.Column="5" Grid.Row="1" Click="ViewMapButton_Click" ToolTip="Grafical view of the trainline on the map."></Button>
         <Label Content="->" Grid.Row="1" Grid.Column="9" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
 
     </Grid>
 
 
-    <Grid  x:Name="StationsGrid" Grid.Row="3" Grid.Column="1" Background="#333338">
+    <Grid  x:Name="StationsGrid" Grid.Row="3" Grid.Column="1">
 
+        <Grid.Background>
+            <SolidColorBrush Color="#333338" Opacity="0.6"></SolidColorBrush>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"></ColumnDefinition>
             <ColumnDefinition Width="25*"></ColumnDefinition>

@@ -99,13 +99,15 @@ namespace Railway
                 Grid grid = new Grid();
 
                 addRowPixels(grid, 60);
-                addRowPixels(grid, 300);
+                addRowPixels(grid, 380);
 
                 Button button = new Button();
                 button.Click += choseSeats;
                 button.Content = $"Number of rows: {seats.numberOfSeatsPerColumn}\nNumber of Columns: {seats.numberOfColumns}";
+                button.ToolTip = "Seat distribution chart type.";
                 button.Foreground = Brushes.White;
-                button.Background = Brushes.Black;
+                button.FontSize = 14;
+                button.Margin = new Thickness(0, 0, 0, 0);
                 Grid.SetRow(button, 0);
                 grid.Children.Add(button);
 

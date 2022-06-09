@@ -8,6 +8,30 @@
       d:DesignHeight="450" d:DesignWidth="637"
       Title="ReadTimetable">
 
+    <Page.Resources>
+        <Style TargetType="Page">
+
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Background" Value="#048bcf"></Setter>
+            <Setter Property="BorderBrush" Value="#048bcf"></Setter>
+            <Setter Property="Foreground" Value="#ffffff"></Setter>
+            <Setter Property="Padding" Value="2"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="20,0,20,0"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#ffffff"></Setter>
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </Page.Resources>
+
     <Grid x:Name="MainGrid">
 
         <Grid.Background>
@@ -15,24 +39,24 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="92*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="ReadTimetableButtonsGrid" Grid.Row="0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="24*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="9*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="28*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="AddNewTimetable" Grid.Column="1" FontSize="16" Content="Add New Timetable" Click="AddNewTimetable_Click"></Button>
-            <Button x:Name="UndoDeleteTimetable" Grid.Column="3" FontSize="16" Content="Undo" Click="UndoDeleteTimetable_Click"></Button>
-            <Button x:Name="RedoDeleteTimetable" Grid.Column="5" FontSize="16" Content="Redo" Click="RedoDeleteTimetable_Click"></Button>
+            <Button x:Name="AddNewTimetable" Grid.Column="1" Content="Add New Timetable" Click="AddNewTimetable_Click" ToolTip="Adding new timetable."></Button>
+            <Button x:Name="UndoDeleteTimetable" Grid.Column="3" Content="Undo" Click="UndoDeleteTimetable_Click"></Button>
+            <Button x:Name="RedoDeleteTimetable" Grid.Column="5" Content="Redo" Click="RedoDeleteTimetable_Click"></Button>
         </Grid>
 
         <ScrollViewer Grid.Row="1" x:Name="ReadTrainRouteScrollViewer">

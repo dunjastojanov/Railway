@@ -553,7 +553,7 @@
             <TextBox x:Name="ticketsNum" IsReadOnly="True" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Height="23"  Grid.Row="4" Grid.Column="5" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Grid.RowSpan="1"/>
             <Button x:Name="plusTicket" Content="+" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="7" VerticalAlignment="Top" Width="23" Height="23" FontSize="18" Style="{DynamicResource ButtonCircleStyle}" Click="plusTicket_Click"/>
             <Button x:Name="minusTicket" Content="-" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="8" VerticalAlignment="Top" Width="23" Height="23" FontSize="18"  Click="minusTicket_Click" Style="{DynamicResource ButtonCircleStyle}"  />
-            <Button Template="{DynamicResource OrangeButton}" Foreground="FloralWhite" x:Name="searchRoute" Content="Search" Grid.ColumnSpan="3" Grid.Column="3"  Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="33" FontSize="18" Click="searchRoute_Click"/>
+            <Button Background="#00b0ff" Foreground="FloralWhite" x:Name="searchRoute" Content="Search" Grid.ColumnSpan="3" Grid.Column="3"  Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="33" FontSize="18" Click="searchRoute_Click"/>
         </Grid>
     </Grid>
 </Page>

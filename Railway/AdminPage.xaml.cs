@@ -23,6 +23,7 @@ namespace Railway
         public AdminPage()
         {
             InitializeComponent();
+
         }
     }
 }

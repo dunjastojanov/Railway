@@ -8,6 +8,40 @@
       d:DesignHeight="430" d:DesignWidth="680"
       Title="AddTimetable" >
 
+    <Page.Resources>
+        <Style TargetType="Page">
+
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Background" Value="#048bcf"></Setter>
+            <Setter Property="BorderBrush" Value="#048bcf"></Setter>
+            <Setter Property="Foreground" Value="#ffffff"></Setter>
+            <Setter Property="Padding" Value="2"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Padding" Value="20,0,20,0"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#ffffff"></Setter>
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid x:Name="AddTimetableGrid">
 
         <Grid.Background>
@@ -29,7 +63,7 @@
 
         <Grid x:Name="AddGrid" Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -46,49 +80,53 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="5"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="5"></RowDefinition>
 
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Label x:Name="TrainlineLabel" Grid.Column="0" Grid.Row="0" Foreground="White">Choose trainline:</Label>
-            <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="0"></ComboBox>
+            <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="0" ToolTip="Trainline to which the timetable applies."></ComboBox>
 
             <Label Grid.Column="0" Grid.Row="2" Foreground="White">Choose train:</Label>
-            <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2"></ComboBox>
+            <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" ToolTip="Train that will be driven at the time of the timetable on seleceted trainline."></ComboBox>
 
 
             <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station, other times will be added automaticaly." Foreground="White" Margin="0,0.4,0.2,0"/>
 
             <Label Grid.Column="0" Grid.Row="5" Foreground="White">Time (hh:mm):</Label>
-            <ComboBox SelectionChanged="StartTimeCombo_Selected" x:Name="StartTimeCombo" Grid.Column="1" Grid.Row="5"></ComboBox>
+            <ComboBox SelectionChanged="StartTimeCombo_Selected" x:Name="StartTimeCombo" Grid.Column="1" Grid.Row="5" ToolTip="Time when train leaves the first station."></ComboBox>
 
 
             <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Return route      Chose a time when train leaves the last station to return, other times will be added automaticaly." Foreground="White"></Label>
             <Label Grid.Column="0" Grid.Row="8" Foreground="White">Time (hh:mm):</Label>
-            <ComboBox SelectionChanged="EndTimeCombo_Selected" x:Name="EndTimeCombo" Grid.Column="1" Grid.Row="8"></ComboBox>
+            <ComboBox SelectionChanged="EndTimeCombo_Selected" x:Name="EndTimeCombo" Grid.Column="1" Grid.Row="8" ToolTip="Time when train leaves the last station to return back."></ComboBox>
 
             <Label Grid.Column="0" Grid.Row="10" Content="Days:" Foreground="White"></Label>
-            <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="10">
+            <Grid Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="10">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="1.25*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.75*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <CheckBox Grid.Column="0" x:Name="Monday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Monday">Monday</CheckBox>
-                <CheckBox Grid.Column="1" x:Name="Tuesday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Tuesday">Tuesday</CheckBox>
-                <CheckBox Grid.Column="2" x:Name="Wednesday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Wednesday">Wednesday</CheckBox>
-                <CheckBox Grid.Column="3" x:Name="Thursday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Thursday">Thursday</CheckBox>
-                <CheckBox Grid.Column="4" x:Name="Friday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Friday">Friday</CheckBox>
-                <CheckBox Grid.Column="5" x:Name="Saturday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Saturday">Saturday</CheckBox>
-                <CheckBox Grid.Column="6" x:Name="Sunday" Foreground="White" VerticalAlignment="Center" ToolTip="Click on this to select Sunday">Sunday</CheckBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <CheckBox Grid.Column="0" x:Name="Monday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Monday</CheckBox>
+                <CheckBox Grid.Column="1" x:Name="Tuesday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Tuesday</CheckBox>
+                <CheckBox Grid.Column="2" x:Name="Wednesday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Wednesday</CheckBox>
+                <CheckBox Grid.Column="3" x:Name="Thursday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Thursday</CheckBox>
+                <CheckBox Grid.Column="4" x:Name="Friday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Friday</CheckBox>
+                <CheckBox Grid.Column="0" Grid.Row="1" x:Name="Saturday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Saturday</CheckBox>
+                <CheckBox Grid.Column="1" Grid.Row="1" x:Name="Sunday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Sunday</CheckBox>
             </Grid>
         </Grid>
 
