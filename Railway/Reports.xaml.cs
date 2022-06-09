@@ -24,5 +24,26 @@ namespace Railway
         {
             InitializeComponent();
         }
+
+        private void MonthReport_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowMonthReport();
+        }
+
+        private void RouteReport_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowRouteReport();
+        }
+
+        private void ShowMonthReport()
+        {
+            MonthlyReport mr = new MonthlyReport();
+            ReportsFrame.Content = mr;
+        }
+        private void ShowRouteReport()
+        {
+            RouteReport rr = new RouteReport();
+            ReportsFrame.Content = rr;
+        }
     }
 }

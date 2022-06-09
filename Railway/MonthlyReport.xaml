@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="22*"/>
@@ -18,13 +18,13 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="31*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="31*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
@@ -32,14 +32,13 @@
             </Grid.RowDefinitions>
             <Label x:Name="monthLabel" Grid.Column="1" Grid.Row="0" Content="Choose month" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="18"/>
             <Label x:Name="yearLabel" Grid.Column="3" Grid.Row="0" Content="Choose year" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="18"/>
-            <ComboBox x:Name="monthBox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
-            <ComboBox x:Name="yearBox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
-            <Button x:Name="showMonthlyReport" Content="Show" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18"/>
+            <ComboBox x:Name="monthBox" FontSize="16" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+            <ComboBox x:Name="yearBox" FontSize="16" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
+            <Button x:Name="showMonthlyReport" Content="Show" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18" Click="showMonthlyReport_Click"/>
         </Grid>
 
-        <ScrollViewer x:Name="MonthlyReportScrollView"  Grid.Column="1" Grid.Row="1">
-            <StackPanel x:Name="MonthlyReportStackPanel">
-            </StackPanel>
-        </ScrollViewer>
+
+        <DataGrid x:Name="dataGrid" Height="250" Width="573" Grid.Row="1" ColumnWidth="109"/>
+
     </Grid>
 </Page>

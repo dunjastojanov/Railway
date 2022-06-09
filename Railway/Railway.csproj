@@ -93,6 +93,7 @@
     <Compile Include="ManagerPage.xaml.cs">
       <DependentUpon>ManagerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\ReportTicketDTO.cs" />
     <Compile Include="model\Seats.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="MonthlyReport.xaml.cs">

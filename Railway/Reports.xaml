@@ -9,6 +9,26 @@
       Title="Reports">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton x:Name="monthRadioButton" Grid.Column="1" Content="Sold tickets for a month" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite" FontSize="18" Checked="MonthReport_Checked"/>
+            <RadioButton x:Name="routeRdioButton" Grid.Column="3" Content="Sold tickets for a ride" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite" FontSize="18" Checked="RouteReport_Checked"/>
+        </Grid>
+
+        <Frame x:Name="ReportsFrame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden" />
+
     </Grid>
 </Page>
