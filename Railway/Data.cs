@@ -808,6 +808,50 @@ namespace Railway
             return tickets;
         }
 
+        public static List<ReportTicketDTO> GetMonthyReport(string month, string year)
+        {
+            List<ReportTicketDTO> tickets = new List<ReportTicketDTO>();
+            Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            foreach (Trainline trainline in railway.TrainLines)
+            {
+                foreach (Timetable timetable in trainline.Timetables)
+                {
+                    foreach (Ticket ticket in timetable.BoughtTickets)
+                    {
+
+                        if (ticket.Date.ToString("MMMM").Equals(month) && ticket.Date.Year.ToString().Equals(year))
+                        {
+                            tickets.Add(new ReportTicketDTO(ticket.StartStation.Name, ticket.EndStation.Name, ticket.Price, ticket.Date.ToString("dd.MM.yyyy. HH:mm'h'"), ticket.NumberOfPassengers));
+                        }
+                    }
+                }
+            }
+            return tickets;
+        }
+
+        public static List<ReportTicketDTO> GetRouteReport(string trainlineName, DateTime startDate, DateTime endDate)
+        {
+            List<ReportTicketDTO> tickets = new List<ReportTicketDTO>();
+            Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
+
+            foreach (Trainline trainline in railway.TrainLines)
+            {
+                if (!trainline.Name.Equals(trainlineName))
+                    continue;
+                foreach (Timetable timetable in trainline.Timetables)
+                {
+                    foreach (Ticket ticket in timetable.BoughtTickets)
+                    {
+                        DateTime date = ticket.Date;
+                        if (date >= startDate && date <= endDate)
+                        {
+                            tickets.Add(new ReportTicketDTO(ticket.StartStation.Name, ticket.EndStation.Name, ticket.Price, ticket.Date.ToString("dd.MM.yyyy. HH:mm'h'"), ticket.NumberOfPassengers));
+                        }
+                    }
+                }
+            }
+            return tickets;
+        }
         public static List<Trainline> GetTrainLines()
         {
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
