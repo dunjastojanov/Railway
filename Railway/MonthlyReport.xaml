@@ -37,8 +37,15 @@
             <Button x:Name="showMonthlyReport" Content="Show" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18" Background="#00b0ff" Foreground="FloralWhite" Click="showMonthlyReport_Click"/>
         </Grid>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.Column="1"  ColumnWidth="20*"/>
+        </Grid>
 
-        <DataGrid x:Name="dataGrid" Height="250" Width="527" Grid.Row="1" ColumnWidth="100"/>
 
     </Grid>
 </Page>
