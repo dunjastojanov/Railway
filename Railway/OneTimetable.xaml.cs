@@ -32,7 +32,6 @@ namespace Railway
             InitializeComponent();
             Window = window;
             NameLabel.Content = "Name: " + timetable.Name;
-            TrainlineLabel.Content = "Trainline: " + timetable.Trainline.Name;
             TrainLabel.Content = "Train: " + timetable.Train.Name;
 
             this.timetable = timetable;
@@ -136,7 +135,7 @@ namespace Railway
 
         internal double getHeight()
         {
-            return row * 35 + 90;
+            return row * 35 + 130;
         }
 
         private void addRowPixels(Grid grid, double height)

@@ -39,7 +39,7 @@ namespace Railway
 
         private void Stations_Click(object sender, RoutedEventArgs e)
         {
-
+           // ManagerContentFrame.Content = new AddingStation(ManagerContentFrame);
         }
 
         private void Schedules_Click(object sender, RoutedEventArgs e)

@@ -78,7 +78,7 @@ namespace Railway
             routes.Height = 35;
             routes.HorizontalAlignment = HorizontalAlignment.Stretch;
             routes.FontSize = 15;
-            routes.Content = "Routes";
+            routes.Content = "Trainlines";
             routes.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
             routes.Foreground = Brushes.FloralWhite;
             routes.Click += Routes_Click;
@@ -108,7 +108,7 @@ namespace Railway
             schedules.Height = 35;
             schedules.HorizontalAlignment = HorizontalAlignment.Stretch;
             schedules.FontSize = 15;
-            schedules.Content = "Schedules";
+            schedules.Content = "Timetables";
             schedules.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
             schedules.Foreground = Brushes.FloralWhite;
             schedules.Click += Schedules_Click;

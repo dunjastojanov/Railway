@@ -43,7 +43,7 @@ namespace Railway
             Path path;
             stationNextRow = 0;
 
-            addRowPixels(StationsGrid, 30);
+            addRowPixels(StationsGrid, 40);
             stationLabel.Foreground = Brushes.White;
             stationLabel.Content = station.Name;
             Grid.SetRow(stationLabel, stationNextRow);
@@ -54,10 +54,11 @@ namespace Railway
             while (station.PathToNextStation != null)
             {
 
-                addRowPixels(StationsGrid, 30);
+                addRowPixels(StationsGrid, 40);
                 path = station.PathToNextStation;
                 durationLabel = new Label();
                 durationLabel.Content = $"Duration (minutes): {path.Duration}";
+                durationLabel.ToolTip = "Duration of the trip between stations above and below.";
                 durationLabel.Foreground = Brushes.White;
                 Grid.SetRow(durationLabel, stationNextRow+1);
                 Grid.SetColumn(durationLabel, 1);
@@ -65,6 +66,7 @@ namespace Railway
 
                 priceLabel = new Label();
                 priceLabel.Content = $"Price ($): {path.Price}";
+                priceLabel.ToolTip = "Price of the trip between stations above and below.";
                 priceLabel.Foreground = Brushes.White;
                 Grid.SetRow(priceLabel, stationNextRow + 1);
                 Grid.SetColumn(priceLabel, 2);
@@ -73,7 +75,7 @@ namespace Railway
 
                 stationNextRow += 2;
 
-                addRowPixels(StationsGrid, 30);
+                addRowPixels(StationsGrid, 40);
 
                 station = path.NextStation;
                 stationLabel = new Label();
@@ -113,7 +115,7 @@ namespace Railway
 
         internal double getHeight()
         {
-            return (stationNextRow+1)*30 + 60;
+            return (stationNextRow + 1) * 40 + 120;
         }
 
         private void addFirstStationLabel(Trainline trainline)

@@ -14,6 +14,9 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
+
+    
+        
     <Grid Name="window">
         <Grid.Background>
             <VisualBrush>
