@@ -47,29 +47,27 @@
         
         <Grid Grid.Row="1" Grid.Column="1" Margin="100,50,100,50">
 
-        <Grid.Background>
-            <SolidColorBrush Color="Black" Opacity="0.6"></SolidColorBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
 
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
 
+            <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="0" Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
 
-        <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="White">E-mail</Label>
+            <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="White">E-mail</Label>
 
         <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
 

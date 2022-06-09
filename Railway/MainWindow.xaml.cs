@@ -154,8 +154,30 @@ namespace Railway
             ticketHistory.Foreground = Brushes.FloralWhite;
             ticketHistory.Click += Button_Click_ShowTicketHistory;
 
+            Button routes = new Button();
+            routes.BorderThickness = new Thickness(0);
+            routes.Height = 35;
+            routes.HorizontalAlignment = HorizontalAlignment.Stretch;
+            routes.FontSize = 15;
+            routes.Content = "Trainlines";
+            routes.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            routes.Foreground = Brushes.FloralWhite;
+            //routes.Click += Routes_Click;
+
+            Button schedules = new Button();
+            schedules.BorderThickness = new Thickness(0);
+            schedules.Height = 35;
+            schedules.HorizontalAlignment = HorizontalAlignment.Stretch;
+            schedules.FontSize = 15;
+            schedules.Content = "Timetables";
+            schedules.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            schedules.Foreground = Brushes.FloralWhite;
+           // schedules.Click += Schedules_Click;
+
             navButtons.Children.Add(searchTicket);
             navButtons.Children.Add(ticketHistory);
+            navButtons.Children.Add(routes);
+            navButtons.Children.Add(schedules);
         }
         public void ShowLogin()
         {
@@ -168,12 +190,22 @@ namespace Railway
 
         public void DeleteNavbar()
         {
-            window.Children.Remove(navbar);
+            window.Children.Clear();         
+            Grid.SetColumn(MainFrame, 0);
+            Grid.SetColumnSpan(MainFrame, 2);
+            
+            window.Children.Add(MainFrame);
         }
 
         public void AddNavbar()
         {
+            window.Children.Clear();
+            Grid.SetColumn(navbar, 0);
+            Grid.SetColumnSpan(navbar, 1);
             window.Children.Add(navbar);
+            Grid.SetColumn(MainFrame, 1);
+            Grid.SetColumnSpan(MainFrame, 1);
+            window.Children.Add(MainFrame);
         }
 
         public void ShowSearchRoute()
