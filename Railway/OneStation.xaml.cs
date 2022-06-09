@@ -36,7 +36,7 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Window.MainFrame.Content = new UpdateStation(Window.MainFrame, Station);
         }
 
         public int getHeight()
