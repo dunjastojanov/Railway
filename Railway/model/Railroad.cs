@@ -11,16 +11,22 @@ namespace Railway.Model
     {
         public List<Trainline> TrainLines { get; set; }
         public List<User> Users { get; set; }
+        public List<Train> Trains { get; set; }
+        public Dictionary<String, Station> Stations { get; set; }
         public Railroad()
         {
             TrainLines = new List<Trainline>();
             Users = new List<User>();
+            Stations = new Dictionary<string, Station>();
+            Trains = new List<Train>();
         }
 
         public Railroad(List<Trainline> trainLines, List<User> users)
         {
             TrainLines = trainLines;
             Users = users;
+            Stations = new Dictionary<string, Station>();
+            Trains = new List<Train>();
         }
         public Railroad DeepCopy()
         {        
@@ -28,7 +34,19 @@ namespace Railway.Model
             foreach (Trainline trainline in TrainLines) {
                 railroad.AddTrainline(trainline.DeepCopy());
             }
+            List<Train> trains = new List<Train>();
+            Dictionary<String, Station> stations = new Dictionary<string, Station>();
+            foreach (Train item in Trains)
+            {
+                trains.Add(item.DeepCopy(item));
+            }
+            foreach (String key in Stations.Keys)
+            {
+                stations[key] = Stations[key].DeepCopy();
+            }
+            railroad.Stations = stations;
             railroad.Users = Users;
+            railroad.Trains = trains;
             return railroad;
             
         }

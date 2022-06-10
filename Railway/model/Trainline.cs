@@ -295,5 +295,25 @@ namespace Railway.Model
 
             return contains;
         }
+
+        internal void UpdateStations(string oldStationName, Station newStation)
+        {
+            Station currentStation = FirstStation;
+            while (currentStation.PathToNextStation != null)
+            {
+                if (currentStation.Name == oldStationName) {
+                    currentStation.Name = newStation.Name;
+                    currentStation.Longitude= newStation.Longitude;
+                    currentStation.Latitude= newStation.Latitude;
+                }
+                currentStation = currentStation.PathToNextStation.NextStation;
+            }
+            if (currentStation.Name == oldStationName)
+            {
+                currentStation.Name = newStation.Name;
+                currentStation.Longitude = newStation.Longitude;
+                currentStation.Latitude = newStation.Latitude;
+            }
+        }
     }
 }
