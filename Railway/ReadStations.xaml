@@ -1,38 +1,37 @@
-﻿<Page x:Class="Railway.ReadStations"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Railway"
+      xmlns:Custom="http://wpfcontrols.com/" x:Class="Railway.ReadStations"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ReadTrain">
 
     <Page.Resources>
-        <Style TargetType="Page">
-            
-        </Style>
+        <Style TargetType="{x:Type Page}"/>
 
-        <Style TargetType="Button">
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Background" Value="#048bcf"></Setter>
-            <Setter Property="BorderBrush" Value="#048bcf"></Setter>
-            <Setter Property="Foreground" Value="#ffffff"></Setter>
-            <Setter Property="Padding" Value="2"></Setter>
-            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#048bcf"/>
+            <Setter Property="BorderBrush" Value="#048bcf"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16" />
-            <Setter Property="Padding" Value="20,0,20,0"></Setter>
+            <Setter Property="Padding" Value="20,0,20,0"/>
         </Style>
 
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="#ffffff"></Setter>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="#ffffff"/>
             <Setter Property="FontSize" Value="16" />
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
@@ -47,9 +46,9 @@
                 <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="AddNewStation" Grid.Column="1" Grid.Row="0" Content="Add New Station" Click="AddNewStation_Click"></Button>
-            <Button x:Name="UndoStations" Grid.Column="3" Content="Undo"></Button>
-            <Button x:Name="RedoStations" Grid.Column="5" Content="Redo" Margin="0,5,20,5"></Button>
+            <Button x:Name="AddNewStation" Grid.Column="1" Grid.Row="0" Content="Add New Station" Click="AddNewStation_Click"/>
+            <Button x:Name="UndoStations" Grid.Column="3" Content="Undo"/>
+            <Button x:Name="RedoStations" Grid.Column="5" Content="Redo" Margin="0,5,20,5"/>
         </Grid>
 
         <ScrollViewer Grid.Row="1">
@@ -57,7 +56,7 @@
                 <Grid x:Name="ReadStationsGrid">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
 
                 </Grid>

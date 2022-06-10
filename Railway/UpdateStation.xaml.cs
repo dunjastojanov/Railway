@@ -27,9 +27,11 @@ namespace Railway
         private bool dragPin;
         public Pushpin SelectedPushpin { get; set; }
         public Station Station { get; set; }
+        public String oldStationName { get; set; }
         public UpdateStation(Frame frame, Station station)
         {
             this.DataContext = this;
+            oldStationName = station.Name;
             Station = station;
             InitializeComponent();
         }
@@ -71,6 +73,7 @@ namespace Railway
                     Point.Add(e.GetPosition(mapa), mouseToMarker));
                 e.Handled = true;
             }
+            //uspesno ste pomerili stanicu
         }
 
         private void updateStation_Click(object sender, RoutedEventArgs e)
@@ -86,12 +89,9 @@ namespace Railway
                 {
                     SelectedPushpin.ToolTip = station_name.Text;
                     SelectedPushpin.Background = new SolidColorBrush(Colors.Blue);
-                    Station.Name = station_name.Text;
-                    Station.Location = SelectedPushpin.Location;
-                    
+                    Station newStation = new Station(station_name.Text, SelectedPushpin.Location.Longitude, SelectedPushpin.Location.Latitude);
+                    Data.updateStation(oldStationName, newStation);
                     station_name.Text = "";
-
-                    //sacuvaj podatke
                     MessageBox.Show("You have succesfully updated station", "Update station confirmation");
                 }
             }

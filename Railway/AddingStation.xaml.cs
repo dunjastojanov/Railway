@@ -26,11 +26,13 @@ namespace Railway
 
         private Pushpin lastPushpin;
 
-        public AddingStation(Frame mainFrame)
+        private Railway.MainWindow Window { get; set; }
+        public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
-            Data.FillData();
             Stations = Data.getStations();
+            Window = window;
+
             InitializeComponent();
         }
 
@@ -52,7 +54,6 @@ namespace Railway
 
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
-            Data.FillData();
             Location location = null;
             foreach (var item in Data.getStations())
             {
@@ -112,10 +113,11 @@ namespace Railway
                 {
                     Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
                     Stations.Add(station);
-                    Data.getStations().Add(station);
+                    Data.addNewStation(station);
                     lastPushpin = null;
                     station_name.Text = "";
                     MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
+                    Window.ShowReadStations(true);
                 }
             }
         }
