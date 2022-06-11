@@ -105,5 +105,10 @@ namespace Railway
                 MessageBox.Show("Redo deleting train cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadTrain", Window);
+        }
     }
 }

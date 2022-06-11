@@ -31,8 +31,9 @@ namespace Railway
         public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
+            this.Window = window;
+            Data.FillData();
             Stations = Data.getStations();
-            Window = window;
             Pushpins = new List<Pushpin>();
             PushpinIndex = -1;
             InitializeComponent();
@@ -64,7 +65,6 @@ namespace Railway
                 Pushpin pushpin = new Pushpin();
                 pushpin.Location = location;
                 mapa.Children.Add(pushpin);
-                //za sta ovo sluzi
             }
         }
 
@@ -190,6 +190,11 @@ namespace Railway
             else
                 redoAddStation.IsEnabled = true;    
 
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddStation", Window);
         }
     }
 }

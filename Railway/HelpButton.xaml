@@ -1,0 +1,15 @@
+﻿<Button x:Class="Railway.HelpButton"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Railway"
+      mc:Ignorable="d" 
+      d:DesignHeight="20" d:DesignWidth="20" BorderThickness="0" Margin="3, 3, 3, 3"  VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent"
+      >
+
+        <StackPanel x:Name="Button">
+        <Image Height="18" Source="./images/info.png" ToolTip="Additional information about the page."></Image>
+
+    </StackPanel>
+</Button>

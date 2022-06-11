@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="637"
+      local:HelpProvider.HelpKey="Reports"
       Title="Reports">
 
     <Grid>
@@ -28,9 +29,11 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="45*"/>
                 <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <RadioButton x:Name="monthRadioButton" Grid.Column="1" Content="Sold tickets for a month" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite" FontSize="18" Checked="MonthReport_Checked"/>
             <RadioButton x:Name="routeRdioButton" Grid.Column="3" Content="Sold tickets for a ride" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite" FontSize="18" Checked="RouteReport_Checked"/>
+            <local:HelpButton Grid.Column="5" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
 
         <Frame x:Name="ReportsFrame" Grid.Row="2" Grid.Column="1" NavigationUIVisibility="Hidden" />

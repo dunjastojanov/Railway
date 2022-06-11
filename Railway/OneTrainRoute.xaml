@@ -40,18 +40,17 @@
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
             <ColumnDefinition Width="0"></ColumnDefinition>
             <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="0"></ColumnDefinition>
-            <ColumnDefinition Width="125"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the trainline."></Button>
         <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the trainline."></Button>
         <Button x:Name="ViewMapButton" Content="View Map" Grid.Column="5" Grid.Row="1" Click="ViewMapButton_Click" ToolTip="Grafical view of the trainline on the map."></Button>
-        <Label Content="->" Grid.Row="1" Grid.Column="9" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
 
     </Grid>
 
@@ -64,9 +63,9 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
         </Grid.ColumnDefinitions>
     </Grid>
 

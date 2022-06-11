@@ -29,8 +29,8 @@ namespace Railway
         public OneTrainRoute(Trainline trainline, Railway.MainWindow window)
         {
             InitializeComponent();
-            addFirstStationLabel(trainline);
-            addLastStationLabel(trainline);
+            //addFirstStationLabel(trainline);
+            //addLastStationLabel(trainline);
             addTrainLineName(trainline);
             this.Window = window;
             this.trainline = trainline;
@@ -57,7 +57,7 @@ namespace Railway
                 addRowPixels(StationsGrid, 40);
                 path = station.PathToNextStation;
                 durationLabel = new Label();
-                durationLabel.Content = $"Duration (minutes): {path.Duration}";
+                durationLabel.Content = $"Duration: {path.Duration} min";
                 durationLabel.ToolTip = "Duration of the trip between stations above and below.";
                 durationLabel.Foreground = Brushes.White;
                 Grid.SetRow(durationLabel, stationNextRow+1);
@@ -65,7 +65,7 @@ namespace Railway
                 StationsGrid.Children.Add(durationLabel);
 
                 priceLabel = new Label();
-                priceLabel.Content = $"Price ($): {path.Price}";
+                priceLabel.Content = $"Price: {path.Price} rsd";
                 priceLabel.ToolTip = "Price of the trip between stations above and below.";
                 priceLabel.Foreground = Brushes.White;
                 Grid.SetRow(priceLabel, stationNextRow + 1);
@@ -162,7 +162,7 @@ namespace Railway
         {
             Label trainLineName = new Label();
             trainLineName.Content = trainline.Name;
-            Grid.SetColumn(trainLineName, 13);
+            Grid.SetColumn(trainLineName, 7);
 
             trainLineName.VerticalAlignment = VerticalAlignment.Center;
             trainLineName.HorizontalAlignment = HorizontalAlignment.Left;

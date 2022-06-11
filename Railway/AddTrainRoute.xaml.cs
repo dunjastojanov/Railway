@@ -231,7 +231,7 @@ namespace Railway
 
             Label priceLabel = new Label();
             priceLabel.Foreground = Brushes.White;
-            priceLabel.Content = "Price ($):";
+            priceLabel.Content = "Price (rsd):";
             priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
             Grid.SetRow(priceLabel, 2);
             Grid.SetColumn(priceLabel, 1);
@@ -565,6 +565,11 @@ namespace Railway
             {
                 MessageBox.Show("Redo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddTrainline", Window);
         }
     }
 }

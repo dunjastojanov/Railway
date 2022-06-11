@@ -69,6 +69,11 @@ namespace Railway
             AddContent();
 
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadStation", Window);
+        }
         private void TryDisableUndoRedo()
         {
             if (!Data.NeedUndo())

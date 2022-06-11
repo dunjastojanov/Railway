@@ -7,7 +7,8 @@
       xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="Railway.AddingStation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddingStation">
+      Title="AddingStation"
+    local:HelpProvider.HelpKey="AddStation">
 
     <Grid x:Name="addingStationGrid" >
         <Grid.Background>
@@ -41,6 +42,9 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
+
+        <local:HelpButton Grid.Column="5" Grid.RowSpan="2" Click="HelpButton_Click"></local:HelpButton>
+
         <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3"/>
         <Grid x:Name="undoRedo" Grid.Row="1" Grid.Column="3">
             <Grid.ColumnDefinitions>
@@ -71,7 +75,8 @@
             <Label Content="Icon" Margin="10,6,10,0" Grid.Column="0"  Height="40" Width="255" Foreground="White" FontSize="22" VerticalAlignment="Center" />
             <Ellipse 
             MouseMove="Ellipse_MouseMove" Grid.Column="1" 
-            x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Center" Width="30" />
+            x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Center" Width="30"  local:HelpProvider.HelpKey="AddStation"/>
+            
         </Grid>
         <WPF:Map x:Name="mapa"
                  AllowDrop="True"

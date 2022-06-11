@@ -123,6 +123,11 @@ namespace Railway
                 MessageBox.Show("Redo deleting train route cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadTrainline", window);
+        }
     }
 }
 

@@ -15,6 +15,8 @@ namespace Railway.Model
         public List<Timetable> Timetables { get; set; }
         public Trainline()
         {
+            Name = $"Trainline {index}";
+            index++;
             Timetables = new List<Timetable>();
         }
 

@@ -24,6 +24,7 @@ namespace Railway
 
         public Frame MainFrame { get; set; }
         public Railway.MainWindow window;
+
         public Login(Frame mainFrame, Railway.MainWindow window)
         {
             MainFrame = mainFrame;
@@ -54,11 +55,12 @@ namespace Railway
             {
                 MessageBox.Show("Username or password is incorrect.", "Inadequate credentials", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+  
+        }
 
-            
-            
-           
-           
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("Login", window);
         }
     }
 }
