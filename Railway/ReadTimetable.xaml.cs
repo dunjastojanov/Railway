@@ -22,12 +22,26 @@ namespace Railway
     public partial class ReadTimetable : Page
     {
         private Railway.MainWindow Window;
+        string User { get; set; }
         public ReadTimetable(Railway.MainWindow window)
         {
             InitializeComponent();
             Window = window;
+            User = null;
             TryDisableUndoRedo();
 
+            AddContent();
+        }
+
+        public ReadTimetable(Railway.MainWindow window, string user)
+        {
+            InitializeComponent();
+            Window = window;
+            User = user;
+            MainGrid.Children.Clear();
+            Grid.SetRow(ReadTrainRouteScrollViewer, 0);
+            Grid.SetRowSpan(ReadTrainRouteScrollViewer, 2);
+            MainGrid.Children.Add(ReadTrainRouteScrollViewer);
             AddContent();
         }
 
@@ -39,23 +53,25 @@ namespace Railway
             {
                 foreach (Timetable timetable in trainline.Timetables)
                 {
-                    OneTimetable oneTimetable = new OneTimetable(Window, timetable);
+                    OneTimetable oneTimetable;
+                    if (User == null)
+                        oneTimetable = new OneTimetable(Window, timetable);
+                    else
+                        oneTimetable = new OneTimetable(Window, timetable, "user");
                     addRowPixels(ReadTimetableGrid, oneTimetable.getHeight());
                     Grid.SetRow(oneTimetable, timetableIndex);
 
                     ReadTimetableGrid.Children.Add(oneTimetable);
                     timetableIndex++;
                 }
-
-
             }
-
         }
 
         private void addRowPixels(Grid grid, double height)
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
+            ReadTimetableGrid.Height += height + 10;
             grid.RowDefinitions.Add(rd);
         }
 
@@ -65,8 +81,9 @@ namespace Railway
         }
         public void RefreshPage()
         {
-            TryDisableUndoRedo();
             ReadTimetableGrid.Children.RemoveRange(0, ReadTimetableGrid.Children.Count);
+            TryDisableUndoRedo();
+            ReadTimetableGrid.Height = 35;
             AddContent();
         }
         private void TryDisableUndoRedo()
@@ -106,6 +123,11 @@ namespace Railway
             {
                 MessageBox.Show("Redo deleting train route cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadTimetable", Window);
         }
     }
 }

@@ -28,10 +28,10 @@ namespace Railway
 
 
             Window = window;
-            addContent();
             TryDisableUndoRedo();
+            AddContent();
         }
-        public void addContent() {
+        public void AddContent() {
 
             int trainIndex = 1;
 
@@ -52,6 +52,7 @@ namespace Railway
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
+            ReadStationsGrid.Height += height + 10;
             grid.RowDefinitions.Add(rd);
         }
 
@@ -63,9 +64,15 @@ namespace Railway
         internal void RefreshPage()
         {
             ReadStationsGrid.Children.Clear();
+            ReadStationsGrid.Height = 35;
             TryDisableUndoRedo();
-            addContent();
+            AddContent();
 
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadStation", Window);
         }
         private void TryDisableUndoRedo()
         {
@@ -77,6 +84,32 @@ namespace Railway
                 RedoStations.IsEnabled = false;
             else
                 RedoStations.IsEnabled = true;
+        }
+        private void UndoDeleteStation_Click(object sender, RoutedEventArgs e)
+        {
+            int response = (int)MessageBox.Show("Are you sure you want to undo deleting station?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (response == 6)
+            {
+                Data.Undo();
+                RefreshPage();
+            }
+            else
+            {
+                MessageBox.Show("Undo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+        private void RedoDeleteStation_Click(object sender, RoutedEventArgs e)
+        {
+            int response = (int)MessageBox.Show("Are you sure you want to redo deleting station?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (response == 6)
+            {
+                Data.Redo();
+                RefreshPage();
+            }
+            else
+            {
+                MessageBox.Show("Redo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

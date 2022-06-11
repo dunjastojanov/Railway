@@ -270,5 +270,10 @@ namespace Railway
 
             }
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddTrain", Window);
+        }
     }
 }

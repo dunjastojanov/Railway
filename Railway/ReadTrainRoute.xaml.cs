@@ -22,14 +22,27 @@ namespace Railway
     public partial class ReadTrainRoute : Page
     {
         private Railway.MainWindow window { get; set; }
+        string User { get; set; }
         public ReadTrainRoute(Railway.MainWindow mainWindow)
         {
             this.window = mainWindow;
             InitializeComponent();
             TryDisableUndoRedo();
 
+            User = null;
             AddContent();
 
+        }
+        public ReadTrainRoute(Railway.MainWindow mainWindow, string user)
+        {
+            InitializeComponent();
+            window = mainWindow;
+            User = user;
+            MainGrid.Children.Clear();
+            Grid.SetRow(ReadTrainRouteScrollViewer, 0);
+            Grid.SetRowSpan(ReadTrainRouteScrollViewer, 2);
+            MainGrid.Children.Add(ReadTrainRouteScrollViewer);
+            AddContent();
         }
 
         public void AddContent()
@@ -38,7 +51,11 @@ namespace Railway
 
             foreach (Trainline trainline in Data.GetTrainLines())
             {
-                OneTrainRoute oneTrainRoute = new OneTrainRoute(trainline, window);
+                OneTrainRoute oneTrainRoute;
+                if (User == null)
+                    oneTrainRoute = new OneTrainRoute(trainline, window);
+                else
+                    oneTrainRoute = new OneTrainRoute(trainline, window, "user");
 
                 addRowPixels(ReadTrainRouteGrid, oneTrainRoute.getHeight());
                 Grid.SetRow(oneTrainRoute, trainlineIndex);
@@ -52,6 +69,7 @@ namespace Railway
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
+            ReadTrainRouteGrid.Height += height + 10;
             grid.RowDefinitions.Add(rd);
         }
 
@@ -62,8 +80,9 @@ namespace Railway
         }
         public void RefreshPage()
         {
-            TryDisableUndoRedo();
             ReadTrainRouteGrid.Children.RemoveRange(0, ReadTrainRouteGrid.Children.Count);
+            ReadTrainRouteGrid.Height = 35;
+            TryDisableUndoRedo();
             AddContent();
         }
         private void TryDisableUndoRedo()
@@ -103,6 +122,11 @@ namespace Railway
             {
                 MessageBox.Show("Redo deleting train route cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadTrainline", window);
         }
     }
 }

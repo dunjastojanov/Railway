@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="637"
+      local:HelpProvider.HelpKey="ReadTimetable"
       Title="ReadTimetable">
 
     <Page.Resources>
@@ -52,11 +53,13 @@
                 <ColumnDefinition Width="16*"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="AddNewTimetable" Grid.Column="1" Content="Add New Timetable" Click="AddNewTimetable_Click" ToolTip="Adding new timetable."></Button>
             <Button x:Name="UndoDeleteTimetable" Grid.Column="3" Content="Undo" Click="UndoDeleteTimetable_Click"></Button>
             <Button x:Name="RedoDeleteTimetable" Grid.Column="5" Content="Redo" Click="RedoDeleteTimetable_Click"></Button>
+            <local:HelpButton Grid.Column="6" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
 
         <ScrollViewer Grid.Row="1" x:Name="ReadTrainRouteScrollViewer">

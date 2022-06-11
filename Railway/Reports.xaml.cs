@@ -20,9 +20,11 @@ namespace Railway
     /// </summary>
     public partial class Reports : Page
     {
+        Railway.MainWindow Window;
         public Reports(Railway.MainWindow window)
         {
             InitializeComponent();
+            this.Window = window; 
         }
 
         private void MonthReport_Checked(object sender, RoutedEventArgs e)
@@ -44,6 +46,11 @@ namespace Railway
         {
             RouteReport rr = new RouteReport();
             ReportsFrame.Content = rr;
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("Reports", Window);
         }
     }
 }

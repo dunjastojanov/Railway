@@ -112,6 +112,11 @@ namespace Railway
         {
             return Data.GetQuickReservations(StartStation, EndStation, Date, Int32.Parse(numberOfTickets));
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("SearchTicket", MainWindow);
+        }
     }
 }
 

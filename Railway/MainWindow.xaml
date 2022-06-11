@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="430" Width="750">
 
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+
     <Grid Name="window">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>

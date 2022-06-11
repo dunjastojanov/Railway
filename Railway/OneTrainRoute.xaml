@@ -58,9 +58,9 @@
     <Grid  x:Name="StationsGrid" Grid.Row="4" Grid.Column="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
         </Grid.ColumnDefinitions>
     </Grid>
     <Grid Background="Black" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"></Grid>

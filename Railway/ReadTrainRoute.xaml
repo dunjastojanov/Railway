@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="430" d:DesignWidth="750"
+      local:HelpProvider.HelpKey="ReadTrainline"
       Title="AddTrainRoute">
 
     <Page.Resources>
@@ -47,12 +48,14 @@
                 <ColumnDefinition Width="16*"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="AddNewTrainRoute" Grid.Column="1" Content="Add New Trainline" Click="AddNewTrainRoute_Click" ToolTip="Adding new trainline."></Button>
             <Button x:Name="UndoDeleteTrainRoute" Grid.Column="3" Content="Undo" Click="UndoDeleteTrainRoute_Click"></Button>
             <Button x:Name="RedoDeleteTrainRoute" Grid.Column="5" Content="Redo" Click="RedoDeleteTrainRoute_Click"></Button>
+            <local:HelpButton Grid.Column="6" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
-        
+
         <ScrollViewer Grid.Row="1" x:Name="ReadTrainRouteScrollViewer">
             <StackPanel x:Name="ReadTrainRouteStackPanel">
                 <Grid x:Name="ReadTrainRouteGrid">
@@ -76,12 +79,6 @@
 
             </StackPanel>
         </ScrollViewer>
-
-
-
-
-
-
 
     </Grid>
 </Page>

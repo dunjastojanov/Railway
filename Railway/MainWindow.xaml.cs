@@ -23,13 +23,21 @@ namespace Railway
     public partial class MainWindow : Window
     {
         public string CurrentPage { get; set; }
+
+        internal void doThings(string param)
+        {
+            throw new NotImplementedException();
+        }
+
         public SearchRoute SearchRoute { get; set; }
         public TicketHistory TicketHistory { get; set; }
         public Login Login { get; set; }
         public AdminPage AdminPage {get; set;}
         public ReadTrainRoute ReadTrainRoute { get; set; }
+        public ReadTrainRoute ReadTrainRouteUser { get; set; }
         public ReadTrain ReadTrain { get; set; }
         public ReadTimetable ReadTimetable { get; set; }
+        public ReadTimetable ReadTimetableUser { get; set; }
         public ReadStations ReadStations { get; set; }
         public Reports Reports { get; set; }
         public Frame Frame { get; set; }    
@@ -49,7 +57,9 @@ namespace Railway
             AddNavbar();
             CreateUserNavbar();
             SearchRoute = new SearchRoute(this, logedUser);
-            TicketHistory = new TicketHistory(logedUser);
+            TicketHistory = new TicketHistory(logedUser, this);
+            ReadTimetableUser = new ReadTimetable(this, "user");
+            ReadTrainRouteUser = new ReadTrainRoute(this, "user");
         }
         public void InitializeManagerComponents()
         {
@@ -162,7 +172,7 @@ namespace Railway
             routes.Content = "Trainlines";
             routes.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
             routes.Foreground = Brushes.FloralWhite;
-            //routes.Click += Routes_Click;
+            routes.Click += RoutesUser_Click;
 
             Button schedules = new Button();
             schedules.BorderThickness = new Thickness(0);
@@ -172,7 +182,7 @@ namespace Railway
             schedules.Content = "Timetables";
             schedules.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
             schedules.Foreground = Brushes.FloralWhite;
-           // schedules.Click += Schedules_Click;
+            schedules.Click += SchedulesUser_Click;
 
             navButtons.Children.Add(searchTicket);
             navButtons.Children.Add(ticketHistory);
@@ -188,25 +198,6 @@ namespace Railway
             DeleteNavbar();
         }
 
-        public void DeleteNavbar()
-        {
-            window.Children.Clear();         
-            Grid.SetColumn(MainFrame, 0);
-            Grid.SetColumnSpan(MainFrame, 2);
-            
-            window.Children.Add(MainFrame);
-        }
-
-        public void AddNavbar()
-        {
-            window.Children.Clear();
-            Grid.SetColumn(navbar, 0);
-            Grid.SetColumnSpan(navbar, 1);
-            window.Children.Add(navbar);
-            Grid.SetColumn(MainFrame, 1);
-            Grid.SetColumnSpan(MainFrame, 1);
-            window.Children.Add(MainFrame);
-        }
 
         public void ShowSearchRoute()
         {        
@@ -220,45 +211,6 @@ namespace Railway
             MainFrame.Content = Reports;
             CurrentPage = "Reports";
             Data.ResetCurrentIndex();       
-        }
-
-        /* public void TryDisableUndoRedo()
-         {
-             if (!Data.NeedUndo())
-                 Undo.IsEnabled = false;
-             else
-                 Undo.IsEnabled = true;
-             if (!Data.NeedRedo())
-                 Redo.IsEnabled = false;
-             else
-                 Redo.IsEnabled = true;
-         }*/
-        public void AddUndoRedoButtons(StackPanel panel)
-        {
-           
-          /*  Undo = new Button();
-            Undo.BorderThickness = new Thickness(0);
-            Undo.Width = 100;
-            Undo.FontSize = 18;
-            Undo.Content = "Undo";
-            Undo.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            Undo.Foreground = Brushes.FloralWhite;
-            Undo.Click += Button_Click_Undo;
-
-            Redo = new Button();
-            Redo.BorderThickness = new Thickness(0);
-            Redo.Width = 100;
-            Redo.FontSize = 18;
-            Redo.Content = "Redo";
-            Redo.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            Redo.Foreground = Brushes.FloralWhite;
-            Redo.Click += Button_Click_Redo;
-
-
-            panel.Children.Add(Undo);
-            panel.Children.Add(Redo);
-
-            TryDisableUndoRedo();*/
         }
 
         public void ShowBuyTicket(BuyTicket buyTicket)
@@ -304,6 +256,25 @@ namespace Railway
             MainFrame.Content = ReadStations;
         }
 
+        public void DeleteNavbar()
+        {
+            window.Children.Clear();         
+            Grid.SetColumn(MainFrame, 0);
+            Grid.SetColumnSpan(MainFrame, 2);
+            
+            window.Children.Add(MainFrame);
+        }
+
+        public void AddNavbar()
+        {
+            window.Children.Clear();
+            Grid.SetColumn(navbar, 0);
+            Grid.SetColumnSpan(navbar, 1);
+            window.Children.Add(navbar);
+            Grid.SetColumn(MainFrame, 1);
+            Grid.SetColumnSpan(MainFrame, 1);
+            window.Children.Add(MainFrame);
+        }
         private void Button_Click_ShowSearchRoute(object sender, RoutedEventArgs e)
         {       
             MainFrame.Content = SearchRoute;
@@ -317,6 +288,11 @@ namespace Railway
         private void Routes_Click(object sender, RoutedEventArgs e)
         {
             ShowReadTrainRoute(true);
+        }
+        private void RoutesUser_Click(object sender, RoutedEventArgs e)
+        {
+            ReadTrainRouteUser.RefreshPage();
+            MainFrame.Content = ReadTrainRouteUser;
         }
 
         private void Reports_Click(object sender, RoutedEventArgs e)
@@ -338,11 +314,28 @@ namespace Railway
         {
             ShowReadTimetable(true);
         }
-     
+
+        private void SchedulesUser_Click(object sender, RoutedEventArgs e)
+        {
+            ReadTimetableUser.RefreshPage();
+            MainFrame.Content = ReadTimetableUser;
+        }
+
 
         private void Button_Click_Logout(object sender, RoutedEventArgs e)
         {
             ShowLogin();
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
+
     }
 }

@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
-      d:DesignHeight="430" d:DesignWidth="680"
-      Title="AddTimetable" >
+      d:DesignHeight="430" d:DesignWidth="650"
+      Title="AddTimetable"  local:HelpProvider.HelpKey="AddTimetable">
 
     <Page.Resources>
         <Style TargetType="Page">
@@ -66,8 +66,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="30"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -89,23 +89,21 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
+            <local:HelpButton Grid.Column="8" Click="HelpButton_Click"></local:HelpButton>
+
             <Label x:Name="TrainlineLabel" Grid.Column="0" Grid.Row="0" Foreground="Black">Choose trainline:</Label>
-            <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="0" ToolTip="Trainline to which the timetable applies."></ComboBox>
+            <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="0" ToolTip="Trainline to which the timetable applies."  local:HelpProvider.HelpKey="AddTimetable"></ComboBox>
 
             <Label Grid.Column="0" Grid.Row="2" Foreground="Black">Choose train:</Label>
             <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" ToolTip="Train that will be driven at the time of the timetable on seleceted trainline."></ComboBox>
 
-
-            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station, other times will be added automaticaly." Foreground="Black" Margin="0,0.4,0.2,0" FontSize="13"/>
-
+            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station." Foreground="Black" Margin="0,0.4,0.2,0" FontSize="13"/>
             <Label Grid.Column="0" Grid.Row="5" Foreground="Black">Time (hh:mm):</Label>
             <ComboBox SelectionChanged="StartTimeCombo_Selected" x:Name="StartTimeCombo" Grid.Column="1" Grid.Row="5" ToolTip="Time when train leaves the first station."></ComboBox>
 
-
-            <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Return route      Chose a time when train leaves the last station to return, other times will be added automaticaly."  FontSize="13" Foreground="Black"></Label>
+            <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Return route      Chose a time when train leaves the last station to return."  FontSize="13" Foreground="Black"></Label>
             <Label Grid.Column="0" Grid.Row="8" Foreground="Black">Time (hh:mm):</Label>
             <ComboBox SelectionChanged="EndTimeCombo_Selected" x:Name="EndTimeCombo" Grid.Column="1" Grid.Row="8" ToolTip="Time when train leaves the last station to return back."></ComboBox>
-
             <Label Grid.Column="0" Grid.Row="10" Content="Days:" Foreground="Black"></Label>
             <Grid Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="10">
 
