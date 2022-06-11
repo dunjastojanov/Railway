@@ -45,7 +45,8 @@ namespace Railway
             row = 1;
 
             addRowPixels(StationsGrid, 30);
-            addRowPixels(StationsGrid, 5);
+            
+            
 
             DateTime datetime = timetable.TimeFromFirstStation;
             Station station = timetable.Trainline.FirstStation;
@@ -73,7 +74,7 @@ namespace Railway
                 row++;
 
                 addRowPixels(StationsGrid, 30);
-                addRowPixels(StationsGrid, 5);
+                
 
             }
 
@@ -135,7 +136,7 @@ namespace Railway
 
         internal double getHeight()
         {
-            return row * 35 + 130;
+            return row * 30 + 150;
         }
 
         private void addRowPixels(Grid grid, double height)

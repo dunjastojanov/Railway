@@ -57,7 +57,7 @@ namespace Railway
                 addRowPixels(StationsGrid, 40);
                 path = station.PathToNextStation;
                 durationLabel = new Label();
-                durationLabel.Content = $"Duration (minutes): {path.Duration}";
+                durationLabel.Content = $"Duration: {path.Duration} min";
                 durationLabel.ToolTip = "Duration of the trip between stations above and below.";
                 durationLabel.Foreground = Brushes.White;
                 Grid.SetRow(durationLabel, stationNextRow+1);
@@ -65,7 +65,7 @@ namespace Railway
                 StationsGrid.Children.Add(durationLabel);
 
                 priceLabel = new Label();
-                priceLabel.Content = $"Price ($): {path.Price}";
+                priceLabel.Content = $"Price: {path.Price} rsd";
                 priceLabel.ToolTip = "Price of the trip between stations above and below.";
                 priceLabel.Foreground = Brushes.White;
                 Grid.SetRow(priceLabel, stationNextRow + 1);

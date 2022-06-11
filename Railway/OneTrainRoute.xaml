@@ -63,9 +63,9 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="0"></ColumnDefinition>
         </Grid.ColumnDefinitions>
     </Grid>
 

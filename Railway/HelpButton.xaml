@@ -9,7 +9,7 @@
       >
 
         <StackPanel x:Name="Button">
-        <Image Height="18" Source="./images/help.png" ToolTip="Additional information about the page."></Image>
+        <Image Height="18" Source="./images/info.png" ToolTip="Additional information about the page."></Image>
 
     </StackPanel>
 </Button>

@@ -341,6 +341,7 @@
     <Content Include="help\Login.htm" />
     <Content Include="help\SearchTicket.htm" />
     <Content Include="help\TicketHistory.htm" />
+    <Resource Include="images\info.png" />
     <Resource Include="images\help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

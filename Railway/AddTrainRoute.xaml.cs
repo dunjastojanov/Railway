@@ -202,7 +202,7 @@ namespace Railway
 
             Label priceLabel = new Label();
             priceLabel.Foreground = Brushes.White;
-            priceLabel.Content = "Price ($):";
+            priceLabel.Content = "Price (rsd):";
             priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
             Grid.SetRow(priceLabel, 2);
             Grid.SetColumn(priceLabel, 1);
