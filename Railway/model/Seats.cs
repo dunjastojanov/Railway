@@ -83,6 +83,9 @@ namespace Railway.model
             char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
             Seats newSeats = new Seats();
+            newSeats.numberOfColumns = numberOfColumns;
+            newSeats.numberOfSeatsPerColumn = numberOfSeatsPerColumn;
+            newSeats.numberOfWagons = numberOfWagons;
 
             for (int i = 0; i < numberOfWagons; i++)
             {
