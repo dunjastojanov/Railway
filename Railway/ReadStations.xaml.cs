@@ -52,12 +52,17 @@ namespace Railway
 
         private void AddNewStation_Click(object sender, RoutedEventArgs e)
         {
-            Window.MainFrame.Content = new AddingStation(Window.MainFrame);
+            Window.MainFrame.Content = new AddingStation(Window);
         }
 
         internal void RefreshPage()
         {
 
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ReadStation", Window);
         }
     }
 }

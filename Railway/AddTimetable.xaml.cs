@@ -285,5 +285,10 @@ namespace Railway
         {
             Window.ShowReadTimetable(true);
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddTimetable", Window);
+        }
     }
 }

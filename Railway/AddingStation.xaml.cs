@@ -26,9 +26,12 @@ namespace Railway
 
         private Pushpin lastPushpin;
 
-        public AddingStation(Frame mainFrame)
+        Railway.MainWindow Window;
+
+        public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
+            this.Window = window;
             Data.FillData();
             Stations = Data.getStations();
             InitializeComponent();
@@ -111,6 +114,11 @@ namespace Railway
                 lastPushpin = null;
                 station_name.Text = "";
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddStation", Window);
         }
     }
 }

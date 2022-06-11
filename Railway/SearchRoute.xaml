@@ -554,6 +554,7 @@
             <Button x:Name="plusTicket" Content="+" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="7" VerticalAlignment="Top" Width="23" Height="23" FontSize="18" Style="{DynamicResource ButtonCircleStyle}" Click="plusTicket_Click"/>
             <Button x:Name="minusTicket" Content="-" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="8" VerticalAlignment="Top" Width="23" Height="23" FontSize="18"  Click="minusTicket_Click" Style="{DynamicResource ButtonCircleStyle}"  />
             <Button Template="{DynamicResource OrangeButton}" Foreground="FloralWhite" x:Name="searchRoute" Content="Search" Grid.ColumnSpan="3" Grid.Column="3"  Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="33" FontSize="18" Click="searchRoute_Click"/>
+            <local:HelpButton Grid.Column="9" Grid.RowSpan="2" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
     </Grid>
 </Page>

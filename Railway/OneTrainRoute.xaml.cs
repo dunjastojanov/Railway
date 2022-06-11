@@ -29,8 +29,8 @@ namespace Railway
         public OneTrainRoute(Trainline trainline, Railway.MainWindow window)
         {
             InitializeComponent();
-            addFirstStationLabel(trainline);
-            addLastStationLabel(trainline);
+            //addFirstStationLabel(trainline);
+            //addLastStationLabel(trainline);
             addTrainLineName(trainline);
             this.Window = window;
             this.trainline = trainline;
@@ -93,7 +93,7 @@ namespace Railway
         {
             Label trainLineName = new Label();
             trainLineName.Content = trainline.Name;
-            Grid.SetColumn(trainLineName, 13);
+            Grid.SetColumn(trainLineName, 7);
 
             trainLineName.VerticalAlignment = VerticalAlignment.Center;
             trainLineName.HorizontalAlignment = HorizontalAlignment.Left;

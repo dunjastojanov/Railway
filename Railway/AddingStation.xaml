@@ -7,7 +7,8 @@
       xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="Railway.AddingStation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddingStation">
+      Title="AddingStation"
+    local:HelpProvider.HelpKey="AddStation">
 
     <Grid x:Name="addingStationGrid" >
         <Grid.Background>
@@ -40,12 +41,15 @@
             <RowDefinition Height="20*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
+
+        <local:HelpButton Grid.Column="5" Grid.RowSpan="2" Click="HelpButton_Click"></local:HelpButton>
+
         <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3"/>
         <Label Content="Add station" Margin="10,10,10,0" Grid.Column="1" Grid.Row="1"  Height="60" Width="285" Foreground="#FFFCFCFC" FontSize="36" />
         <Button x:Name="addStation" Click="addStation_Click" 
             Content="Add new station" Grid.Column="1" Grid.Row="6" Width="285" FontSize="24" Background="#FFFD9B00" Foreground="White" Margin="10,10,10,10" />
         <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="4" TextWrapping="Wrap" Width="285" Margin="10" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
-        <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="2" TextWrapping="Wrap" Text="To add a station drag and drop the icon" Width="285" Foreground="White" FontSize="22" />
+        <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="2" TextWrapping="Wrap" Text="To add a station drag and drop the icon" Width="285" Foreground="White" FontSize="22"  local:HelpProvider.HelpKey="AddStation"/>
         <Grid x:Name="point" Grid.Column="1" Grid.Row="5" Grid.RowSpan="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="85*"/>
@@ -54,7 +58,8 @@
             <Label Content="Icon" Margin="10,6,10,0" Grid.Column="0"  Height="40" Width="255" Foreground="White" FontSize="22" VerticalAlignment="Center" />
             <Ellipse 
             MouseMove="Ellipse_MouseMove" Grid.Column="1" 
-            x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Center" Width="30" />
+            x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Center" Width="30"  local:HelpProvider.HelpKey="AddStation"/>
+            
         </Grid>
         <WPF:Map x:Name="mapa"
                  AllowDrop="True"

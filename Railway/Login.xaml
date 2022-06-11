@@ -1,12 +1,11 @@
 ﻿<Page x:Class="Railway.Login"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Railway"
-      mc:Ignorable="d" 
-      d:DesignHeight="430" d:DesignWidth="750"
-      Title="Login"
+      xmlns:l="clr-namespace:Railway"
+      l:HelpProvider.HelpKey="Login"
+      Height="400" Width="600"
+      Title="Login" 
+      
       >
     <Page.Resources>
         <Style TargetType="Page">
@@ -42,10 +41,11 @@
         </Style>
     </Page.Resources>
 
+
     <Grid>
         
         
-        <Grid Grid.Row="1" Grid.Column="1" Margin="100,50,100,50">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,100,50">
 
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.6"></SolidColorBrush>
@@ -68,13 +68,14 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
+            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
 
-        <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="White">E-mail</Label>
+                <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="White">E-mail</Label>
 
-        <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
+        <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1"  ToolTip="Email used for logging in." l:HelpProvider.HelpKey="Login"></TextBox>
 
         <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="White">Password</Label>
-            <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in."></PasswordBox>
+            <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in." l:HelpProvider.HelpKey="Login"></PasswordBox>
         <Button  Opacity="1" Grid.Row="7" Grid.Column="1" Click="Button_Click">Log in</Button>
 
     </Grid>

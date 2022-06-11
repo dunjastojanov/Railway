@@ -509,6 +509,11 @@ namespace Railway
                 MessageBox.Show("Redo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("AddTrainline", Window);
+        }
     }
 }
 

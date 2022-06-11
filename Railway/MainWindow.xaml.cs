@@ -23,6 +23,12 @@ namespace Railway
     public partial class MainWindow : Window
     {
         public string CurrentPage { get; set; }
+
+        internal void doThings(string param)
+        {
+            throw new NotImplementedException();
+        }
+
         public SearchRoute SearchRoute { get; set; }
         public TicketHistory TicketHistory { get; set; }
         public Login Login { get; set; }
@@ -49,7 +55,7 @@ namespace Railway
             AddNavbar();
             CreateUserNavbar();
             SearchRoute = new SearchRoute(this, logedUser);
-            TicketHistory = new TicketHistory(logedUser);
+            TicketHistory = new TicketHistory(logedUser, this);
         }
         public void InitializeManagerComponents()
         {
@@ -312,5 +318,16 @@ namespace Railway
         {
             ShowLogin();
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
+
     }
 }

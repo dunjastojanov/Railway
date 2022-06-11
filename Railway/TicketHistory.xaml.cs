@@ -25,9 +25,12 @@ namespace Railway
     {
         public User LogedUser { get; set; }
         public List<Ticket> BoughtTickets { get; set; }
-        public TicketHistory(User logedUser)
+
+        Railway.MainWindow Window;
+        public TicketHistory(User logedUser, Railway.MainWindow window)
         {
             InitializeComponent();
+            Window = window;
             LogedUser = logedUser;          
             DisplayTickets();
         }
@@ -199,6 +202,11 @@ namespace Railway
             DisplayTicketHistory.Children.RemoveRange(0, DisplayTicketHistory.Children.Count);
             DisplayTicketHistory.Height = 0;
             this.DisplayTickets();
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("TicketHistory", Window);
         }
     }
 }

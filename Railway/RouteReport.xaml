@@ -31,7 +31,7 @@
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="routeLabel" Grid.Column="1" Grid.Row="0" Content="Choose route" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="16"/>
+            <Label x:Name="routeLabel" Grid.Column="1" Grid.Row="0" Content="Choose trainline" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="16"/>
             <ComboBox x:Name="routeBox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="15" />
             <Label x:Name="startingDateLabel" Grid.Column="3" Grid.Row="0" Content="Choose starting date" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="16"/>
             <DatePicker x:Name="startingDate" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" FontSize="15"/>
