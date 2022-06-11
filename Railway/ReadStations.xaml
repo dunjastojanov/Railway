@@ -11,12 +11,11 @@
 
     <Page.Resources>
         <Style TargetType="{x:Type Page}"/>
-
         <Style TargetType="{x:Type Button}">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Background" Value="#048bcf"/>
-            <Setter Property="BorderBrush" Value="#048bcf"/>
+            <Setter Property="Background" Value="#FFFD9B00"/>
+            <Setter Property="BorderBrush" Value="#FFFD9B00"/>
             <Setter Property="Foreground" Value="#ffffff"/>
             <Setter Property="Padding" Value="2"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -26,7 +25,7 @@
         </Style>
 
         <Style TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="16" />
         </Style>
     </Page.Resources>
@@ -45,22 +44,17 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="AddNewStation" Grid.Column="1" Grid.Row="0" Content="Add New Station" Click="AddNewStation_Click"/>
-            <Button x:Name="UndoStations" Grid.Column="3" Content="Undo"/>
-            <Button x:Name="RedoStations" Grid.Column="5" Content="Redo" Margin="0,5,20,5"/>
+            <Button ToolTip="Adding new station" x:Name="AddNewStation" Grid.Column="1" Grid.Row="0" Content="Add New Station" Click="AddNewStation_Click"/>
+            <Button ToolTip="Undo operation which undoes your previous action" x:Name="UndoStations" Grid.Column="3" Content="Undo"/>
+            <Button ToolTip="Redo operation which redoes your previous action" x:Name="RedoStations" Grid.Column="5" Content="Redo" Margin="0,5,20,5"/>
         </Grid>
-
         <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <Grid x:Name="ReadStationsGrid">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
-
                 </Grid>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

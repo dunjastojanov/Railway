@@ -25,15 +25,21 @@ namespace Railway
         public List<Station> Stations { get; set; }
 
         private Pushpin lastPushpin;
-
         private Railway.MainWindow Window { get; set; }
         public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
             Stations = Data.getStations();
             Window = window;
-
             InitializeComponent();
+            foreach (var item in Data.getStations())
+            {
+                Location location = new Location(item.Latitude, item.Longitude);
+                Pushpin pushpin = new Pushpin();
+                pushpin.Location = location;
+                pushpin.ToolTip = item.Name;
+                mapa.Children.Add(pushpin);
+            }
         }
 
         private void Ellipse_MouseMove(object sender, MouseEventArgs e)
@@ -52,18 +58,6 @@ namespace Railway
             }
         }
 
-        private void Map_Loaded(object sender, RoutedEventArgs e)
-        {
-            Location location = null;
-            foreach (var item in Data.getStations())
-            {
-                location = new Location(item.Latitude, item.Longitude);
-                Pushpin pushpin = new Pushpin();
-                pushpin.Location = location;
-                mapa.Children.Add(pushpin);
-            }
-        }
-
         private void mapa_Drop(object sender, DragEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to place the station here?", "Creating new station confirmation", MessageBoxButton.YesNo);
@@ -75,7 +69,6 @@ namespace Railway
                     if (messageBoxResult == MessageBoxResult.Yes)
                     {
                         mapa.Children.Remove(lastPushpin);
-                        e.Handled = true;
                         Point mousePosition = e.GetPosition(this.mapa);
                         Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                         MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you want to add station to", MessageBoxButton.OK);
@@ -87,7 +80,6 @@ namespace Railway
                     }
                 }
                 else if (lastPushpin == null) {
-                    e.Handled = true;
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                     MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
@@ -97,6 +89,7 @@ namespace Railway
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
                 }
+                e.Handled = true;
             }
         }
 
@@ -107,17 +100,40 @@ namespace Railway
             {
                 if (station_name.Text == "")
                 {
-                    MessageBox.Show("Station name is empty.\nPlease enter station name.");
+                    MessageBox.Show("Station name is empty.\nPlease enter station name.", "Creating new station confirmation");
+                } else if (lastPushpin==null) {
+                    MessageBox.Show("You didn't choose location.\nPlease drag the pin to map.", "Creating new station confirmation");
                 }
                 else
                 {
-                    Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
-                    Stations.Add(station);
-                    Data.addNewStation(station);
-                    lastPushpin = null;
-                    station_name.Text = "";
-                    MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
-                    Window.ShowReadStations(true);
+                    bool sameName = false;
+                    bool sameLocation = false;
+                    foreach (Station station1 in Stations)
+                    {
+                        if (station1.Name == station_name.Text) {
+                            sameName = true;
+                        }
+                        if (station1.Location.Longitude == lastPushpin.Location.Longitude && station1.Location.Latitude == lastPushpin.Location.Latitude) {
+                            sameLocation = true;
+                        }
+
+                    }
+                    if (!sameName && !sameLocation)
+                    {
+                        Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
+                        Data.addNewStation(station);
+                        lastPushpin = null;
+                        station_name.Text = "";
+                        MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
+                        Window.ShowReadStations(true);
+                    }
+                    else if (!sameName)
+                    {
+                        MessageBox.Show("You have to name your station diffrently", "Creating new station confirmation");
+                    }
+                    else if (!sameLocation) {
+                        MessageBox.Show("You have to set new location for this station, because it already exists", "Creating new station confirmation");
+                    }
                 }
             }
         }

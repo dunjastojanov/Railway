@@ -356,22 +356,22 @@ namespace Railway
 
             Railroad railway = new Railroad(trainlines, users);
 
-            railway.Stations.Add(subotica.Name, subotica);
-            railway.Stations.Add(zrenjanin.Name, zrenjanin);
-            railway.Stations.Add(noviSad.Name, noviSad);
-            railway.Stations.Add(staraPazova.Name, staraPazova);
-            railway.Stations.Add(beograd.Name, beograd);
-            railway.Stations.Add(kragujevac.Name, kragujevac);
-            railway.Stations.Add(smederevo.Name, smederevo);
-            railway.Stations.Add(jagodina.Name, jagodina);
-            railway.Stations.Add(knjazevac.Name, knjazevac);
-            railway.Stations.Add(bor.Name, bor);
-            railway.Stations.Add(valjevo.Name, valjevo);
-            railway.Stations.Add(mladenovac.Name, mladenovac);
-            railway.Stations.Add(nis.Name, nis);
-            railway.Stations.Add(vranje.Name, vranje);
-            railway.Stations.Add(uzice.Name, uzice);
-            railway.Stations.Add(sabac.Name, sabac);
+            railway.Stations.Add( subotica);
+            railway.Stations.Add(zrenjanin);
+            railway.Stations.Add(noviSad);
+            railway.Stations.Add(staraPazova);
+            railway.Stations.Add(beograd);
+            railway.Stations.Add(kragujevac);
+            railway.Stations.Add(smederevo);
+            railway.Stations.Add(jagodina);
+            railway.Stations.Add(knjazevac);
+            railway.Stations.Add(bor);
+            railway.Stations.Add(valjevo);
+            railway.Stations.Add(mladenovac);
+            railway.Stations.Add(nis);
+            railway.Stations.Add(vranje);
+            railway.Stations.Add(uzice);
+            railway.Stations.Add(sabac);
 
             railway.Trains.Add(train1);
             railway.Trains.Add(train2);
@@ -386,12 +386,20 @@ namespace Railway
             return railway;
 
         }
-
+        public static Station getStationByName(String stationName) {
+            foreach (Station station in Data.getStations())
+            {
+                if (station.Name == stationName)
+                    return station;
+            }
+            return null;
+        }
         internal static void deleteStation(Station station)
         {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            newRailway.Stations.Remove(station.Name);
+
+            newRailway.Stations.Remove(station);
 
             List<Trainline> trainlines = new List<Trainline>();
             foreach (Trainline trainline in newRailway.TrainLines)
@@ -399,7 +407,6 @@ namespace Railway
                 if (!trainline.ContainsStation(station))
                 {
                     trainlines.Add(trainline);
-                    
                 }
             }
 
@@ -411,23 +418,30 @@ namespace Railway
         public static void addNewStation(Station station) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            newRailway.Stations[station.Name]=station;
+            newRailway.Stations.Add(station);
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
         }
 
 
-        public static void updateStation(String oldStationName,Station newStation) {
+        public static void updateStation(String oldStationName,Station updatedStation) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-
-            newRailway.Stations[oldStationName].Name=newStation.Name;
-            newRailway.Stations[oldStationName].Longitude=newStation.Longitude;
-            newRailway.Stations[oldStationName].Latitude=newStation.Latitude;
-
+            //obrisi staru i dodaj novu posto koristimo dictionary
+            for (int i = 0; i < newRailway.Stations.Count; i++)
+            {
+                if (newRailway.Stations[i].Name == oldStationName)
+                {
+                    newRailway.Stations[i].Longitude = updatedStation.Longitude;
+                    newRailway.Stations[i].Latitude = updatedStation.Latitude;
+                    newRailway.Stations[i].Location.Latitude = updatedStation.Latitude;
+                    newRailway.Stations[i].Location.Longitude = updatedStation.Longitude;
+                    newRailway.Stations[i].Name = updatedStation.Name;
+                }
+            }
             foreach (Trainline trainline in newRailway.TrainLines)
             {
-                trainline.UpdateStations(oldStationName,newStation);
+                trainline.UpdateStations(oldStationName,updatedStation);
             }
 
             Data.AddRailway(newRailway);
@@ -518,7 +532,7 @@ namespace Railway
         public static List<Station> getStations()
         {
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
-            return railway.Stations.Values.ToList();
+            return railway.Stations;
         }
 
         internal static void AddTrain(Seats chosenSeats, string name, int numberOfWagons)
@@ -769,8 +783,7 @@ namespace Railway
             List<Station> stations = new List<Station>();
 
             var info = infoBetweenStations[0];
-
-            Station station = railway.Stations[(string)info["startStation"]].DeepCopy();
+            Station station = Data.getStationByName((string)info["startStation"]).DeepCopy();
             station.PathToNextStation = null;
             station.PathToPreviousStation = null;
             stations.Add(station);
@@ -786,7 +799,7 @@ namespace Railway
                 path.Duration = (int)info["duration"];
                 path.Price = (int)info["price"];
 
-                Station s = railway.Stations[(string)info["endStation"]].DeepCopy();
+                Station s = Data.getStationByName((string)info["endStation"]).DeepCopy();
                 s.PathToPreviousStation = path;
                 s.PathToNextStation = null;
                 stations.Add(s);

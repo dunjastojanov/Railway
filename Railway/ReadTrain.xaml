@@ -16,8 +16,8 @@
         <Style TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Background" Value="#048bcf"></Setter>
-            <Setter Property="BorderBrush" Value="#048bcf"></Setter>
+            <Setter Property="Background" Value="#FFFD9B00"></Setter>
+            <Setter Property="BorderBrush" Value="#FFFD9B00"></Setter>
             <Setter Property="Foreground" Value="#ffffff"></Setter>
             <Setter Property="Padding" Value="2"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
@@ -27,7 +27,7 @@
         </Style>
 
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="#ffffff"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="16" />
         </Style>
     </Page.Resources>
@@ -46,22 +46,17 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
-
             <Button x:Name="AddNewTrain" Grid.Column="1" Grid.Row="0" Click="AddNewTrain_Click" Content="Add New Train" ToolTip="Adding new train."></Button>
             <Button x:Name="UndoDeleteTrain" Grid.Column="3" Content="Undo" Click="UndoDeleteTrain_Click"></Button>
             <Button x:Name="RedoDeleteTrain" Grid.Column="5" Content="Redo" Click="RedoDeleteTrain_Click"></Button>
         </Grid>
-        
         <ScrollViewer Grid.Row="1" x:Name="ReadTrainScrollViewer">
             <StackPanel x:Name="ReadTrainStackPanel">
                 <Grid x:Name="ReadTrainGrid">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
                     </Grid.RowDefinitions>
-                
                 </Grid>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

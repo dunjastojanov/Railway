@@ -52,7 +52,7 @@
     <Grid x:Name="AddTrainRouteGrid">
 
         <Grid.Background>
-            <SolidColorBrush Color="Black" Opacity="0.6"></SolidColorBrush>
+            <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
         </Grid.Background>
         
         <Grid.ColumnDefinitions>
@@ -81,7 +81,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Foreground="White">Choose station:</Label>
+            <Label Grid.Column="0" Grid.Row="0" Foreground="Black">Choose station:</Label>
             <ComboBox x:Name="StationComboBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" SelectionChanged="Add_Button_Click" ToolTip="Station."></ComboBox>
             <Grid x:Name="AddTrainRoutePanel" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
@@ -89,8 +89,8 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="49*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="UndoAddTrainRoute" Grid.Column="0"  FontSize="16" Content="Undo" Click="UndoAddTrainRoute_Click"></Button>
-                <Button x:Name="RedoAddTrainRoute" Grid.Column="2"  FontSize="16" Content="Redo" Click="RedoAddTrainRoute_Click"></Button>
+                <Button x:Name="UndoAddTrainRoute" Grid.Column="0"  FontSize="16" Content="Undo" Click="UndoAddTrainRoute_Click" Background="#FFFD9B00" Foreground="White"></Button>
+                <Button x:Name="RedoAddTrainRoute" Grid.Column="2"  FontSize="16" Content="Redo" Click="RedoAddTrainRoute_Click" Background="#FFFD9B00" Foreground="White"></Button>
             </Grid>
 
         </Grid>
@@ -121,8 +121,8 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1">Cancel</Button>
-            <Button x:Name="saveButton" Click="saveButton_Click" Grid.Column="3">Save</Button>
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1" Background="#FFFD9B00" Foreground="White">Cancel</Button>
+            <Button x:Name="saveButton" Click="saveButton_Click" Grid.Column="3" Background="#FFFD9B00" Foreground="White">Save</Button>
 
         </Grid>
 

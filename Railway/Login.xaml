@@ -43,8 +43,19 @@
     </Page.Resources>
 
     <Grid>
-        
-        
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Grid ClipToBounds="True">
+                        <Image Source="./images/background.png">
+                            <Image.Effect>
+                                <BlurEffect Radius="20"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
         <Grid Grid.Row="1" Grid.Column="1" Margin="100,50,100,50">
 
             <Grid.ColumnDefinitions>
@@ -64,17 +75,13 @@
 
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-
-            <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="0" Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
-
-            <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="White">E-mail</Label>
-
-        <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
-
-        <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="White">Password</Label>
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="0" Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
+            <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="Black" FontSize="16">E-mail</Label>
+            <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
+            <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="Black" FontSize="16">Password</Label>
             <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in."></PasswordBox>
-        <Button  Opacity="1" Grid.Row="7" Grid.Column="1" Click="Button_Click">Log in</Button>
-
+            <Button Opacity="1" Grid.Row="7" Grid.Column="1" Background="#FFFD9B00"  Click="Button_Click" >Log in</Button>
+            <Label  Grid.Row="0" Grid.Column="1" Content="Log in" FontSize="20" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
     </Grid>
 </Page>

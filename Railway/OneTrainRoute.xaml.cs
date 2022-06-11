@@ -44,7 +44,7 @@ namespace Railway
             stationNextRow = 0;
 
             addRowPixels(StationsGrid, 40);
-            stationLabel.Foreground = Brushes.White;
+            stationLabel.Foreground = Brushes.Black;
             stationLabel.Content = station.Name;
             Grid.SetRow(stationLabel, stationNextRow);
             StationsGrid.Children.Add(stationLabel);
@@ -59,7 +59,7 @@ namespace Railway
                 durationLabel = new Label();
                 durationLabel.Content = $"Duration (minutes): {path.Duration}";
                 durationLabel.ToolTip = "Duration of the trip between stations above and below.";
-                durationLabel.Foreground = Brushes.White;
+                durationLabel.Foreground = Brushes.Black;
                 Grid.SetRow(durationLabel, stationNextRow+1);
                 Grid.SetColumn(durationLabel, 1);
                 StationsGrid.Children.Add(durationLabel);
@@ -67,7 +67,7 @@ namespace Railway
                 priceLabel = new Label();
                 priceLabel.Content = $"Price ($): {path.Price}";
                 priceLabel.ToolTip = "Price of the trip between stations above and below.";
-                priceLabel.Foreground = Brushes.White;
+                priceLabel.Foreground = Brushes.Black;
                 Grid.SetRow(priceLabel, stationNextRow + 1);
                 Grid.SetColumn(priceLabel, 2);
                 StationsGrid.Children.Add(priceLabel);
@@ -79,14 +79,11 @@ namespace Railway
 
                 station = path.NextStation;
                 stationLabel = new Label();
-                stationLabel.Foreground = Brushes.White;
+                stationLabel.Foreground = Brushes.Black;
                 stationLabel.Content = station.Name;
                 Grid.SetRow(stationLabel, stationNextRow);
                 StationsGrid.Children.Add(stationLabel);
-
             }
-
-
         }
 
         private void addTrainLineName(Trainline trainline)
@@ -97,20 +94,13 @@ namespace Railway
 
             trainLineName.VerticalAlignment = VerticalAlignment.Center;
             trainLineName.HorizontalAlignment = HorizontalAlignment.Left;
-            trainLineName.Foreground = Brushes.White;
+            trainLineName.Foreground = Brushes.Black;
             TitleGrid.Children.Add(trainLineName);
         }
 
         private void addLastStationLabel(Trainline trainline)
         {
-            Label lastStationName = new Label();
-            lastStationName.Content = trainline.LastStation.Name;
-            Grid.SetColumn(lastStationName, 11);
-
-            lastStationName.VerticalAlignment = VerticalAlignment.Center;
-            lastStationName.HorizontalAlignment = HorizontalAlignment.Left;
-            lastStationName.Foreground = Brushes.White;
-            TitleGrid.Children.Add(lastStationName);
+            LastStation.Content= trainline.LastStation.Name;
         }
 
         internal double getHeight()
@@ -120,15 +110,7 @@ namespace Railway
 
         private void addFirstStationLabel(Trainline trainline)
         {
-            Label firstStationName = new Label();
-            firstStationName.Content = trainline.FirstStation.Name;
-            Grid.SetColumn(firstStationName, 7);
-
-            firstStationName.VerticalAlignment = VerticalAlignment.Center;
-            firstStationName.HorizontalAlignment = HorizontalAlignment.Right;
-
-            firstStationName.Foreground = Brushes.White;
-            TitleGrid.Children.Add(firstStationName);
+            FirstStation.Content = trainline.FirstStation.Name;
         }
 
 

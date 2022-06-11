@@ -12,7 +12,6 @@ namespace Railway.Model
         public string Name { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
-
         public Location Location { get; set; }
         public Path PathToNextStation { get; set; }
         public Path PathToPreviousStation { get; set; }
@@ -25,6 +24,7 @@ namespace Railway.Model
             newStation.Name = Name;
             newStation.Longitude = Longitude;
             newStation.Latitude = Latitude;
+            newStation.Location = new Location(Latitude, Longitude);
             if (PathToNextStation != null)
                 newStation.PathToNextStation = PathToNextStation; //.DeepCopy()
             else
@@ -40,6 +40,7 @@ namespace Railway.Model
             Name = name;
             Longitude = longitude;
             Latitude = latitude;
+            Location = new Location(latitude, longitude);
             PathToNextStation = pathToNextStation;
             PathToPreviousStation = pathToPreviousStation;
         }

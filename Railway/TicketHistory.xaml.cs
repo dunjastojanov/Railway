@@ -67,7 +67,7 @@ namespace Railway
             border.BorderBrush = new SolidColorBrush(Color.FromRgb(30, 30, 30));
             border.Opacity = 1;
             border.CornerRadius = new CornerRadius(8, 8, 8, 8);
-            border.BorderThickness = new Thickness(1);
+            border.BorderThickness = new Thickness(2);
             return border;
         }
         private void AddContent(Grid grid, Ticket ticket)

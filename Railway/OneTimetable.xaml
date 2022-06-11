@@ -6,33 +6,41 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="430" d:DesignWidth="650">
+    <Grid.Background>
+        <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
+    </Grid.Background>
     <Grid.RowDefinitions>
         <RowDefinition Height="5"></RowDefinition>
+        <RowDefinition Height="2"></RowDefinition>
         <RowDefinition Height="60"></RowDefinition>
         <RowDefinition Height="40"></RowDefinition>
         <RowDefinition Height="5"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="2"></RowDefinition>
+        
         <RowDefinition Height="10"></RowDefinition>
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="3*"></ColumnDefinition>
+        <ColumnDefinition Width="5"></ColumnDefinition>
+        <ColumnDefinition Width="2"></ColumnDefinition>
         <ColumnDefinition Width="94*"></ColumnDefinition>
-        <ColumnDefinition Width="3*"></ColumnDefinition>
+        <ColumnDefinition Width="2"></ColumnDefinition>
+        <ColumnDefinition Width="5"></ColumnDefinition>
     </Grid.ColumnDefinitions>
 
 
-    <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="TitleGrid">
+    <Grid Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" x:Name="TitleGrid">
 
         <Grid.Background>
-            <SolidColorBrush Color="#333338" Opacity="0.6"></SolidColorBrush>
+            <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
         </Grid.Background>
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="90"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
@@ -47,34 +55,33 @@
 
         </Grid.RowDefinitions>
 
-        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Click="EditButton_Click" ToolTip="Editing the timetable."></Button>
-        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Click="DeleteButton_Click" ToolTip="Deleting the timetable."></Button>
-        <Label x:Name="NameLabel" Grid.Row="0" Grid.Column="5" Foreground="White" VerticalAlignment="Center"></Label>
-        <Label x:Name="DaysLabel" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="3" Foreground="White" VerticalAlignment="Center"></Label>
-        <Label x:Name="TrainLabel" Grid.Column="7" Grid.Row="0" Foreground="White" VerticalAlignment="Center"></Label>
+        <Button ToolTip="Editing the timetable."  x:Name="EditButton" Content="Edit" Grid.Column="1" Click="EditButton_Click" Background="#FFFD9B00" Foreground="White" Margin="5" ></Button>
+        <Button ToolTip="Deleting the timetable." x:Name="DeleteButton" Content="Delete" Grid.Column="3" Click="DeleteButton_Click"  Background="#FFFD9B00" Foreground="White" Margin="5" ></Button>
+        <Label ToolTip="Name of timetable" x:Name="NameLabel" Grid.Row="0" Grid.Column="5" Foreground="Black" VerticalAlignment="Center"></Label>
+        <Label ToolTip="Days when train has routes" x:Name="DaysLabel" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="3" Foreground="Black" VerticalAlignment="Center"></Label>
+        <Label ToolTip="Name of the train" x:Name="TrainLabel" Grid.Column="7" Grid.Row="0" Foreground="Black" VerticalAlignment="Center"></Label>
     </Grid>
 
 
-    <Grid  x:Name="StationsGrid" Grid.Row="4" Grid.Column="1">
-
-
+    <Grid  x:Name="StationsGrid" Grid.Row="5" Grid.Column="2">
         <Grid.Background>
-            <SolidColorBrush Color="#333338" Opacity="0.6"></SolidColorBrush>
+            <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
         </Grid.Background>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition Width="40*"></ColumnDefinition>
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition Width="40*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="1" Content="Classic route" Foreground="White"></Label>
-        <Label Grid.Row="0" Grid.Column="3" Content="Return route" Foreground="White"></Label>
+        <Label Grid.Row="0" Grid.Column="1" Content="Classic route" Foreground="Black"></Label>
+        <Label Grid.Row="0" Grid.Column="3" Content="Return route" Foreground="Black"></Label>
     </Grid>
-
+    <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="Black"></Grid>
+    <Grid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Background="Black"></Grid>
+    <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Background="Black"></Grid>
+    <Grid Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Background="Black"></Grid>
 </Grid>

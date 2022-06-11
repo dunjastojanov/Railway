@@ -44,9 +44,7 @@
 
     <Grid x:Name="AddTimetableGrid">
 
-        <Grid.Background>
-            <SolidColorBrush Color="Black" Opacity="0.6"></SolidColorBrush>
-        </Grid.Background>
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -62,6 +60,9 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="AddGrid" Grid.Column="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -70,6 +71,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="5"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
@@ -87,24 +89,24 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label x:Name="TrainlineLabel" Grid.Column="0" Grid.Row="0" Foreground="White">Choose trainline:</Label>
+            <Label x:Name="TrainlineLabel" Grid.Column="0" Grid.Row="0" Foreground="Black">Choose trainline:</Label>
             <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="0" ToolTip="Trainline to which the timetable applies."></ComboBox>
 
-            <Label Grid.Column="0" Grid.Row="2" Foreground="White">Choose train:</Label>
+            <Label Grid.Column="0" Grid.Row="2" Foreground="Black">Choose train:</Label>
             <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" ToolTip="Train that will be driven at the time of the timetable on seleceted trainline."></ComboBox>
 
 
-            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station, other times will be added automaticaly." Foreground="White" Margin="0,0.4,0.2,0"/>
+            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station, other times will be added automaticaly." Foreground="Black" Margin="0,0.4,0.2,0" FontSize="13"/>
 
-            <Label Grid.Column="0" Grid.Row="5" Foreground="White">Time (hh:mm):</Label>
+            <Label Grid.Column="0" Grid.Row="5" Foreground="Black">Time (hh:mm):</Label>
             <ComboBox SelectionChanged="StartTimeCombo_Selected" x:Name="StartTimeCombo" Grid.Column="1" Grid.Row="5" ToolTip="Time when train leaves the first station."></ComboBox>
 
 
-            <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Return route      Chose a time when train leaves the last station to return, other times will be added automaticaly." Foreground="White"></Label>
-            <Label Grid.Column="0" Grid.Row="8" Foreground="White">Time (hh:mm):</Label>
+            <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Return route      Chose a time when train leaves the last station to return, other times will be added automaticaly."  FontSize="13" Foreground="Black"></Label>
+            <Label Grid.Column="0" Grid.Row="8" Foreground="Black">Time (hh:mm):</Label>
             <ComboBox SelectionChanged="EndTimeCombo_Selected" x:Name="EndTimeCombo" Grid.Column="1" Grid.Row="8" ToolTip="Time when train leaves the last station to return back."></ComboBox>
 
-            <Label Grid.Column="0" Grid.Row="10" Content="Days:" Foreground="White"></Label>
+            <Label Grid.Column="0" Grid.Row="10" Content="Days:" Foreground="Black"></Label>
             <Grid Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="10">
 
                 <Grid.ColumnDefinitions>
@@ -120,13 +122,13 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <CheckBox Grid.Column="0" x:Name="Monday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Monday</CheckBox>
-                <CheckBox Grid.Column="1" x:Name="Tuesday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Tuesday</CheckBox>
-                <CheckBox Grid.Column="2" x:Name="Wednesday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Wednesday</CheckBox>
-                <CheckBox Grid.Column="3" x:Name="Thursday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Thursday</CheckBox>
-                <CheckBox Grid.Column="4" x:Name="Friday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Friday</CheckBox>
-                <CheckBox Grid.Column="0" Grid.Row="1" x:Name="Saturday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Saturday</CheckBox>
-                <CheckBox Grid.Column="1" Grid.Row="1" x:Name="Sunday" Foreground="White" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Sunday</CheckBox>
+                <CheckBox Grid.Column="0" x:Name="Monday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Monday</CheckBox>
+                <CheckBox Grid.Column="1" x:Name="Tuesday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Tuesday</CheckBox>
+                <CheckBox Grid.Column="2" x:Name="Wednesday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Wednesday</CheckBox>
+                <CheckBox Grid.Column="3" x:Name="Thursday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Thursday</CheckBox>
+                <CheckBox Grid.Column="4" x:Name="Friday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Friday</CheckBox>
+                <CheckBox Grid.Column="0" Grid.Row="1" x:Name="Saturday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Saturday</CheckBox>
+                <CheckBox Grid.Column="1" Grid.Row="1" x:Name="Sunday" Foreground="Black" VerticalAlignment="Center" ToolTip="Days for which the timetable applies.">Sunday</CheckBox>
             </Grid>
         </Grid>
 
@@ -143,8 +145,8 @@
                 <ColumnDefinition Width="43*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="cancelButton" Grid.Column="2" Grid.ColumnSpan="2" Click="cancelButton_Click">Cancel</Button>
-            <Button x:Name="saveButton" Grid.Column="3" Grid.ColumnSpan="2" Click="saveButton_Click">Save</Button>
+            <Button x:Name="cancelButton" Grid.Column="1" Grid.ColumnSpan="2" Click="cancelButton_Click"  Background="#FFFD9B00" Foreground="White" Margin="238,2,30,2">Cancel</Button>
+            <Button x:Name="saveButton" Grid.Column="3" Grid.ColumnSpan="2" Click="saveButton_Click"  Background="#FFFD9B00" Foreground="White">Save</Button>
 
         </Grid>
 

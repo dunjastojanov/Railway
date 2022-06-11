@@ -74,9 +74,9 @@ namespace Railway
             else
                 UndoStations.IsEnabled = true;
             if (!Data.NeedRedo())
-                UndoStations.IsEnabled = false;
+                RedoStations.IsEnabled = false;
             else
-                UndoStations.IsEnabled = true;
+                RedoStations.IsEnabled = true;
         }
     }
 }

@@ -28,10 +28,14 @@ namespace Railway
         public Pushpin SelectedPushpin { get; set; }
         public Station Station { get; set; }
         public String oldStationName { get; set; }
-        public UpdateStation(Frame frame, Station station)
+        public Railway.MainWindow MainWindow;
+
+        public Location lastConfirmedLocation;//ovome dodeljuj poslednju izabranu lokaciju  i moram je postaviti ako ne zeli 
+        public UpdateStation(Railway.MainWindow window, Station station)
         {
             this.DataContext = this;
             oldStationName = station.Name;
+            MainWindow = window;
             Station = station;
             InitializeComponent();
         }
@@ -54,12 +58,13 @@ namespace Railway
 
         private void mapa_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 if (dragPin && SelectedPushpin != null)
                 {
                     SelectedPushpin.Location = mapa.ViewportPointToLocation(
-                      Point.Add(e.GetPosition(mapa), mouseToMarker));
+                        Point.Add(e.GetPosition(mapa), mouseToMarker));
                     e.Handled = true;
                 }
             }
@@ -67,13 +72,17 @@ namespace Railway
 
         private void mapa_Drop(object sender, DragEventArgs e)
         {
-            if (dragPin && SelectedPushpin != null)
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to update location of the station?", "Update station confirmation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
             {
-                SelectedPushpin.Location = mapa.ViewportPointToLocation(
-                    Point.Add(e.GetPosition(mapa), mouseToMarker));
-                e.Handled = true;
+                if (dragPin && SelectedPushpin != null)
+                {
+
+                    lastConfirmedLocation = mapa.ViewportPointToLocation(Point.Add(e.GetPosition(mapa), mouseToMarker));
+                    SelectedPushpin.Location = lastConfirmedLocation;
+                    e.Handled = true;
+                }
             }
-            //uspesno ste pomerili stanicu
         }
 
         private void updateStation_Click(object sender, RoutedEventArgs e)
@@ -87,14 +96,55 @@ namespace Railway
                 }
                 else
                 {
-                    SelectedPushpin.ToolTip = station_name.Text;
-                    SelectedPushpin.Background = new SolidColorBrush(Colors.Blue);
-                    Station newStation = new Station(station_name.Text, SelectedPushpin.Location.Longitude, SelectedPushpin.Location.Latitude);
-                    Data.updateStation(oldStationName, newStation);
-                    station_name.Text = "";
-                    MessageBox.Show("You have succesfully updated station", "Update station confirmation");
+                    String newName = station_name.Text;
+                    bool sameName = false;
+                    bool sameLocation = false;
+                    var collection=Data.getStations().Where(a=> a.Name!=Station.Name);
+                    foreach (Station station1 in collection)
+                    {
+                        if (station1.Name == newName)
+                        {
+                            sameName = true;
+                        }
+                        if (SelectedPushpin!=null && station1.Location.Longitude == SelectedPushpin.Location.Longitude && station1.Location.Latitude == SelectedPushpin.Location.Latitude)
+                        {
+                            sameLocation = true;
+                        }
+                    }
+                    if (!sameName && !sameLocation)
+                    {
+                        if (SelectedPushpin == null) { 
+                            SelectedPushpin = new Pushpin();
+                            SelectedPushpin.Location = new Location(Station.Location.Latitude, Station.Location.Longitude);
+                        }
+                        SelectedPushpin.ToolTip = newName;
+                        SelectedPushpin.Background = new SolidColorBrush(Colors.Blue);
+                        Station newStation = new Station(newName, SelectedPushpin.Location.Longitude, SelectedPushpin.Location.Latitude);
+                        Data.updateStation(oldStationName, newStation);
+                        station_name.Text = "";
+                        MessageBox.Show("You have succesfully updated station", "Update station confirmation");
+                        MainWindow.ShowReadStations(true);
+                    }
+                    else if (!sameName)
+                    {
+                        MessageBox.Show("You have to set new name for this station, because it already exists", "Update station confirmation");
+                    }
+                    else if (!sameLocation)
+                    {
+                        MessageBox.Show("You have to set new location for this station, because it already exists", "Update station confirmation");
+                    }
                 }
             }
+        }
+
+        private void mapa_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBoxResult messageBoxResult1 = MessageBox.Show("Are you sure you want to update location of the station?", "Update station confirmation", MessageBoxButton.YesNo);
+            if (messageBoxResult1 == MessageBoxResult.No)
+            {
+                SelectedPushpin.Location = Station.Location;
+            }
+            
         }
     }
 }

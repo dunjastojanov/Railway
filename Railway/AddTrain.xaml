@@ -45,7 +45,7 @@
     <Grid>
 
         <Grid.Background>
-            <SolidColorBrush Color="Black" Opacity="0.6"></SolidColorBrush>
+            <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -75,9 +75,9 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Name: " Foreground="White" HorizontalAlignment="Right"></Label>
+            <Label Content="Name: " Foreground="Black" HorizontalAlignment="Right"></Label>
             <TextBox x:Name="NameTextBox" Grid.Column="1" ToolTip="Name of the new train."></TextBox>
-            <Label Grid.Column="2" Content="Number of wagons: " Foreground="White" HorizontalAlignment="Right"></Label>
+            <Label Grid.Column="2" Content="Number of wagons: " Foreground="Black" HorizontalAlignment="Right"></Label>
             <TextBox x:Name="NumberOfWagonsTextBox" Grid.Column="3" ToolTip="Number of wagons for the new train."></TextBox>
 
         </Grid>
@@ -90,7 +90,7 @@
 
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.ColumnSpan="2" x:Name="SeatDistributionLabel" Content="Seat distribution chart: " Foreground="White"></Label>
+            <Label Grid.Column="0" Grid.ColumnSpan="2" x:Name="SeatDistributionLabel" Content="Seat distribution chart: " Foreground="Black"></Label>
 
         </Grid>
 
@@ -121,8 +121,8 @@
                 <ColumnDefinition Width="0.75*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1">Cancel</Button>
-            <Button x:Name="saveButton" Click="saveButton_Click" Grid.Column="3">Save</Button>
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1" Background="#FFFD9B00" Foreground="White">Cancel</Button>
+            <Button x:Name="saveButton" Click="saveButton_Click" Grid.Column="3" Background="#FFFD9B00" Foreground="White">Save</Button>
             
         </Grid>
 

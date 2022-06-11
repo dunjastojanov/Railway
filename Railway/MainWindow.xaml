@@ -5,32 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Railway"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430" Width="750"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        Title="MainWindow" Height="430" Width="750">
 
-    
-        
     <Grid Name="window">
-        <Grid.Background>
-            <VisualBrush>
-                <VisualBrush.Visual>
-                    <Grid ClipToBounds="True">
-                        <Image Source="./images/background.png">
-                            <Image.Effect>
-                                <BlurEffect Radius="20"/>
-                            </Image.Effect>
-                        </Image>
-                    </Grid>
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="85*"/>
@@ -41,19 +18,11 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <StackPanel x:Name="navButtons" Grid.Row="0" Orientation="Vertical" Grid.Column="0">
-               
             </StackPanel>
             <StackPanel x:Name="logOut" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="0">
                 <Button  BorderThickness="0" HorizontalAlignment="Stretch" Height="35" FontSize="15" Content="Logout" Background="#00b0ff" Foreground="FloralWhite" Click="Button_Click_Logout" />
             </StackPanel>
         </Grid>
-        
         <Frame x:Name="MainFrame" Grid.Row="0" Grid.Column="1" NavigationUIVisibility="Hidden" />
-       
-
-
-
-
     </Grid>
-    
 </Window>
