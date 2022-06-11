@@ -11,13 +11,18 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1"/>
+        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="45*"/>
@@ -31,7 +36,7 @@
             <local:HelpButton Grid.Column="5" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
 
-        <Frame x:Name="ReportsFrame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Hidden" />
+        <Frame x:Name="ReportsFrame" Grid.Row="2" Grid.Column="1" NavigationUIVisibility="Hidden" />
 
     </Grid>
 </Page>

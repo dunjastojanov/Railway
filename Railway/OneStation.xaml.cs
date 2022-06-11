@@ -36,7 +36,7 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Window.MainFrame.Content = new UpdateStation(Window.MainFrame, Station);
         }
 
         public int getHeight()
@@ -51,7 +51,7 @@ namespace Railway
             {
                 Data.deleteStation(Station);
                 int ok = (int)MessageBox.Show($"Station {Station.Name} successfully deleted!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                Window.ShowReadStations(true);
+                Window.ShowReadStations(false);
             }
             else
             {

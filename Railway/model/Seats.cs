@@ -84,7 +84,7 @@ namespace Railway.model
 
             Seats newSeats = new Seats();
 
-            for (int i = 1; i <= numberOfWagons; i++)
+            for (int i = 0; i < numberOfWagons; i++)
             {
                 Dictionary<char, List<bool>> wagon = new Dictionary<char, List<bool>>();
 

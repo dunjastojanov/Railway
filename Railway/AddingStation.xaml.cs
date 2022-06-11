@@ -26,14 +26,14 @@ namespace Railway
 
         private Pushpin lastPushpin;
 
-        Railway.MainWindow Window;
-
+        private Railway.MainWindow Window { get; set; }
         public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
             this.Window = window;
             Data.FillData();
             Stations = Data.getStations();
+
             InitializeComponent();
         }
 
@@ -55,7 +55,6 @@ namespace Railway
 
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
-            Data.FillData();
             Location location = null;
             foreach (var item in Data.getStations())
             {
@@ -107,12 +106,20 @@ namespace Railway
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to add a new station?", "Creating new station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                
-                Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
-                Stations.Add(station);
-                Data.getStations().Add(station);
-                lastPushpin = null;
-                station_name.Text = "";
+                if (station_name.Text == "")
+                {
+                    MessageBox.Show("Station name is empty.\nPlease enter station name.");
+                }
+                else
+                {
+                    Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
+                    Stations.Add(station);
+                    Data.addNewStation(station);
+                    lastPushpin = null;
+                    station_name.Text = "";
+                    MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
+                    Window.ShowReadStations(true);
+                }
             }
         }
 

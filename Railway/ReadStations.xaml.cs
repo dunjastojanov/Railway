@@ -25,7 +25,13 @@ namespace Railway
         public ReadStations(Railway.MainWindow window)
         {
             InitializeComponent();
+
+
             Window = window;
+            addContent();
+            TryDisableUndoRedo();
+        }
+        public void addContent() {
 
             int trainIndex = 1;
 
@@ -40,7 +46,6 @@ namespace Railway
                 ReadStationsGrid.Children.Add(oneStation);
                 trainIndex++;
             }
-
         }
 
         private void addRowPixels(Grid grid, double height)
@@ -57,12 +62,26 @@ namespace Railway
 
         internal void RefreshPage()
         {
+            ReadStationsGrid.Children.Clear();
+            TryDisableUndoRedo();
+            addContent();
 
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             HelpProvider.ShowHelp("ReadStation", Window);
+        }
+        private void TryDisableUndoRedo()
+        {
+            if (!Data.NeedUndo())
+                UndoStations.IsEnabled = false;
+            else
+                UndoStations.IsEnabled = true;
+            if (!Data.NeedRedo())
+                UndoStations.IsEnabled = false;
+            else
+                UndoStations.IsEnabled = true;
         }
     }
 }

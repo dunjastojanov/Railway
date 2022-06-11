@@ -15,16 +15,12 @@ namespace Railway
         private static int CurrentRailwayIndex { get; set; }
         private static int UpperRailwayIndexBound { get; set; }
         public static List<Seats> seats { get; set; }
-        public static List<Train> trains { get; set; }
-        private static Dictionary<String, Station> Stations { get; set; }
 
 
         public static Railroad FillData()
         {
             Data.RailwayStates = new List<Railroad>();
             Data.seats = new List<Seats>();
-            Data.trains = new List<Train>();
-            Data.Stations = new Dictionary<string, Station>();
 
             User admin = new User("admin", "admin", "admin");
             User user1 = new User("mika", "mika", "user");
@@ -53,13 +49,10 @@ namespace Railway
             Data.seats.Add(seats4);
 
             Train train1 = new Train("Eagle", seats1);
-            Data.trains.Add(train1);
             Train train2 = new Train("Aurora", seats2);
-            Data.trains.Add(train2);
             Train train3 = new Train("Juno", seats3);
-            Data.trains.Add(train3);
             Train train4 = new Train("Electra", seats4);
-            Data.trains.Add(train4);
+
 
             List<string> days1 = new List<string>() { "Monday", "Wednesday", "Sunday" };
             List<string> days2 = new List<string>() { "Tuesday", "Thursday" };
@@ -88,65 +81,57 @@ namespace Railway
             DateTime time14 = new DateTime(2022, 6, 6, 22, 20, 0);
 
             Station subotica = new Station("Subotica", 19.667587, 46.100376);
-            Stations.Add(subotica.Name, subotica);
+
             Station subotica1 = subotica.DeepCopy();
 
             Station zrenjanin = new Station("Zrenjanin", 20.38194, 45.38361);
-            Stations.Add(zrenjanin.Name, zrenjanin);
+
             Station zrenjanin1 = zrenjanin.DeepCopy();
 
             Station noviSad = new Station("Novi Sad", 19.833549, 45.267136);
-            Stations.Add(noviSad.Name, noviSad);
+
             Station noviSad1 = noviSad.DeepCopy();
             Station noviSad2 = noviSad.DeepCopy();
 
             Station staraPazova = new Station("Stara Pazova", 19.833549, 45.267136);
-            Stations.Add(staraPazova.Name, staraPazova);
+
             Station staraPazova1 = new Station("Stara Pazova", 19.833549, 45.267136);
 
 
             Station beograd = new Station("Beograd Centar", 20.394058, 44.854897);
-            Stations.Add(beograd.Name, beograd);
+
             Station beograd1 = new Station("Beograd Centar", 20.394058, 44.854897);
             Station beograd2 = new Station("Beograd Centar", 20.394058, 44.854897);
             Station beograd3 = new Station("Beograd Centar", 20.394058, 44.854897);
 
 
             Station kragujevac = new Station("Kragujevac", 20.91667, 44.01667);
-            Stations.Add(kragujevac.Name, kragujevac);
+
             Station kragujevac1 = new Station("Kragujevac", 20.91667, 44.01667);
 
             Station smederevo = new Station("Smederevo", 20.93, 44.66278);
-            Stations.Add(smederevo.Name, smederevo);
 
             Station jagodina = new Station("Jagodina", 21.26121, 43.97713);
-            Stations.Add(jagodina.Name, jagodina);
 
             Station knjazevac = new Station("Knjaževac", 22.25701, 43.56634);
-            Stations.Add(knjazevac.Name, knjazevac);
+
             Station knjazevac1 = new Station("Knjaževac", 22.25701, 43.56634);
 
             Station bor = new Station("Bor", 22.09591, 44.07488);
-            Stations.Add(bor.Name, bor);
 
             Station valjevo = new Station("Valjevo", 19.89821, 44.27513);
-            Stations.Add(valjevo.Name, valjevo);
 
             Station mladenovac = new Station("Mladenovac", 20.693852, 44.436436);
-            Stations.Add(mladenovac.Name, mladenovac);
 
             Station nis = new Station("Niš", 21.90333, 43.32472);
-            Stations.Add(nis.Name, nis);
 
             Station vranje = new Station("Vranje", 21.90028, 42.55139);
-            Stations.Add(vranje.Name, vranje);
+
             Station vranje1 = new Station("Vranje", 21.90028, 42.55139);
 
             Station uzice = new Station("Užice", 19.84878, 43.85861);
-            Stations.Add(uzice.Name, uzice);
-
+            
             Station sabac = new Station("Šabac", 19.69, 44.74667);
-            Stations.Add(sabac.Name, sabac);
             Station sabac1 = new Station("Šabac", 19.69, 44.74667);
 
 
@@ -371,6 +356,29 @@ namespace Railway
 
             Railroad railway = new Railroad(trainlines, users);
 
+            railway.Stations.Add(subotica.Name, subotica);
+            railway.Stations.Add(zrenjanin.Name, zrenjanin);
+            railway.Stations.Add(noviSad.Name, noviSad);
+            railway.Stations.Add(staraPazova.Name, staraPazova);
+            railway.Stations.Add(beograd.Name, beograd);
+            railway.Stations.Add(kragujevac.Name, kragujevac);
+            railway.Stations.Add(smederevo.Name, smederevo);
+            railway.Stations.Add(jagodina.Name, jagodina);
+            railway.Stations.Add(knjazevac.Name, knjazevac);
+            railway.Stations.Add(bor.Name, bor);
+            railway.Stations.Add(valjevo.Name, valjevo);
+            railway.Stations.Add(mladenovac.Name, mladenovac);
+            railway.Stations.Add(nis.Name, nis);
+            railway.Stations.Add(vranje.Name, vranje);
+            railway.Stations.Add(uzice.Name, uzice);
+            railway.Stations.Add(sabac.Name, sabac);
+
+            railway.Trains.Add(train1);
+            railway.Trains.Add(train2);
+            railway.Trains.Add(train3);
+            railway.Trains.Add(train4);
+
+
             Data.AddRailway(railway);
             Data.SetRailwayIndex(0);
             Data.CurrentRailwayIndex = 0;
@@ -383,7 +391,7 @@ namespace Railway
         {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            Stations.Remove(station.Name);
+            newRailway.Stations.Remove(station.Name);
 
             List<Trainline> trainlines = new List<Trainline>();
             foreach (Trainline trainline in newRailway.TrainLines)
@@ -396,6 +404,31 @@ namespace Railway
             }
 
             newRailway.TrainLines = trainlines;
+
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+        public static void addNewStation(Station station) {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+            newRailway.Stations[station.Name]=station;
+            Data.AddRailway(newRailway);
+            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+        }
+
+
+        public static void updateStation(String oldStationName,Station newStation) {
+            Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            newRailway.Stations[oldStationName].Name=newStation.Name;
+            newRailway.Stations[oldStationName].Longitude=newStation.Longitude;
+            newRailway.Stations[oldStationName].Latitude=newStation.Latitude;
+
+            foreach (Trainline trainline in newRailway.TrainLines)
+            {
+                trainline.UpdateStations(oldStationName,newStation);
+            }
 
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
@@ -484,7 +517,8 @@ namespace Railway
 
         public static List<Station> getStations()
         {
-            return Stations.Values.ToList();
+            Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
+            return railway.Stations.Values.ToList();
         }
 
         internal static void AddTrain(Seats chosenSeats, string name, int numberOfWagons)
@@ -495,7 +529,7 @@ namespace Railway
             Seats seats = new Seats(numberOfWagons, chosenSeats.numberOfColumns, chosenSeats.numberOfSeatsPerColumn);
             Train train = new Train(name, seats);
 
-            Data.trains.Add(train);
+            newRailway.Trains.Add(train);
 
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
@@ -505,12 +539,9 @@ namespace Railway
         {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-
             Seats seats = new Seats(numberOfWagons, chosenSeats.numberOfColumns, chosenSeats.numberOfSeatsPerColumn);
             Train train = new Train(name, seats);
-
             List<Trainline> trainlines = newRailway.TrainLines;
-
             foreach (Trainline trainline in trainlines)
             {
                 foreach (Timetable timetable in trainline.Timetables)
@@ -523,21 +554,16 @@ namespace Railway
                             ticket.Train = train;
                         }
                     }
-
-
                 }
             }
-
-            for (int i = 0; i < Data.trains.Count; i++)
+            for (int i = 0; i < newRailway.Trains.Count; i++)
             {
-                if (Data.trains[i].Name == oldTrain.Name)
+                if (newRailway.Trains[i].Name == oldTrain.Name)
                 {
-                    Data.trains[i] = train;
+                    newRailway.Trains[i] = train;
                 }
             }
-
             newRailway.TrainLines = trainlines;
-
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
         }
@@ -546,9 +572,7 @@ namespace Railway
         {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-
             List<Trainline> trainlines = newRailway.TrainLines;
-
             for (int i = 0; i < trainlines.Count; i++)
             {
                 List<Timetable> timetables = new List<Timetable>();
@@ -558,42 +582,37 @@ namespace Railway
                     {
                         timetables.Add(timetable);
                     }
-
                 }
-
                 trainlines[i].Timetables = timetables;
             }
-
             List<Train> trains = new List<Train>();
-            for (int i = 0; i < Data.trains.Count; i++)
+            for (int i = 0; i < newRailway.Trains.Count; i++)
             {
-                if (Data.trains[i].Name != oldTrain.Name)
+                if (newRailway.Trains[i].Name != oldTrain.Name)
                 {
-                    trains.Add(Data.trains[i]);
+                    trains.Add(newRailway.Trains[i]);
                 }
             }
-
-            Data.trains = trains;
-
+            newRailway.Trains = trains;
             newRailway.TrainLines = trainlines;
-
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
         }
 
         public static List<Train> GetTrains()
         {
-            List<Train> trains = new List<Train>();
+            //List<Train> trains = new List<Train>();
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
-            foreach (Trainline trainline in railway.TrainLines)
-            {
-                foreach (Timetable timetable in trainline.Timetables)
-                {
-                    if (!trains.Contains(timetable.Train))
-                        trains.Add(timetable.Train);
-                }
-            }
-            return trains;
+            return railway.Trains;
+            //foreach (Trainline trainline in railway.TrainLines)
+            //{
+            //    foreach (Timetable timetable in trainline.Timetables)
+            //    {
+            //        if (!trains.Contains(timetable.Train))
+            //            trains.Add(timetable.Train);
+            //    }
+            //}
+            //return trains;
         }
 
         public static Train GetTrain(String name)
@@ -684,7 +703,7 @@ namespace Railway
         {
             //Data.RailwayIndex = index;
             Data.CurrentRailwayIndex++;
-            UpperRailwayIndexBound = Data.RailwayStates.Count - 1;
+            UpperRailwayIndexBound++;
         }
         public static void Undo()
         {
@@ -746,11 +765,12 @@ namespace Railway
 
         private static List<Station> createStationsFromInfoBetweenStations(List<Dictionary<string, object>> infoBetweenStations)
         {
+            Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
             List<Station> stations = new List<Station>();
 
             var info = infoBetweenStations[0];
 
-            Station station = Stations[(string)info["startStation"]].DeepCopy();
+            Station station = railway.Stations[(string)info["startStation"]].DeepCopy();
             station.PathToNextStation = null;
             station.PathToPreviousStation = null;
             stations.Add(station);
@@ -766,7 +786,7 @@ namespace Railway
                 path.Duration = (int)info["duration"];
                 path.Price = (int)info["price"];
 
-                Station s = Stations[(string)info["endStation"]].DeepCopy();
+                Station s = railway.Stations[(string)info["endStation"]].DeepCopy();
                 s.PathToPreviousStation = path;
                 s.PathToNextStation = null;
                 stations.Add(s);
