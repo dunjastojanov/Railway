@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddingStation"
-    local:HelpProvider.HelpKey="AddStation">
+        local:HelpProvider.HelpKey="AddStation">
 
     <Grid x:Name="addingStationGrid" >
         <Grid.ColumnDefinitions>
@@ -30,9 +30,9 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <local:HelpButton Grid.Column="5" Grid.RowSpan="2" Click="HelpButton_Click"></local:HelpButton>
+        
 
-        <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3"/>
+        <Border BorderBrush="Black" BorderThickness="1"  Background="White" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
         <Grid x:Name="undoRedo" Grid.Row="1" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="42*"/>
@@ -41,34 +41,35 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="24*"/>
                 <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="85*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="undoAddStation" Content="Undo" Grid.Row="1" Grid.Column="2" Click="UndoButton_Click"/>
-            <Button x:Name="redoAddStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click"/>
+            <Button x:Name="undoAddStation" Content="Undo" Grid.Row="1" Grid.Column="2" Click="UndoButton_Click"  Background="#FFFD9B00" Foreground="White" />
+            <Button x:Name="redoAddStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click"  Background="#FFFD9B00" Foreground="White" />
+            <local:HelpButton Grid.Column="6" Grid.Row="1" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
-        <Label Content="Add station" Margin="10,10,10,0" Grid.Column="1" Grid.Row="2"  Height="60" Width="285" Foreground="#FFFCFCFC" FontSize="36" />
-        <Button x:Name="addStation" Click="addStation_Click" HorizontalAlignment="Center" 
-            Content="Add new station" Grid.Column="1" Grid.Row="7" Width="285" FontSize="24" Background="#FFFD9B00" Foreground="White" Margin="10,10,10,10" />
-        <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Width="285" Margin="10" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
-        <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="3" TextWrapping="Wrap" Text="To add a station drag and drop the icon" Width="285" Foreground="White" FontSize="22" />
+        <Label Content="Add station" Margin="10" Grid.Column="1" Grid.Row="2"  Foreground="Black" FontSize="20" />
+        <Label Content="Station name: " Margin="10" Grid.Column="1" Grid.Row="4"  Foreground="Black" FontSize="16" />
+        <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Margin="10" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
+        <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="3" TextWrapping="WrapWithOverflow" Text="To add a station drag and drop the icon" Foreground="Black" FontSize="16" />
         <Grid x:Name="point" Grid.Column="1" Grid.Row="6" Grid.RowSpan="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="85*"/>
                 <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Icon"  Grid.Column="0"  Height="40"  Foreground="Black" FontSize="16" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="10"/>
+            <Label Content="Station pin:"  Grid.Column="0" Foreground="Black" FontSize="16" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="10"/>
             <Ellipse 
             MouseMove="Ellipse_MouseMove" Grid.Column="1" 
             x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Height="15" Width="15"/>
         </Grid>
-        <Button x:Name="addStation" FontSize="16" Click="addStation_Click" Content="Add new station" Grid.Column="1" Grid.Row="6" Background="#FFFD9B00" Foreground="White"  Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch"  />
+        <Button x:Name="addStation_BTN" FontSize="16" Click="addStation_Click" Content="Add new station" Grid.Column="1" Grid.Row="7" Background="#FFFD9B00" Foreground="White"  Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch"  />
         <WPF:Map x:Name="mapa"
                  AllowDrop="True"
                  Grid.Column="3"
-                 Grid.Row="1"
+                 Grid.Row="2"
                  VerticalContentAlignment="Stretch"
                  HorizontalContentAlignment="Stretch"
                  Grid.RowSpan="6"

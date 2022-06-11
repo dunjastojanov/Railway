@@ -195,5 +195,10 @@ namespace Railway
                 redoUpdateStation.IsEnabled = true;
 
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("EditStation", MainWindow);
+        }
     }
 }

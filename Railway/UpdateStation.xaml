@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" 
+      xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UpdateStation">
@@ -26,7 +26,7 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-            <Border BorderBrush="#323031" BorderThickness="1" CornerRadius="8" Background="#323031" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="3"/>
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
         <Grid x:Name="undoRedo" Grid.Row="1" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="42*"/>
@@ -35,26 +35,28 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="24*"/>
                 <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="85*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="undoUpdateStation" Content="Undo" Grid.Row="1" Grid.Column="2" Click="UndoButton_Click"/>
-            <Button x:Name="redoUpdateStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click"/>
+            <Button x:Name="undoUpdateStation" Content="Undo" Grid.Row="1" Grid.Column="2" Click="UndoButton_Click" Background="#FFFD9B00" Foreground="White" />
+            <local:HelpButton Grid.Column="6" Grid.Row="1" Click="HelpButton_Click" ></local:HelpButton>
+            <Button x:Name="redoUpdateStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click" Background="#FFFD9B00" Foreground="White" />
         </Grid>
-        <Label Content="Update station" Margin="10,10,10,0" Grid.Column="1" Grid.Row="2"  Height="60" Width="285" Foreground="#FFFCFCFC" FontSize="36" />
-            <Button x:Name="updateStation"  HorizontalAlignment="Center" Click="updateStation_Click"
-            Content="Update station" Grid.Column="1" Grid.Row="7" Width="285" FontSize="24" Background="#FFFD9B00" Foreground="White" Margin="10,10,10,10" />
-            <TextBox x:Name="station_name" Text="{Binding Station.Name}" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Width="285" Margin="10" TextAlignment="Justify" FontSize="16"/>
-            <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="3" TextWrapping="Wrap" Text="To update a station press and drag pin you want to change location " Width="285" Foreground="White" FontSize="18" />
+            <Label Content="Update station" Margin="10" Grid.Column="1" Grid.Row="2" Foreground="Black" FontSize="20" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
+            <Button x:Name="updateStation" VerticalAlignment="Center" HorizontalAlignment="Stretch" Click="updateStation_Click"
+            Content="Update station" Grid.Column="1" Grid.Row="7" FontSize="16" Background="#FFFD9B00" Foreground="White" Margin="10" />
+            <TextBox x:Name="station_name" Text="{Binding Station.Name}" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap"  Margin="10" TextAlignment="Justify" FontSize="16"/>
+        <TextBlock Margin="10" Grid.Column="1"  Grid.Row="3" TextWrapping="WrapWithOverflow" Text="To update a station press and drag pin you want to change location "  Foreground="Black" FontSize="16" />
             <WPF:Map x:Name="mapa"
                  AllowDrop="True"
                  Grid.Column="3"
                  Grid.ColumnSpan="1"
                  HorizontalAlignment="Center"
                  VerticalContentAlignment="Center"
-                 Grid.Row="1"
+                 Grid.Row="2"
                  Grid.RowSpan="6"
                  Margin="10" 
                  Center="{Binding Station.Location}"
@@ -67,6 +69,6 @@
                              ToolTip="{Binding Station.Name, UpdateSourceTrigger=PropertyChanged}" 
                              MouseDown="Pushpin_MouseDown" ></WPF:Pushpin>
             </WPF:Map>
-        <Label Content="Station name:" Margin="10" Grid.Row="3" Grid.Column="1" FontSize="16" Foreground="Black"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Label Content="Station name:" Margin="10" Grid.Row="4" Grid.Column="1" FontSize="16" Foreground="Black"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
     </Grid>
 </Page>

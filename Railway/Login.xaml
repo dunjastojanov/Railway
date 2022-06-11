@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:l="clr-namespace:Railway"
       l:HelpProvider.HelpKey="Login"
-      Height="400" Width="600"
+      Height="430" Width="750"
       Title="Login" 
       
       >
@@ -41,10 +41,20 @@
         </Style>
     </Page.Resources>
 
-
     <Grid>
-        
-        
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Grid ClipToBounds="True">
+                        <Image Source="./images/background.png">
+                            <Image.Effect>
+                                <BlurEffect Radius="20"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
         <Grid Grid.Row="1" Grid.Column="1" Margin="100,50,100,50">
 
             <Grid.ColumnDefinitions>
@@ -72,6 +82,6 @@
             <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in."></PasswordBox>
             <Button Opacity="1" Grid.Row="7" Grid.Column="1" Background="#FFFD9B00"  Click="Button_Click" >Log in</Button>
             <Label  Grid.Row="0" Grid.Column="1" Content="Log in" FontSize="20" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-    </Grid>
+        </Grid>
     </Grid>
 </Page>
