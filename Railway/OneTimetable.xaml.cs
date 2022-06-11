@@ -132,6 +132,118 @@ namespace Railway
             Grid.SetRow(tn, row);
             StationsGrid.Children.Add(tn);
         }
+        public OneTimetable(Railway.MainWindow window, Timetable timetable, string user)
+        {
+            InitializeComponent();
+            Window = window;
+
+            TitleGrid.Children.Remove(EditButton);
+            TitleGrid.Children.Remove(DeleteButton);
+            Grid.SetColumn(NameLabel, 3);
+            Grid.SetColumnSpan(NameLabel, 3);
+            NameLabel.HorizontalAlignment = HorizontalAlignment.Left;
+
+            NameLabel.Content = "Name: " + timetable.Name;
+            TrainLabel.Content = "Train: " + timetable.Train.Name;
+
+            this.timetable = timetable;
+            string days = "Days: ";
+            foreach (string day in timetable.Days)
+            {
+                days += day + " ";
+            }
+            DaysLabel.Content = days;
+
+            row = 1;
+
+            addRowPixels(StationsGrid, 30);
+            addRowPixels(StationsGrid, 5);
+
+            DateTime datetime = timetable.TimeFromFirstStation;
+            Station station = timetable.Trainline.FirstStation;
+            Path path;
+
+            while (station.PathToNextStation != null)
+            {
+                Label stationName = new Label();
+                stationName.Content = station.Name;
+                stationName.Foreground = Brushes.White;
+                Grid.SetColumn(stationName, 1);
+                Grid.SetRow(stationName, row);
+                StationsGrid.Children.Add(stationName);
+
+                Label time = new Label();
+                time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+                time.Foreground = Brushes.White;
+                Grid.SetColumn(time, 0);
+                Grid.SetRow(time, row);
+                StationsGrid.Children.Add(time);
+
+                path = station.PathToNextStation;
+                datetime = datetime.AddMinutes((double)path.Duration);
+                station = path.NextStation;
+                row++;
+
+                addRowPixels(StationsGrid, 30);
+                addRowPixels(StationsGrid, 5);
+
+            }
+
+            Label s = new Label();
+            s.Content = station.Name;
+            s.Foreground = Brushes.White;
+            Grid.SetColumn(s, 1);
+            Grid.SetRow(s, row);
+            StationsGrid.Children.Add(s);
+
+            Label t = new Label();
+            t.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+            t.Foreground = Brushes.White;
+            Grid.SetColumn(t, 0);
+            Grid.SetRow(t, row);
+            StationsGrid.Children.Add(t);
+
+            row = 1;
+
+            station = timetable.Trainline.LastStation;
+
+            while (station.PathToPreviousStation != null)
+            {
+                Label stationName = new Label();
+                stationName.Content = station.Name;
+                stationName.Foreground = Brushes.White;
+                Grid.SetColumn(stationName, 3);
+                Grid.SetRow(stationName, row);
+                StationsGrid.Children.Add(stationName);
+
+                Label time = new Label();
+                time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+                time.Foreground = Brushes.White;
+                Grid.SetColumn(time, 2);
+                Grid.SetRow(time, row);
+                StationsGrid.Children.Add(time);
+
+                path = station.PathToPreviousStation;
+                datetime = datetime.AddMinutes((double)path.Duration);
+                station = path.PreviousStation;
+                row++;
+
+            }
+
+            Label sn = new Label();
+            sn.Content = station.Name;
+            sn.Foreground = Brushes.White;
+            Grid.SetColumn(sn, 3);
+            Grid.SetRow(sn, row);
+            StationsGrid.Children.Add(sn);
+
+            Label tn = new Label();
+            tn.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
+            tn.Foreground = Brushes.White;
+            Grid.SetColumn(tn, 2);
+            Grid.SetRow(tn, row);
+            StationsGrid.Children.Add(tn);
+        }
 
         internal double getHeight()
         {
@@ -157,7 +269,7 @@ namespace Railway
             {
                 Data.deleteTimetable(timetable);
                 int ok = (int)MessageBox.Show("Timetable successfully deleted!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                Window.ShowReadTimetable(true);
+                Window.ShowReadTimetable(false);
             }
             else
             {

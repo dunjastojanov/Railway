@@ -58,7 +58,7 @@ namespace Railway
             dataGridRoute.Columns.Add(TempColumn);
 
             TempColumn = new DataGridTextColumn();
-            TempColumn.Header = "Price";
+            TempColumn.Header = "Price (rsd)";
             TempColumn.Binding = new Binding("Price");
             dataGridRoute.Columns.Add(TempColumn);
 

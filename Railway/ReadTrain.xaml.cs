@@ -52,6 +52,7 @@ namespace Railway
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
+            ReadTrainGrid.Height += height + 10;
             grid.RowDefinitions.Add(rd);
         }
 
@@ -61,8 +62,9 @@ namespace Railway
         }
         public void RefreshPage()
         {
-            TryDisableUndoRedo();
             ReadTrainGrid.Children.RemoveRange(0, ReadTrainGrid.Children.Count);
+            TryDisableUndoRedo();
+            ReadTrainGrid.Height = 35;
             AddContent();
         }
         private void TryDisableUndoRedo()

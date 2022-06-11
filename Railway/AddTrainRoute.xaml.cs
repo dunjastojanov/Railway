@@ -25,17 +25,23 @@ namespace Railway
         int lastStationLabelRow;
         List<Dictionary<String, object>> infoBetweenStations;
         List<String> addedStations;
+        List<String> removedStations;
+        List<String> addedStationsEditing;
+        int maxSteps;
+        int maxStepsEditing;
+
         Railway.MainWindow Window;
 
         public AddTrainRoute(Railway.MainWindow window)
         {
             this.Window = window;
             InitializeComponent();
-            TryDisableUndoRedo();
-
+            maxSteps = 0;
+            maxStepsEditing = 0;
 
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
+            removedStations = new List<String>();
 
             lastStationLabelRow = -1;
 
@@ -45,6 +51,7 @@ namespace Railway
                 StationComboBox.Items.Add(stationName);
 
             }
+            TryDisableUndoRedo();
 
         }
 
@@ -56,10 +63,12 @@ namespace Railway
 
             this.trainline = trainline;
 
+            maxSteps = 0;
 
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
-
+            addedStationsEditing = new List<String>();
+            removedStations = new List<String>();
             lastStationLabelRow = -1;
 
 
@@ -69,7 +78,13 @@ namespace Railway
 
             }
 
+            AddContentForEditing();
+            maxStepsEditing = addedStationsEditing.Count;
+            TryDisableUndoRedo();
+        }
 
+        private void AddContentForEditing()
+        {
             Station station = trainline.FirstStation;
             Model.Path path;
 
@@ -80,6 +95,7 @@ namespace Railway
                 path = station.PathToNextStation;
 
                 addedStations.Add(station.Name);
+                addedStationsEditing.Add(station.Name);
                 addRowPixels(AddedStationsInfoGrid, 90);
 
                 if (lastStationLabelRow > -1)
@@ -103,6 +119,7 @@ namespace Railway
             path = station.PathToPreviousStation;
 
             addedStations.Add(station.Name);
+            addedStationsEditing.Add(station.Name);
             addRowPixels(AddedStationsInfoGrid, 90);
 
             if (lastStationLabelRow > -1)
@@ -138,6 +155,26 @@ namespace Railway
 
         }
 
+        private void AddContentForAdding()
+        {
+            string lastStation = "";
+            AddedStationsInfoGrid.Children.Clear();
+            lastStationLabelRow = -1;
+            foreach (String station in addedStations)
+            {
+                addRowPixels(AddedStationsInfoGrid, 90);
+
+                if (lastStationLabelRow > -1)
+                {
+                    addBetweenStationInfoGrid(lastStation, station);
+                }
+                addStationLabel(station);
+                addRowPixels(AddedStationsInfoGrid, 30);
+                lastStation = station;
+
+                lastStationLabelRow += 2;
+            }
+        }
         private void fillInfo()
         {
             AddedStationsInfoGrid.Height = AddedStationsInfoGrid.Height + 30 + 90;
@@ -148,18 +185,10 @@ namespace Railway
                 int response = (int)MessageBox.Show("Are you sure you want to add station " + parameter + "?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)
                 {
+                    maxSteps++;
+                    maxStepsEditing++;
                     addedStations.Add(StationComboBox.SelectedItem.ToString());
-                    addRowPixels(AddedStationsInfoGrid, 90);
-
-                    if (lastStationLabelRow > -1)
-                    {
-                        addBetweenStationInfoGrid();
-                    }
-                    addStationLabel();
-                    addRowPixels(AddedStationsInfoGrid, 30);
-
-
-                    lastStationLabelRow += 2;
+                    RefreshPage();
                 }
                 else
                 {
@@ -228,7 +257,7 @@ namespace Railway
             infoBetweenStations.Add(info);
         }
 
-        private void addBetweenStationInfoGrid()
+        private void addBetweenStationInfoGrid(string lastStation, string station)
         {
             Grid grid = new Grid();
             addColumnStars(grid, 2);
@@ -270,8 +299,8 @@ namespace Railway
             AddedStationsInfoGrid.Children.Add(grid);
 
             Dictionary<String, object> info = new Dictionary<string, object>();
-            info.Add("startStation", addedStations[addedStations.Count - 2]);
-            info.Add("endStation", addedStations[addedStations.Count - 1]);
+            info.Add("startStation", lastStation);
+            info.Add("endStation", station);
             info.Add("durationTextBox", durationTextBox);
             info.Add("priceTextBox", priceTextBox);
 
@@ -337,7 +366,7 @@ namespace Railway
             }
 
             foreach (var info in infoBetweenStations)
-            {
+            {               
                 TextBox durationTextBox = (TextBox)info["durationTextBox"];
                 String durationString = durationTextBox.Text;
 
@@ -467,20 +496,46 @@ namespace Railway
         }
         public void RefreshPage()
         {
+            infoBetweenStations.Clear();
             TryDisableUndoRedo();
-            /*ReadTrainRouteGrid.Children.RemoveRange(0, ReadTrainRouteGrid.Children.Count);
-            AddContent();*/
+            AddContentForAdding();
         }
         private void TryDisableUndoRedo()
         {
-            if (!Data.NeedUndo())
-                UndoAddTrainRoute.IsEnabled = false;
+            if (addedStationsEditing == null)
+            {
+                if (addedStations.Count == 0)
+                {
+                    UndoAddTrainRoute.IsEnabled = false;
+                    maxSteps = 0;
+                }
+                else
+                    UndoAddTrainRoute.IsEnabled = true;
+            }
             else
-                UndoAddTrainRoute.IsEnabled = true;
-            if (!Data.NeedRedo())
-                RedoAddTrainRoute.IsEnabled = false;
+            {
+                if (addedStations.Count == addedStationsEditing.Count)
+                {
+                    UndoAddTrainRoute.IsEnabled = false;
+                    maxSteps = maxStepsEditing;
+                }
+                else
+                    UndoAddTrainRoute.IsEnabled = true;
+            }
+            if (addedStationsEditing == null)
+            {
+                if (addedStations.Count == maxSteps)
+                    RedoAddTrainRoute.IsEnabled = false;
+                else
+                    RedoAddTrainRoute.IsEnabled = true;
+            }
             else
-                RedoAddTrainRoute.IsEnabled = true;
+            {
+                if (addedStations.Count == maxStepsEditing)
+                    RedoAddTrainRoute.IsEnabled = false;
+                else
+                    RedoAddTrainRoute.IsEnabled = true;
+            }
         }
 
         private void UndoAddTrainRoute_Click(object sender, RoutedEventArgs e)
@@ -488,7 +543,9 @@ namespace Railway
             int response = (int)MessageBox.Show("Are you sure you want to undo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
-                Data.Undo();
+                string st = addedStations[addedStations.Count - 1];
+                removedStations.Add(st);
+                addedStations.Remove(st);
                 RefreshPage();
             }
             else
@@ -501,7 +558,7 @@ namespace Railway
             int response = (int)MessageBox.Show("Are you sure you want to redo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
-                Data.Redo();
+                addedStations.Add(removedStations[removedStations.Count - 1]);
                 RefreshPage();
             }
             else

@@ -28,12 +28,18 @@ namespace Railway
         public Pushpin SelectedPushpin { get; set; }
         public Station Station { get; set; }
         public String oldStationName { get; set; }
+        List<Pushpin> Pushpins { get; set; }
+        int PushpinIndex { get; set; }
         public UpdateStation(Frame frame, Station station)
         {
             this.DataContext = this;
             oldStationName = station.Name;
             Station = station;
+            Pushpins = new List<Pushpin>();
+            Pushpins.Add(SelectedPushpin);
+            PushpinIndex = 0;
             InitializeComponent();
+            TryDisableUnable();
         }
 
         private void Pushpin_MouseDown(object sender, MouseButtonEventArgs e)
@@ -71,6 +77,10 @@ namespace Railway
             {
                 SelectedPushpin.Location = mapa.ViewportPointToLocation(
                     Point.Add(e.GetPosition(mapa), mouseToMarker));
+                SelectedPushpin.Content = station_name.Text;
+                Pushpins.Add(SelectedPushpin);
+                PushpinIndex++;
+                TryDisableUnable();
                 e.Handled = true;
             }
             //uspesno ste pomerili stanicu
@@ -95,6 +105,46 @@ namespace Railway
                     MessageBox.Show("You have succesfully updated station", "Update station confirmation");
                 }
             }
+        }
+        private void setPushpin()
+        {
+            if (PushpinIndex > 0)
+            {
+                Pushpin p = Pushpins[PushpinIndex];
+                mapa.Children.Remove(selectedPushpin);
+                mapa.Children.Add(p);
+                selectedPushpin = p;
+                station_name.Text = (String)p.Content;
+            }
+            else
+            {
+                mapa.Children.Remove(selectedPushpin);
+                station_name.Text = "";
+            }
+        }
+        private void UndoButton_Click(object sender, RoutedEventArgs e)
+        {
+            PushpinIndex--;
+            setPushpin();
+            TryDisableUnable();
+        }
+        private void RedoButton_Click(object sender, RoutedEventArgs e)
+        {
+            PushpinIndex++;
+            setPushpin();
+            TryDisableUnable();
+        }
+        private void TryDisableUnable()
+        {
+            if (PushpinIndex < 1)
+                undoUpdateStation.IsEnabled = false;
+            else
+                undoUpdateStation.IsEnabled = true;
+            if (PushpinIndex == Pushpins.Count - 1)
+                redoUpdateStation.IsEnabled = false;
+            else
+                redoUpdateStation.IsEnabled = true;
+
         }
     }
 }

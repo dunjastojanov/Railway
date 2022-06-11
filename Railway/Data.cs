@@ -701,7 +701,6 @@ namespace Railway
 
         private static void SetRailwayIndex(int index)
         {
-            //Data.RailwayIndex = index;
             Data.CurrentRailwayIndex++;
             UpperRailwayIndexBound++;
         }
@@ -726,8 +725,13 @@ namespace Railway
 
         public static void ResetCurrentIndex()
         {
-            RailwayIndex = CurrentRailwayIndex;
-            UpperRailwayIndexBound = CurrentRailwayIndex;
+            RailwayIndex = 0;
+            UpperRailwayIndexBound = 0;
+            Railroad currentState = Data.RailwayStates[CurrentRailwayIndex];
+            List<Railroad> currentRailroads = new List<Railroad>();
+            currentRailroads.Add(currentState);
+            Data.RailwayStates = currentRailroads;
+            CurrentRailwayIndex = 0;
         }
         public static List<string> GetStationNames()
         {

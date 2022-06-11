@@ -88,6 +88,75 @@ namespace Railway
 
 
         }
+        public OneTrainRoute(Trainline trainline, Railway.MainWindow window, string user)
+        {
+            InitializeComponent();
+            addFirstStationLabel(trainline);
+            addLastStationLabel(trainline);
+            addTrainLineName(trainline);
+            this.Window = window;
+            this.trainline = trainline;
+
+            TitleGrid.Children.Remove(EditButton);
+            TitleGrid.Children.Remove(DeleteButton);
+            Grid.SetColumn(ViewMapButton, 1);
+            Grid.SetColumnSpan(ViewMapButton, 3);
+            ViewMapButton.HorizontalAlignment = HorizontalAlignment.Center;
+          
+            
+            Label stationLabel = new Label();
+            Label durationLabel;
+            Label priceLabel;
+
+            Station station = trainline.FirstStation;
+            Path path;
+            stationNextRow = 0;
+
+            addRowPixels(StationsGrid, 40);
+            stationLabel.Foreground = Brushes.White;
+            stationLabel.Content = station.Name;
+            Grid.SetRow(stationLabel, stationNextRow);
+            StationsGrid.Children.Add(stationLabel);
+
+
+
+            while (station.PathToNextStation != null)
+            {
+
+                addRowPixels(StationsGrid, 40);
+                path = station.PathToNextStation;
+                durationLabel = new Label();
+                durationLabel.Content = $"Duration (minutes): {path.Duration}";
+                durationLabel.ToolTip = "Duration of the trip between stations above and below.";
+                durationLabel.Foreground = Brushes.White;
+                Grid.SetRow(durationLabel, stationNextRow + 1);
+                Grid.SetColumn(durationLabel, 1);
+                StationsGrid.Children.Add(durationLabel);
+
+                priceLabel = new Label();
+                priceLabel.Content = $"Price ($): {path.Price}";
+                priceLabel.ToolTip = "Price of the trip between stations above and below.";
+                priceLabel.Foreground = Brushes.White;
+                Grid.SetRow(priceLabel, stationNextRow + 1);
+                Grid.SetColumn(priceLabel, 2);
+                StationsGrid.Children.Add(priceLabel);
+
+
+                stationNextRow += 2;
+
+                addRowPixels(StationsGrid, 40);
+
+                station = path.NextStation;
+                stationLabel = new Label();
+                stationLabel.Foreground = Brushes.White;
+                stationLabel.Content = station.Name;
+                Grid.SetRow(stationLabel, stationNextRow);
+                StationsGrid.Children.Add(stationLabel);
+
+            }
+
+
+        }
 
         private void addTrainLineName(Trainline trainline)
         {

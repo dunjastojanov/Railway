@@ -25,15 +25,18 @@ namespace Railway
         public List<Station> Stations { get; set; }
 
         private Pushpin lastPushpin;
-
+        List<Pushpin> Pushpins { get; set; }
+        int  PushpinIndex {get;set;}
         private Railway.MainWindow Window { get; set; }
         public AddingStation(Railway.MainWindow window)
         {
             this.DataContext = this;
             Stations = Data.getStations();
             Window = window;
-
+            Pushpins = new List<Pushpin>();
+            PushpinIndex = -1;
             InitializeComponent();
+            TryDisableUnable();
         }
 
         private void Ellipse_MouseMove(object sender, MouseEventArgs e)
@@ -61,6 +64,7 @@ namespace Railway
                 Pushpin pushpin = new Pushpin();
                 pushpin.Location = location;
                 mapa.Children.Add(pushpin);
+                //za sta ovo sluzi
             }
         }
 
@@ -82,11 +86,16 @@ namespace Railway
                         Pushpin pin = new Pushpin();
                         pin.Background = new SolidColorBrush(Colors.Blue);
                         pin.Location = pinLocation;
+                        pin.Content = station_name.Text;
                         lastPushpin = pin;
                         mapa.Children.Add(lastPushpin);
+                        Pushpins.Add(lastPushpin);
+                        PushpinIndex++;
+                        TryDisableUnable();
                     }
                 }
-                else if (lastPushpin == null) {
+                else if (lastPushpin == null)
+                {
                     e.Handled = true;
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
@@ -94,8 +103,28 @@ namespace Railway
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
+                    pin.Content = station_name.Text;
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
+                    Pushpins.Add(lastPushpin);
+                    PushpinIndex++;
+                    TryDisableUnable();
+                }
+                else
+                {
+                    e.Handled = true;
+                    Point mousePosition = e.GetPosition(this.mapa);
+                    Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
+                    MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
+                    Pushpin pin = new Pushpin();
+                    pin.Background = new SolidColorBrush(Colors.Blue);
+                    pin.Location = pinLocation;
+                    pin.Content = station_name.Text;
+                    lastPushpin = pin;
+                    mapa.Children.Add(lastPushpin);
+                    Pushpins.Add(lastPushpin);
+                    PushpinIndex++;
+                    TryDisableUnable();
                 }
             }
         }
@@ -120,6 +149,47 @@ namespace Railway
                     Window.ShowReadStations(true);
                 }
             }
+        }
+
+        private void setPushpin()
+        {
+            if (PushpinIndex > -1)
+            {
+                Pushpin p = Pushpins[PushpinIndex];
+                mapa.Children.Remove(lastPushpin);
+                mapa.Children.Add(p);
+                lastPushpin = p;
+                station_name.Text = (String)p.Content;
+            }
+            else
+            {
+                mapa.Children.Remove(lastPushpin);
+                station_name.Text = "";
+            }
+        }
+        private void UndoButton_Click(object sender, RoutedEventArgs e)
+        {
+            PushpinIndex--;
+            setPushpin();
+            TryDisableUnable();
+        }
+        private void RedoButton_Click(object sender, RoutedEventArgs e)
+        {
+            PushpinIndex++;
+            setPushpin();
+            TryDisableUnable();
+        }
+        private void TryDisableUnable()
+        {
+            if (PushpinIndex < 0)
+                undoAddStation.IsEnabled = false;
+            else
+                undoAddStation.IsEnabled = true;
+            if (PushpinIndex == Pushpins.Count-1)
+                redoAddStation.IsEnabled = false;
+            else
+                redoAddStation.IsEnabled = true;    
+
         }
     }
 }
