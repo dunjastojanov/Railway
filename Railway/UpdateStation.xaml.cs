@@ -44,9 +44,9 @@ namespace Railway
             InitializeComponent();
             Pushpin pushpin = new Pushpin();
             pushpin.Location = Station.Location;
-            pushpin.Name = Station.Name;
+            pushpin.Tag = Station.Name;
             pushpin.MouseDown += Pushpin_MouseDown;
-            pushpin.ToolTip = pushpin.Name;
+            pushpin.ToolTip = pushpin.Tag;
             Pushpins.Add(pushpin);
             TryDisableUnable();
         }
@@ -162,11 +162,11 @@ namespace Railway
                     Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                 Pushpin pushpin = new Pushpin();
                 pushpin.Location = SelectedPushpin.Location;
-                SelectedPushpin.Name = station_name.Text;
+                SelectedPushpin.Tag = station_name.Text;
                 SelectedPushpin.ToolTip = station_name.Text;
-                pushpin.Name = station_name.Text;
+                pushpin.Tag = station_name.Text;
                 pushpin.MouseDown += Pushpin_MouseDown;
-                pushpin.ToolTip = pushpin.Name;
+                pushpin.ToolTip = pushpin.Tag;
                 Pushpins.Add(pushpin);
                 PushpinIndex++;
                 TryDisableUnable();
@@ -181,10 +181,10 @@ namespace Railway
                 Pushpin p = Pushpins[PushpinIndex];
                 mapa.Children.Remove(selectedPushpin);
                 selectedPushpin.Location = p.Location;
-                selectedPushpin.Name = p.Name;
+                selectedPushpin.Tag = p.Tag;
                 selectedPushpin.ToolTip = p.ToolTip;
                 mapa.Children.Add(selectedPushpin);
-                station_name.Text = (String)selectedPushpin.Name;
+                station_name.Text = (String)selectedPushpin.Tag;
             }
             else
             {
