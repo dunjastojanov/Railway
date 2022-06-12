@@ -89,6 +89,12 @@
     <Compile Include="BuyTicket.xaml.cs">
       <DependentUpon>BuyTicket.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChooseSeat.xaml.cs">
+      <DependentUpon>ChooseSeat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseTrainSeats.xaml.cs">
+      <DependentUpon>ChooseTrainSeats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs" />
     <Compile Include="HelpButton.xaml.cs">
       <DependentUpon>HelpButton.xaml</DependentUpon>
@@ -106,6 +112,7 @@
     </Compile>
     <Compile Include="model\ReportTicketDTO.cs" />
     <Compile Include="model\Seats.cs" />
+    <Compile Include="model\TicketSeat.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="MonthlyReport.xaml.cs">
       <DependentUpon>MonthlyReport.xaml</DependentUpon>
@@ -179,6 +186,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BuyTicket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseSeat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseTrainSeats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

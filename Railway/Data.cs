@@ -226,70 +226,162 @@ namespace Railway
             knjazevac1.PathToNextStation = null;
 
 
-            Ticket ticket1 = new Ticket(user1, subotica, beograd, new DateTime(2022, 6, 12, 8, 20, 0), 200, 760, 120, train1);
-            Ticket ticket11 = new Ticket(user2, staraPazova, beograd, new DateTime(2022, 6, 12, 9, 55, 0), 35, 210, 25, train1);
-            Ticket ticket111 = new Ticket(user3, zrenjanin, noviSad, new DateTime(2022, 6, 15, 9, 5, 0), 6, 170, 30, train1);
-            Ticket ticket1111 = new Ticket(user4, subotica, beograd, new DateTime(2022, 6, 15, 8, 20, 0), 10, 760, 120, train1);
-            Ticket ticket11111 = new Ticket(user5, beograd, subotica, new DateTime(2022, 6, 12, 16, 20, 0), 22, 760, 120, train1);
-            Ticket ticket111111 = new Ticket(user1, noviSad, staraPazova, new DateTime(2022, 6, 12, 9, 35, 0), 7, 150, 20, train1);
+            TicketSeat ticketSeat1 = new TicketSeat(1, 'A', 1);
+            TicketSeat ticketSeat2 = new TicketSeat(1, 'A', 2);
+            TicketSeat ticketSeat3 = new TicketSeat(1, 'A', 3);
+            TicketSeat ticketSeat4 = new TicketSeat(2, 'A', 4);
+            TicketSeat ticketSeat5 = new TicketSeat(2, 'A', 5);
+            TicketSeat ticketSeat6 = new TicketSeat(2, 'A', 6);
+            TicketSeat ticketSeat7 = new TicketSeat(3, 'A', 7);
+            TicketSeat ticketSeat8 = new TicketSeat(3, 'A', 8);
+            TicketSeat ticketSeat9 = new TicketSeat(3, 'A', 9);
+            TicketSeat ticketSeat10 = new TicketSeat(4, 'A', 2);
+            TicketSeat ticketSeat11 = new TicketSeat(1, 'B', 2);
+            TicketSeat ticketSeat12 = new TicketSeat(1, 'B', 3);
+            TicketSeat ticketSeat13 = new TicketSeat(2, 'B', 4);
+            TicketSeat ticketSeat14 = new TicketSeat(2, 'B', 5);
+            TicketSeat ticketSeat15 = new TicketSeat(2, 'B', 6);
+            TicketSeat ticketSeat16 = new TicketSeat(3, 'B', 7);
+            TicketSeat ticketSeat17 = new TicketSeat(3, 'B', 8);
+            TicketSeat ticketSeat18 = new TicketSeat(4, 'B', 9);
+            TicketSeat ticketSeat19 = new TicketSeat(4, 'B', 10);
+            TicketSeat ticketSeat20 = new TicketSeat(5, 'B', 1);
+            TicketSeat ticketSeat21 = new TicketSeat(1, 'C', 1);
+            TicketSeat ticketSeat22 = new TicketSeat(1, 'C', 2);
+            TicketSeat ticketSeat23 = new TicketSeat(2, 'C', 3);
+            TicketSeat ticketSeat24 = new TicketSeat(3, 'C', 4);
+            TicketSeat ticketSeat25 = new TicketSeat(4, 'C', 5);
+            TicketSeat ticketSeat26 = new TicketSeat(5, 'C', 6);
+            TicketSeat ticketSeat27 = new TicketSeat(5, 'C', 7);
+            TicketSeat ticketSeat28 = new TicketSeat(5, 'C', 8);
+            TicketSeat ticketSeat29 = new TicketSeat(3, 'C', 9);
+            TicketSeat ticketSeat30 = new TicketSeat(3, 'C', 10);
+            TicketSeat ticketSeat31 = new TicketSeat(1, 'D', 1);
+            TicketSeat ticketSeat32 = new TicketSeat(2, 'D', 2);
+            TicketSeat ticketSeat33 = new TicketSeat(3, 'D', 3);
+            TicketSeat ticketSeat34 = new TicketSeat(4, 'D', 4);
+            TicketSeat ticketSeat35 = new TicketSeat(5, 'D', 5);
+            TicketSeat ticketSeat36 = new TicketSeat(5, 'D', 6);
+            TicketSeat ticketSeat37 = new TicketSeat(4, 'D', 7);
+            TicketSeat ticketSeat38 = new TicketSeat(3, 'D', 8);
+            TicketSeat ticketSeat39 = new TicketSeat(2, 'D', 9);
+            TicketSeat ticketSeat40 = new TicketSeat(1, 'D', 10);
+            TicketSeat ticketSeat41 = new TicketSeat(1, 'E', 11);
+            TicketSeat ticketSeat42 = new TicketSeat(2, 'E', 12);
+            TicketSeat ticketSeat43 = new TicketSeat(1, 'E', 2);
+            TicketSeat ticketSeat44 = new TicketSeat(3, 'E', 3);
+            TicketSeat ticketSeat45 = new TicketSeat(1, 'E', 4);
+            TicketSeat ticketSeat46 = new TicketSeat(2, 'E', 5);
+            TicketSeat ticketSeat47 = new TicketSeat(1, 'E', 6);
+            TicketSeat ticketSeat48 = new TicketSeat(5, 'E', 7);
+            TicketSeat ticketSeat49 = new TicketSeat(4, 'E', 8);
+            TicketSeat ticketSeat50 = new TicketSeat(3, 'E', 12);
+
+            List<TicketSeat> ticketSeats1 = new List<TicketSeat>() { ticketSeat1, ticketSeat2, ticketSeat11, ticketSeat12 };
+            List<TicketSeat> ticketSeats2 = new List<TicketSeat>() { ticketSeat3, ticketSeat4, ticketSeat21, ticketSeat22 };
+            List<TicketSeat> ticketSeats3 = new List<TicketSeat>() { ticketSeat33, ticketSeat40, ticketSeat23, ticketSeat28, ticketSeat22, ticketSeat18 };
+            List<TicketSeat> ticketSeats4 = new List<TicketSeat>() { ticketSeat1, ticketSeat32, ticketSeat37, ticketSeat30 };
+            List<TicketSeat> ticketSeats5 = new List<TicketSeat>() { ticketSeat15, ticketSeat9, ticketSeat23, ticketSeat24, ticketSeat32, ticketSeat18, ticketSeat16 };
+            List<TicketSeat> ticketSeats6 = new List<TicketSeat>() { ticketSeat13, ticketSeat29, ticketSeat19, ticketSeat39, ticketSeat24, ticketSeat20, ticketSeat7 };
+
+            Ticket ticket1 = new Ticket(user1, subotica, beograd, new DateTime(2022, 6, 12, 8, 20, 0), 4, 760, 120, train1, ticketSeats1);
+            Ticket ticket11 = new Ticket(user2, staraPazova, beograd, new DateTime(2022, 6, 12, 9, 55, 0), 4, 210, 25, train1, ticketSeats2);
+            Ticket ticket111 = new Ticket(user3, zrenjanin, noviSad, new DateTime(2022, 6, 15, 9, 5, 0), 6, 170, 30, train1, ticketSeats3);
+            Ticket ticket1111 = new Ticket(user4, subotica, beograd, new DateTime(2022, 6, 15, 8, 20, 0), 4, 760, 120, train1, ticketSeats4);
+            Ticket ticket11111 = new Ticket(user5, beograd, subotica, new DateTime(2022, 6, 12, 16, 20, 0), 7, 760, 120, train1, ticketSeats5);
+            Ticket ticket111111 = new Ticket(user1, noviSad, staraPazova, new DateTime(2022, 6, 12, 9, 35, 0), 7, 150, 20, train1, ticketSeats6);
             List<Ticket> tickets1 = new List<Ticket>() { ticket1, ticket11, ticket111, ticket1111, ticket11111, ticket111111 };
 
-            Ticket ticket1111111 = new Ticket(user4, subotica, beograd, new DateTime(2022, 6, 15, 10, 0, 0), 1, 760, 120, train2);
-            Ticket ticket11111111 = new Ticket(user5, beograd, subotica, new DateTime(2022, 6, 12, 17, 45, 0), 2, 760, 120, train2);
-            Ticket ticket111111111 = new Ticket(user1, noviSad, staraPazova, new DateTime(2022, 6, 12, 9, 35, 0), 7, 150, 20, train2);
+
+            List<TicketSeat> ticketSeats7 = new List<TicketSeat>() { ticketSeat11, ticketSeat22, ticketSeat37, ticketSeat39 };
+            List<TicketSeat> ticketSeats8 = new List<TicketSeat>() { ticketSeat15, ticketSeat16, ticketSeat17, ticketSeat18, ticketSeat19, ticketSeat20 };
+            List<TicketSeat> ticketSeats9 = new List<TicketSeat>() { ticketSeat13, ticketSeat29, ticketSeat49, ticketSeat39, ticketSeat44, ticketSeat20, ticketSeat7 };
+
+            Ticket ticket1111111 = new Ticket(user4, subotica, beograd, new DateTime(2022, 6, 15, 10, 0, 0), 4, 760, 120, train2, ticketSeats7);
+            Ticket ticket11111111 = new Ticket(user5, beograd, subotica, new DateTime(2022, 6, 12, 17, 45, 0), 6, 760, 120, train2, ticketSeats8);
+            Ticket ticket111111111 = new Ticket(user1, noviSad, staraPazova, new DateTime(2022, 6, 12, 9, 35, 0), 7, 150, 20, train2, ticketSeats9);
             List<Ticket> tickets11 = new List<Ticket>() { ticket1111111, ticket11111111, ticket111111111 };
 
-            Ticket ticket2 = new Ticket(user2, beograd1, smederevo, new DateTime(2022, 6, 12, 11, 30, 0), 16, 220, 45, train2);
-            Ticket ticket22 = new Ticket(user3, beograd1, vranje, new DateTime(2022, 6, 12, 11, 30, 0), 10, 1045, 185, train2);
-            Ticket ticket222 = new Ticket(user4, smederevo, jagodina, new DateTime(2022, 6, 12, 12, 15, 0), 2, 190, 30, train2);
-            Ticket ticket2222 = new Ticket(user5, nis, vranje, new DateTime(2022, 6, 12, 13, 35, 0), 4, 400, 60, train2);
+
+            List<TicketSeat> ticketSeats10 = new List<TicketSeat>() { ticketSeat11};
+            List<TicketSeat> ticketSeats11 = new List<TicketSeat>() { ticketSeat15, ticketSeat16 };
+            List<TicketSeat> ticketSeats12 = new List<TicketSeat>() { ticketSeat13, ticketSeat29, ticketSeat49 };
+            List<TicketSeat> ticketSeats13 = new List<TicketSeat>() { ticketSeat13, ticketSeat29, ticketSeat49, ticketSeat3 };
+
+            Ticket ticket2 = new Ticket(user2, beograd1, smederevo, new DateTime(2022, 6, 12, 11, 30, 0), 1, 220, 45, train2, ticketSeats10);
+            Ticket ticket22 = new Ticket(user3, beograd1, vranje, new DateTime(2022, 6, 12, 11, 30, 0), 2, 1045, 185, train2, ticketSeats11);
+            Ticket ticket222 = new Ticket(user4, smederevo, jagodina, new DateTime(2022, 6, 12, 12, 15, 0), 3, 190, 30, train2, ticketSeats12);
+            Ticket ticket2222 = new Ticket(user5, nis, vranje, new DateTime(2022, 6, 12, 13, 35, 0), 4, 400, 60, train2, ticketSeats13);
             List<Ticket> tickets2 = new List<Ticket>() { ticket2, ticket22, ticket222, ticket2222 };
 
-            Ticket ticket22222 = new Ticket(user2, beograd1, smederevo, new DateTime(2022, 6, 12, 12, 15, 0), 6, 220, 45, train3);
-            Ticket ticket222222 = new Ticket(user3, beograd1, vranje, new DateTime(2022, 6, 12, 12, 15, 0), 1, 1045, 185, train3);
+
+            List<TicketSeat> ticketSeats14 = new List<TicketSeat>() { ticketSeat41, ticketSeat42, ticketSeat1, ticketSeat1, ticketSeat30 };
+            List<TicketSeat> ticketSeats15 = new List<TicketSeat>() { ticketSeat15, ticketSeat16, ticketSeat45, ticketSeat46, ticketSeat20 };
+
+            Ticket ticket22222 = new Ticket(user2, beograd1, smederevo, new DateTime(2022, 6, 12, 12, 15, 0), 5, 220, 45, train3, ticketSeats14);
+            Ticket ticket222222 = new Ticket(user3, beograd1, vranje, new DateTime(2022, 6, 12, 12, 15, 0), 5, 1045, 185, train3, ticketSeats15);
             List<Ticket> tickets22 = new List<Ticket>() { ticket22222, ticket222222 };
 
-            Ticket ticket2222222 = new Ticket(user4, smederevo, jagodina, new DateTime(2022, 6, 12, 16, 0, 0), 2, 190, 30, train4);
-            Ticket ticket22222222 = new Ticket(user5, nis, vranje, new DateTime(2022, 6, 12, 16, 50, 0), 4, 400, 60, train4);
+            List<TicketSeat> ticketSeats16 = new List<TicketSeat>() { ticketSeat1, ticketSeat2, ticketSeat7, ticketSeat8, ticketSeat9 };
+            List<TicketSeat> ticketSeats17 = new List<TicketSeat>() { ticketSeat11, ticketSeat16, ticketSeat15, ticketSeat6, ticketSeat17 };
+
+            Ticket ticket2222222 = new Ticket(user4, smederevo, jagodina, new DateTime(2022, 6, 12, 16, 0, 0), 5, 190, 30, train4, ticketSeats16);
+            Ticket ticket22222222 = new Ticket(user5, nis, vranje, new DateTime(2022, 6, 12, 16, 50, 0), 5, 400, 60, train4, ticketSeats17);
             List<Ticket> tickets222 = new List<Ticket>() { ticket2222222, ticket22222222 };
 
-            Ticket ticket3 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 12, 16, 20, 0), 10, 650, 80, train1);
-            Ticket ticket33 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 16, 20, 0), 6, 650, 80, train1);
-            Ticket ticket333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 19, 0, 0), 8, 650, 80, train1);
-            Ticket ticket3333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 16, 20, 0), 12, 650, 80, train1);
-            Ticket ticket33333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 19, 0, 0), 5, 650, 80, train1);
-            Ticket ticket333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 16, 16, 20, 0), 17, 650, 80, train1);
+            List<TicketSeat> ticketSeats18 = new List<TicketSeat>() { ticketSeat5, ticketSeat10, ticketSeat14 };
+            List<TicketSeat> ticketSeats19 = new List<TicketSeat>() { ticketSeat25, ticketSeat26, ticketSeat27 };
+            List<TicketSeat> ticketSeats20 = new List<TicketSeat>() { ticketSeat25, ticketSeat26, ticketSeat27 };
+            List<TicketSeat> ticketSeats21 = new List<TicketSeat>() { ticketSeat34, ticketSeat35, ticketSeat36 };
+            List<TicketSeat> ticketSeats23 = new List<TicketSeat>() { ticketSeat31, ticketSeat38 };
+
+            Ticket ticket3 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 12, 16, 20, 0), 3, 650, 80, train1, ticketSeats18);
+            Ticket ticket33 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 16, 20, 0), 3, 650, 80, train1, ticketSeats19);
+            Ticket ticket333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 19, 0, 0), 3, 650, 80, train1, ticketSeats20);
+            Ticket ticket3333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 16, 20, 0), 3, 650, 80, train1, ticketSeats21);
+            Ticket ticket33333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 19, 0, 0), 2, 650, 80, train1, ticketSeats23);
+            Ticket ticket333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 16, 16, 20, 0), 17, 650, 80, train1, ticketSeats1);
             List<Ticket> tickets3 = new List<Ticket>() { ticket3, ticket33, ticket333, ticket3333, ticket33333, ticket333333 };
             
-            Ticket ticket3333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 12, 17, 45, 0), 10, 650, 80, train1);
-            Ticket ticket33333333 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 17, 45, 0), 6, 650, 80, train1);
-            Ticket ticket333333333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 19, 50, 0), 8, 650, 80, train1);
+
+            Ticket ticket3333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 12, 17, 45, 0), 3, 650, 80, train1, ticketSeats18);
+            Ticket ticket33333333 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 17, 45, 0), 3, 650, 80, train1, ticketSeats19);
+            Ticket ticket333333333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 19, 50, 0), 3, 650, 80, train1, ticketSeats20);
             List<Ticket> tickets33 = new List<Ticket>() { ticket3333333, ticket33333333, ticket333333333 };
 
-            Ticket ticket3333333333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 18, 35, 0), 12, 650, 80, train4);
-            Ticket ticket33333333333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 20, 20, 0), 5, 650, 80, train4);
-            Ticket ticket333333333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 16, 18, 35, 0), 17, 650, 80, train4);
+            List<TicketSeat> ticketSeats24 = new List<TicketSeat>() { ticketSeat1, ticketSeat2, ticketSeat3, ticketSeat4 };
+
+            Ticket ticket3333333333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 18, 35, 0), 5, 650, 80, train4, ticketSeats16);
+            Ticket ticket33333333333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 20, 20, 0), 5, 650, 80, train4, ticketSeats17);
+            Ticket ticket333333333333 = new Ticket(user1, bor, knjazevac, new DateTime(2022, 6, 16, 18, 35, 0), 4, 650, 80, train4, ticketSeats24);
             List<Ticket> tickets333 = new List<Ticket>() { ticket3333333333, ticket33333333333, ticket333333333333 };
 
-            Ticket ticket3333333333333 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 19, 0, 0), 6, 650, 80, train4);
-            Ticket ticket33333333333333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 22, 20, 0), 8, 650, 80, train4);
-            Ticket ticket333333333333333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 19, 0, 0), 12, 650, 80, train4);
-            Ticket ticket3333333333333333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 22, 20, 0), 5, 650, 80, train4);
+            List<TicketSeat> ticketSeats25 = new List<TicketSeat>() { ticketSeat5 };
+            List<TicketSeat> ticketSeats26 = new List<TicketSeat>() { ticketSeat6 };
+            List<TicketSeat> ticketSeats27 = new List<TicketSeat>() { ticketSeat7 };
+            List<TicketSeat> ticketSeats28 = new List<TicketSeat>() { ticketSeat8 };
+
+            Ticket ticket3333333333333 = new Ticket(user2, bor, knjazevac, new DateTime(2022, 6, 12, 19, 0, 0), 1, 650, 80, train4, ticketSeats25);
+            Ticket ticket33333333333333 = new Ticket(user3, knjazevac, bor, new DateTime(2022, 6, 15, 22, 20, 0), 1, 650, 80, train4, ticketSeats26);
+            Ticket ticket333333333333333 = new Ticket(user4, bor, knjazevac, new DateTime(2022, 6, 15, 19, 0, 0), 1, 650, 80, train4, ticketSeats27);
+            Ticket ticket3333333333333333 = new Ticket(user5, knjazevac, bor, new DateTime(2022, 6, 16, 22, 20, 0), 1, 650, 80, train4, ticketSeats28);
             List<Ticket> tickets3333 = new List<Ticket>() { ticket3333333333333, ticket33333333333333, ticket333333333333333, ticket3333333333333333 };
 
-            Ticket ticket4 = new Ticket(user2, noviSad1, kragujevac, new DateTime(2022, 6, 12, 17, 45, 0), 5, 780, 155, train2);
-            Ticket ticket44 = new Ticket(user3, beograd2, kragujevac, new DateTime(2022, 6, 12, 18, 30, 0), 15, 580, 110, train2);
-            Ticket ticket444 = new Ticket(user4, beograd2, kragujevac, new DateTime(2022, 6, 12, 18, 30, 0), 5, 580, 110, train2);
+            Ticket ticket4 = new Ticket(user2, noviSad1, kragujevac, new DateTime(2022, 6, 12, 17, 45, 0), 1, 780, 155, train2, ticketSeats10);
+            Ticket ticket44 = new Ticket(user3, beograd2, kragujevac, new DateTime(2022, 6, 12, 18, 30, 0), 2, 580, 110, train2, ticketSeats11);
+            Ticket ticket444 = new Ticket(user4, beograd2, kragujevac, new DateTime(2022, 6, 12, 18, 30, 0), 3, 580, 110, train2, ticketSeats12);
             List<Ticket> tickets4 = new List<Ticket>() { ticket4, ticket44, ticket444 };
 
-            Ticket ticket5 = new Ticket(user5, sabac, staraPazova1, new DateTime(2022, 6, 12), 30, 1400, 205, train1);
-            Ticket ticket55 = new Ticket(user1, staraPazova1, sabac, new DateTime(2022, 6, 12), 30, 1400, 205, train1);
+            Ticket ticket5 = new Ticket(user5, sabac, staraPazova1, new DateTime(2022, 6, 12), 7, 1400, 205, train1, ticketSeats5);
+            Ticket ticket55 = new Ticket(user1, staraPazova1, sabac, new DateTime(2022, 6, 12), 7, 1400, 205, train1, ticketSeats6);
             List<Ticket> tickets5 = new List<Ticket>() { ticket5, ticket55 };
 
-            Ticket ticket555 = new Ticket(user1, staraPazova1, sabac, new DateTime(2022, 6, 12, 22, 5, 0), 30, 1400, 205, train3);
+            List<TicketSeat> ticketSeats29 = new List<TicketSeat>() { ticketSeat43, ticketSeat47, ticketSeat48, ticketSeat50 };
+
+            Ticket ticket555 = new Ticket(user1, staraPazova1, sabac, new DateTime(2022, 6, 12, 22, 5, 0), 4, 1400, 205, train3, ticketSeats29);
             List<Ticket> tickets55 = new List<Ticket>() { ticket555 };
 
-            Ticket ticket5555 = new Ticket(user1, sabac, staraPazova1, new DateTime(2022, 6, 12, 10, 0, 0), 40, 1400, 205, train3);
+            Ticket ticket5555 = new Ticket(user1, sabac, staraPazova1, new DateTime(2022, 6, 12, 10, 0, 0), 5, 1400, 205, train3, ticketSeats14);
             List<Ticket> tickets555 = new List<Ticket>() { ticket5555 };
 
             Timetable timetable1 = new Timetable("Red voznje 11", train1, days1, time1, time6, tickets1);

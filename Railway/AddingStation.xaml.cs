@@ -94,7 +94,7 @@ namespace Railway
                         Pushpin pin = new Pushpin();
                         pin.Background = new SolidColorBrush(Colors.Blue);
                         pin.Location = pinLocation;
-                        pin.Content = station_name.Text;
+                        pin.Name = station_name.Text;
                         lastPushpin = pin;
                         mapa.Children.Add(lastPushpin);
                         Pushpins.Add(lastPushpin);
@@ -111,7 +111,7 @@ namespace Railway
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
-                    pin.Content = station_name.Text;
+                    pin.Name = station_name.Text;
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
                     Pushpins.Add(lastPushpin);
@@ -127,7 +127,7 @@ namespace Railway
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
-                    pin.Content = station_name.Text;
+                    pin.Name = station_name.Text;
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
                     Pushpins.Add(lastPushpin);
@@ -191,7 +191,7 @@ namespace Railway
                 mapa.Children.Remove(lastPushpin);
                 mapa.Children.Add(p);
                 lastPushpin = p;
-                station_name.Text = (String)p.Content;
+                station_name.Text = (String)p.Name;
             }
             else
             {
