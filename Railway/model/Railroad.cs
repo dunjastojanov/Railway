@@ -71,5 +71,16 @@ namespace Railway.Model
             }
             return null;
         }
+        public void RemoveStation(Station station)
+        {
+            foreach (Station st in Stations)
+            {
+                if (st.Name.Equals(station.Name))
+                {
+                    Stations.Remove(st);
+                    return;
+                }
+            }
+        }
     }
 }

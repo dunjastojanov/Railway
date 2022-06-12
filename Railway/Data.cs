@@ -491,7 +491,7 @@ namespace Railway
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
 
-            newRailway.Stations.Remove(station);
+            newRailway.RemoveStation(station);
 
             List<Trainline> trainlines = new List<Trainline>();
             foreach (Trainline trainline in newRailway.TrainLines)
