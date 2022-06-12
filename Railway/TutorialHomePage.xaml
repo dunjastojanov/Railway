@@ -18,28 +18,6 @@
         <Label x:Name="welcome" Grid.Row="0" Content="Welcome to tutorials!" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="21"/>
         <Label x:Name="select" Grid.Row="1" Content="Please select which tutorial you want to see" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
         <Button x:Name="button" Grid.Row="3" Content="   Cancel   " FontSize="18" HorizontalAlignment="Right" Background="#FFFD9B00" Foreground="White" VerticalAlignment="Center" Margin="0,0,15,0" Click="button_Click"/>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="35*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="20*"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="trainlineTut" Content="Trainlines tutorial" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" FontSize="18" Background="#FFFD9B00" Foreground="White" Click="ShowTrainlineTut_Click"/>
-                <Button x:Name="trainTut" Content="Trains tutorial" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Background="#FFFD9B00" Foreground="White" Click="ShowTrainTut_Click"/>
-                <Button x:Name="stationTut" Content="Stations tutorial" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Background="#FFFD9B00" Foreground="White" Click="ShowStationTut_Click"/>
-                <Button x:Name="timetableTut" Content="Timetables tutorial" HorizontalAlignment="Stretch" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Background="#FFFD9B00" Foreground="White" Click="ShowTimetableTut_Click"/>
-            </Grid>
-        </Grid>
+        <Frame x:Name="tutorialFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

@@ -126,6 +126,9 @@
     <Compile Include="OneTimetable.xaml.cs">
       <DependentUpon>OneTimetable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OneTimetableTutorial.xaml.cs">
+      <DependentUpon>OneTimetableTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OneTrain.xaml.cs">
       <DependentUpon>OneTrain.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,9 @@
     </Compile>
     <Compile Include="ReadTimetable.xaml.cs">
       <DependentUpon>ReadTimetable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadTimetableTutorial.xaml.cs">
+      <DependentUpon>ReadTimetableTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReadTrain.xaml.cs">
       <DependentUpon>ReadTrain.xaml</DependentUpon>
@@ -164,6 +170,9 @@
     </Compile>
     <Compile Include="TrainSeats.xaml.cs">
       <DependentUpon>TrainSeats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialButtons.xaml.cs">
+      <DependentUpon>TutorialButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="TutorialHomePage.xaml.cs">
       <DependentUpon>TutorialHomePage.xaml</DependentUpon>
@@ -243,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="OneTimetableTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OneTrain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -262,6 +275,10 @@
     <Page Include="ReadTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReadTimetableTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReadTrain.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -294,6 +311,10 @@
     <Page Include="TrainSeats.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TutorialButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TutorialHomePage.xaml">
       <SubType>Designer</SubType>

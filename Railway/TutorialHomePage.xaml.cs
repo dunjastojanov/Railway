@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +26,14 @@ namespace Railway
         public Button TrainsTut { get; set; }
         public Button TimetablesTut { get; set; }
         public Button StationsTut { get; set; }
-       
+
         public TutorialHomePage(Railway.MainWindow window)
         {
             InitializeComponent();
             Window = window;
             AddTutorialNavbar();
+            Data.CreateTutorialData();
+            tutorialFrame.Content = new TutorialButtons(this);
         }
         private void AddTutorialNavbar()
         {
@@ -88,7 +91,7 @@ namespace Railway
 
         private void TimetablesBeginTut_Click(object sender, RoutedEventArgs e)
         {
-
+            tutorialFrame.Content = new ReadTimetableTutorial(Window);
         }
         private void TrainlinesBeginTut_Click(object sender, RoutedEventArgs e)
         {
@@ -102,71 +105,7 @@ namespace Railway
         {
 
         }
-        private void ShowTrainlineTut_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to start tutorial for trainlines?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                MessageBox.Show("Please select button 'Trainlines' on the left.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                TrainlinesTut.IsEnabled = true;
-                TrainsTut.IsEnabled = false;
-                TimetablesTut.IsEnabled = false;
-                StationsTut.IsEnabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Exiting trainlines tutorial successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-        private void ShowTrainTut_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to start tutorial for trains?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                MessageBox.Show("Please select button 'Trains' on the left.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                TrainlinesTut.IsEnabled = false;
-                TrainsTut.IsEnabled = true;
-                TimetablesTut.IsEnabled = false;
-                StationsTut.IsEnabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Exiting trains tutorial successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-        private void ShowTimetableTut_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to start tutorial for timetables?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                MessageBox.Show("Please select button 'Timetables' on the left.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                TrainlinesTut.IsEnabled = false;
-                TrainsTut.IsEnabled = false;
-                TimetablesTut.IsEnabled = true;
-                StationsTut.IsEnabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Exiting timetables tutorial successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-        private void ShowStationTut_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to start tutorial for stations?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                MessageBox.Show("Please select button 'Stations' on the left.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                TrainlinesTut.IsEnabled = false;
-                TrainsTut.IsEnabled = false;
-                TimetablesTut.IsEnabled = false;
-                StationsTut.IsEnabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Exiting stations tutorial successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-
-        }
+        
         private void button_Click(object sender, RoutedEventArgs e)
         {
             int response = (int)MessageBox.Show("Are you sure you want to cancel tutorial and return to admin home page?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
