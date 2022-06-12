@@ -26,14 +26,14 @@ namespace Railway
         Timetable timetable;
         ReadTimetableTutorial ReadTimetableTutorial { get; set; }   
         int row;
-        string Step;
+      
 
         public OneTimetableTutorial(ReadTimetableTutorial readTimetableTutorial, Railway.MainWindow window, Timetable timetable, string step)
         {
             InitializeComponent();
             ReadTimetableTutorial = readTimetableTutorial;
             Window = window;
-            Step = step;
+         
 
             if (step.Equals("step1"))
             {

@@ -10,14 +10,11 @@
 
     <Grid x:Name="tutorialHomePageGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="65*"/>
+            <RowDefinition Height="85*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="welcome" Grid.Row="0" Content="Welcome to tutorials!" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="21"/>
-        <Label x:Name="select" Grid.Row="1" Content="Please select which tutorial you want to see" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
-        <Button x:Name="button" Grid.Row="3" Content="   Cancel   " FontSize="18" HorizontalAlignment="Right" Background="#FFFD9B00" Foreground="White" VerticalAlignment="Center" Margin="0,0,15,0" Click="button_Click"/>
-        <Frame x:Name="tutorialFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
+
+        <Button x:Name="button" Grid.Row="1" Content="   Cancel   " FontSize="18" HorizontalAlignment="Right" Background="#FFFD9B00" Foreground="White" VerticalAlignment="Center" Margin="0,0,15,0" Click="button_Click"/>
+        <Frame x:Name="tutorialFrame" Grid.Row="0" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

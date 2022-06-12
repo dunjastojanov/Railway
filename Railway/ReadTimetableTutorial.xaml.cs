@@ -128,7 +128,8 @@ namespace Railway
         private void UndoDeleteTimetable_Click(object sender, RoutedEventArgs e)
         {
            
-            Data.UndoTutorial();
+            Data.UndoTutorial();        
+            MessageBox.Show("Undo deleting trainline successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);       
             Step = "step3";
             RefreshPage();
             DoStep();
@@ -138,6 +139,7 @@ namespace Railway
         {
            
             Data.RedoTutorial();
+            MessageBox.Show("Redo deleting trainline successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             Step = "step4";
             RefreshPage();
             DoStep();
