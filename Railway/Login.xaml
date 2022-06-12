@@ -4,9 +4,7 @@
       xmlns:l="clr-namespace:Railway"
       l:HelpProvider.HelpKey="Login"
       Height="430" Width="750"
-      Title="Login" 
-      
-      >
+      Title="Login">
     <Page.Resources>
         <Style TargetType="Page">
 
@@ -74,13 +72,13 @@
 
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
             <Border BorderBrush="White" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="0" Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
             <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="Black" FontSize="16">E-mail</Label>
             <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
             <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="Black" FontSize="16">Password</Label>
             <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in."></PasswordBox>
             <Button Opacity="1" Grid.Row="7" Grid.Column="1" Background="#FFFD9B00"  Click="Button_Click" >Log in</Button>
+            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
             <Label  Grid.Row="0" Grid.Column="1" Content="Log in" FontSize="20" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
     </Grid>

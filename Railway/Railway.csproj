@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>train.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=2.0.6.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.6\lib\net452\MaterialDesignColors.dll</HintPath>
@@ -341,6 +344,8 @@
     <Content Include="help\Login.htm" />
     <Content Include="help\SearchTicket.htm" />
     <Content Include="help\TicketHistory.htm" />
+    <Resource Include="train.ico" />
+    <Resource Include="images\train.ico" />
     <Resource Include="images\info.png" />
     <Resource Include="images\help.png" />
   </ItemGroup>

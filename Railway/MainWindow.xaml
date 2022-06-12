@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Railway"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430" Width="750">
+        Icon="./images/train.ico"
+        Title="SerbiaTrain" Height="430" Width="750">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

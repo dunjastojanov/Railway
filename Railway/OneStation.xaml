@@ -5,28 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
-       d:DesignWidth="625" d:DesignHeight ="120">
-    <Grid.Background>
-        <SolidColorBrush Color="White" Opacity="0.6"></SolidColorBrush>
-    </Grid.Background>
+       d:DesignWidth="625" d:DesignHeight ="120" Margin="10">
     <Grid.RowDefinitions>
         <RowDefinition Height="5"></RowDefinition>
-        <RowDefinition Height="2"></RowDefinition>
-        <RowDefinition Height="50"></RowDefinition>
-        <RowDefinition Height="5"></RowDefinition>
-        <RowDefinition Height="50"></RowDefinition>
-        <RowDefinition Height="2"></RowDefinition>
+        <RowDefinition Height="45"></RowDefinition>
+        <RowDefinition Height="1"></RowDefinition>
+        <RowDefinition Height="40"></RowDefinition>
         <RowDefinition Height="5"></RowDefinition>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="5"></ColumnDefinition>
-        <ColumnDefinition Width="2"></ColumnDefinition>
         <ColumnDefinition Width="88*"></ColumnDefinition>
-        <ColumnDefinition Width="2"></ColumnDefinition>
         <ColumnDefinition Width="5"></ColumnDefinition>
     </Grid.ColumnDefinitions>
-    <Grid Grid.Row="1" Grid.Column="2" Background="Black"> </Grid>
-    <Grid Grid.Row="2" Grid.Column="2" x:Name="TitleGrid">
+    <Border Background="White" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="5" CornerRadius="8"></Border>
+    <Grid Grid.Row="2" Grid.Column="1" Background="Black" Margin="30,0,30,0" />
+    <Grid Grid.Row="1" Grid.Column="1" x:Name="TitleGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -36,32 +30,24 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="5"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="EditButton" Margin="3" Content="Edit" Grid.Column="0" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the station." Background="#FFFD9B00" Foreground="White"></Button>
-            <Button x:Name="DeleteButton" Margin="3"  Content="Delete" Grid.Column="2" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the station." Background="#FFFD9B00" Foreground="White"></Button>
+            <Button x:Name="EditButton"  Content="Edit" Grid.Column="0" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the station." Background="#FFFD9B00" Foreground="White" VerticalAlignment="Center" ></Button>
+            <Button x:Name="DeleteButton" Content="Delete" Grid.Column="1" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the station." Background="#FFFD9B00" Foreground="White" VerticalAlignment="Center" ></Button>
         </Grid>
 
-       <Label x:Name="NameLabel" Grid.Row="2" Grid.Column="3" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+        <Label x:Name="NameLabel" Margin="5,0,0,0" Grid.Row="2" Grid.Column="3" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
     </Grid>
-    <Grid  x:Name="NumbersGrid" Grid.Row="4" Grid.Column="2" >
+    <Grid  x:Name="NumbersGrid" Grid.Row="3" Grid.Column="1" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <Label Grid.Column="1" x:Name="LatitudeLabel" Content="Latitude: " Foreground="Black"></Label>
-        <Label Grid.Column="2" x:Name="LongitudeLabel" Content="Longitude: " Foreground="Black"></Label>
+        <Label Grid.Column="1" x:Name="LatitudeLabel" Margin="5,0,0,0" Content="Latitude: " Foreground="Black"></Label>
+        <Label Grid.Column="2" x:Name="LongitudeLabel" Margin="5,0,0,0" Content="Longitude: " Foreground="Black"></Label>
     </Grid>
-    <Grid Grid.Row="5" Grid.Column="2" Background="Black"></Grid>
-    <Grid Grid.Row="1" Grid.Column="1" Background="Black" Grid.RowSpan="5"></Grid>
-    <Grid Grid.Row="1" Grid.Column="3" Background="Black" Grid.RowSpan="5"></Grid>
-    
-
 </Grid>

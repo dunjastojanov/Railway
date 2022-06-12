@@ -32,20 +32,19 @@ namespace Railway
             InitializeComponent();
             Window = window;
 
-            NameLabel.Content = "Name: " + timetable.Name;
-            NameLabel.Foreground = new SolidColorBrush(Colors.Black);
-            TrainLabel.Content = "Train: " + timetable.Train.Name;
-            TrainLabel.Foreground = new SolidColorBrush(Colors.Black);
+            TimeTableName.Content =timetable.Name;
+            TimeTableName.Foreground = new SolidColorBrush(Colors.Black);
+            TrainName.Content = timetable.Train.Name;
+            TrainName.Foreground = new SolidColorBrush(Colors.Black);
 
             this.timetable = timetable;
-            string days = "Days: ";
+            string days = "";
             foreach (string day in timetable.Days)
             {
-                days += day + " ";
+                days += day + ", ";
             }
-            DaysLabel.Content = days;
+            DaysLabel.Content = days.Remove(days.Length - 2);
             DaysLabel.Foreground = new SolidColorBrush(Colors.Black);
-
             row = 1;
 
             addRowPixels(StationsGrid, 30);
@@ -60,14 +59,14 @@ namespace Railway
             {
                 Label stationName = new Label();
                 stationName.Content = station.Name;
-                stationName.Foreground = Brushes.White;
+                stationName.Foreground = Brushes.Black;
                 Grid.SetColumn(stationName, 1);
                 Grid.SetRow(stationName, row);
                 StationsGrid.Children.Add(stationName);
 
                 Label time = new Label();
                 time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-                time.Foreground = Brushes.White;
+                time.Foreground = Brushes.Black;
                 Grid.SetColumn(time, 0);
                 Grid.SetRow(time, row);
                 StationsGrid.Children.Add(time);
@@ -84,14 +83,14 @@ namespace Railway
 
             Label s = new Label();
             s.Content = station.Name;
-            s.Foreground = Brushes.White;
+            s.Foreground = Brushes.Black;
             Grid.SetColumn(s, 1);
             Grid.SetRow(s, row);
             StationsGrid.Children.Add(s);
 
             Label t = new Label();
             t.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-            t.Foreground = Brushes.White;
+            t.Foreground = Brushes.Black;
             Grid.SetColumn(t, 0);
             Grid.SetRow(t, row);
             StationsGrid.Children.Add(t);
@@ -104,14 +103,14 @@ namespace Railway
             {
                 Label stationName = new Label();
                 stationName.Content = station.Name;
-                stationName.Foreground = Brushes.White;
+                stationName.Foreground = Brushes.Black;
                 Grid.SetColumn(stationName, 3);
                 Grid.SetRow(stationName, row);
                 StationsGrid.Children.Add(stationName);
 
                 Label time = new Label();
                 time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-                time.Foreground = Brushes.White;
+                time.Foreground = Brushes.Black;
                 Grid.SetColumn(time, 2);
                 Grid.SetRow(time, row);
                 StationsGrid.Children.Add(time);
@@ -125,14 +124,14 @@ namespace Railway
 
             Label sn = new Label();
             sn.Content = station.Name;
-            sn.Foreground = Brushes.White;
+            sn.Foreground = Brushes.Black;
             Grid.SetColumn(sn, 3);
             Grid.SetRow(sn, row);
             StationsGrid.Children.Add(sn);
 
             Label tn = new Label();
             tn.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-            tn.Foreground = Brushes.White;
+            tn.Foreground = Brushes.Black;
             Grid.SetColumn(tn, 2);
             Grid.SetRow(tn, row);
             StationsGrid.Children.Add(tn);
@@ -142,27 +141,23 @@ namespace Railway
             InitializeComponent();
             Window = window;
 
-            TitleGrid.Children.Remove(EditButton);
-            TitleGrid.Children.Remove(DeleteButton);
-            Grid.SetColumn(NameLabel, 3);
-            Grid.SetColumnSpan(NameLabel, 3);
-            NameLabel.HorizontalAlignment = HorizontalAlignment.Left;
 
-            NameLabel.Content = "Name: " + timetable.Name;
-            TrainLabel.Content = "Train: " + timetable.Train.Name;
+            TimeTableName.Content = "Name: " + timetable.Name;
+            TrainName.Content = "Train: " + timetable.Train.Name;
 
             this.timetable = timetable;
-            string days = "Days: ";
+            string days = "";
             foreach (string day in timetable.Days)
             {
-                days += day + " ";
+                days += day + ", ";
             }
-            DaysLabel.Content = days;
+            
+            DaysLabel.Content = days.Remove(days.Length-2);
 
             row = 1;
 
-            addRowPixels(StationsGrid, 30);
-            addRowPixels(StationsGrid, 5);
+            addRowPixels(StationsGrid, 40);
+            addRowPixels(StationsGrid, 3);
 
             DateTime datetime = timetable.TimeFromFirstStation;
             Station station = timetable.Trainline.FirstStation;
