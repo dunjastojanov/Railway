@@ -83,6 +83,9 @@
     <Compile Include="AddTimetable.xaml.cs">
       <DependentUpon>AddTimetable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTimetableTutorial.xaml.cs">
+      <DependentUpon>AddTimetableTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTrain.xaml.cs">
       <DependentUpon>AddTrain.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
     <Page Include="AddTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddTimetableTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTrain.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -59,19 +59,19 @@ namespace Railway
             AddNewTimetable.IsEnabled = false;
             UndoDeleteTimetable.IsEnabled = false;
             RedoDeleteTimetable.IsEnabled = false;
-            MessageBox.Show("Please select button 'Delete' to delete one trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select button 'Delete' to delete one timetable.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Step2()
         {
-            MessageBox.Show("Please select button 'Undo' to undo deleting trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select button 'Undo' to undo deleting timetable.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             AddNewTimetable.IsEnabled = false;
             UndoDeleteTimetable.IsEnabled = true;
             RedoDeleteTimetable.IsEnabled = false;
         }
         private void Step3()
         {
-            MessageBox.Show("Please select button 'Redo' to redo deleting trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select button 'Redo' to redo deleting timetable.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             AddNewTimetable.IsEnabled = false;
             UndoDeleteTimetable.IsEnabled = false;
             RedoDeleteTimetable.IsEnabled = true;
@@ -81,14 +81,14 @@ namespace Railway
             AddNewTimetable.IsEnabled = false;
             UndoDeleteTimetable.IsEnabled = false;
             RedoDeleteTimetable.IsEnabled = false;
-            MessageBox.Show("Please select button 'Edit' to edit one trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);     
+            MessageBox.Show("Please select button 'Edit' to edit one timetable.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);     
         }
         private void Step5()
         {
             AddNewTimetable.IsEnabled = true;
             UndoDeleteTimetable.IsEnabled = false;
             RedoDeleteTimetable.IsEnabled = false;
-            MessageBox.Show("Please select button 'Add' to add one trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select button 'Add' to add one timetable.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void Step6()
         {
@@ -126,7 +126,11 @@ namespace Railway
 
         private void AddNewTimetable_Click(object sender, RoutedEventArgs e)
         {
-           //TutorialHomePage.tutorialFrame.Content = new AddTimetableTutorial(this);
+            TutorialHomePage.tutorialFrame.Content = new AddTimetableTutorial(this, Window);
+            /*MessageBox.Show("Adding timetable successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            Step = "step6";
+            RefreshPage();
+            DoStep();*/
         }
         public void RefreshPage()
         {
@@ -138,7 +142,7 @@ namespace Railway
         {
            
             Data.UndoTutorial();        
-            MessageBox.Show("Undo deleting trainline successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);       
+            MessageBox.Show("Undo deleting timetable successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);       
             Step = "step3";
             RefreshPage();
             DoStep();
@@ -148,7 +152,7 @@ namespace Railway
         {
            
             Data.RedoTutorial();
-            MessageBox.Show("Redo deleting trainline successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Redo deleting timetable successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             Step = "step4";
             RefreshPage();
             DoStep();
