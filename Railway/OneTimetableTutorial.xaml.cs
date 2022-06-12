@@ -170,16 +170,14 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            //Window.Frame.Content = new AddTimetableTutorial(Window, timetable);
-            ReadTimetableTutorial.Step = "step3";
-            ReadTimetableTutorial.DoStep();
+            ReadTimetableTutorial.TutorialHomePage.tutorialFrame.Content = new AddTimetableTutorial(ReadTimetableTutorial, Window, timetable);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             
             Data.deleteTimetableTutorial(timetable);
-            MessageBox.Show("Trainline deleted succesfully.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Timetable deleted succesfully.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             ReadTimetableTutorial.Step = "step2";
             ReadTimetableTutorial.RefreshPage();        
             ReadTimetableTutorial.DoStep();

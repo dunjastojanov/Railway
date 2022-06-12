@@ -31,7 +31,6 @@ namespace Railway
         {
             InitializeComponent();
             Window = window;
-            AddTutorialNavbar();
             Data.CreateTutorialData();
             ShowTutorialHomePage();
         }
@@ -91,6 +90,7 @@ namespace Railway
 
         public void ShowTutorialHomePage()
         {
+            AddTutorialNavbar();
             tutorialFrame.Content = new TutorialButtons(this);
         }
         private void TimetablesBeginTut_Click(object sender, RoutedEventArgs e)
