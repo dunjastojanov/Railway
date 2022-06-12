@@ -27,7 +27,7 @@
             <WPF:MapItemsControl ItemsSource="{Binding Stations, UpdateSourceTrigger=PropertyChanged}" >
                 <WPF:MapItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <WPF:Pushpin Location="{Binding Location}"></WPF:Pushpin>
+                        <WPF:Pushpin Location="{Binding Location}" ToolTip="{Binding Name}"></WPF:Pushpin>
                     </DataTemplate>
                 </WPF:MapItemsControl.ItemTemplate>
             </WPF:MapItemsControl>
