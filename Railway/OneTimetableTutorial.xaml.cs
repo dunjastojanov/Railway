@@ -170,7 +170,7 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            Window.Frame.Content = new AddTimetable(Window, timetable);
+            //Window.Frame.Content = new AddTimetableTutorial(Window, timetable);
             ReadTimetableTutorial.Step = "step3";
             ReadTimetableTutorial.DoStep();
         }

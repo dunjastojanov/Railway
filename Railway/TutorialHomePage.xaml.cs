@@ -33,7 +33,7 @@ namespace Railway
             Window = window;
             AddTutorialNavbar();
             Data.CreateTutorialData();
-            tutorialFrame.Content = new TutorialButtons(this);
+            ShowTutorialHomePage();
         }
         private void AddTutorialNavbar()
         {
@@ -89,9 +89,13 @@ namespace Railway
             Window.navButtons.Children.Add(TimetablesTut);
         }
 
+        public void ShowTutorialHomePage()
+        {
+            tutorialFrame.Content = new TutorialButtons(this);
+        }
         private void TimetablesBeginTut_Click(object sender, RoutedEventArgs e)
         {
-            tutorialFrame.Content = new ReadTimetableTutorial(Window);
+            tutorialFrame.Content = new ReadTimetableTutorial(this);
         }
         private void TrainlinesBeginTut_Click(object sender, RoutedEventArgs e)
         {

@@ -21,14 +21,16 @@ namespace Railway
     /// </summary>
     public partial class ReadTimetableTutorial : Page
     {
-        private Railway.MainWindow Window;
+        public TutorialHomePage TutorialHomePage { get; set; }
+        Railway.MainWindow Window { get; set; }
         string User { get; set; }
         public string Step { get; set; }
-        public ReadTimetableTutorial(Railway.MainWindow window)
+        public ReadTimetableTutorial(TutorialHomePage thp, Railway.MainWindow window)
         {
             Step = "step1";
             InitializeComponent();
             Window = window;
+            TutorialHomePage = thp;
             User = null;
             AddNewTimetable.IsEnabled = false;
             UndoDeleteTimetable.IsEnabled = false;
@@ -46,6 +48,10 @@ namespace Railway
                 Step3();
             else if (Step.Equals("step4"))
                 Step4();
+            else if (Step.Equals("step5"))
+                Step5();
+            else if (Step.Equals("step6"))
+                Step6();
         }     
         private async void Step1()
         {
@@ -77,18 +83,21 @@ namespace Railway
             RedoDeleteTimetable.IsEnabled = false;
             MessageBox.Show("Please select button 'Edit' to edit one trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);     
         }
-        public ReadTimetableTutorial(Railway.MainWindow window, string user)
+        private void Step5()
         {
-            InitializeComponent();
-            Window = window;
-            User = user;
-            MainGridTutorial.Children.Clear();
-            Grid.SetRow(ReadTrainRouteScrollViewer, 0);
-            Grid.SetRowSpan(ReadTrainRouteScrollViewer, 2);
-            MainGridTutorial.Children.Add(ReadTrainRouteScrollViewer);
-            AddContent();
+            AddNewTimetable.IsEnabled = true;
+            UndoDeleteTimetable.IsEnabled = false;
+            RedoDeleteTimetable.IsEnabled = false;
+            MessageBox.Show("Please select button 'Add' to add one trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
+        private void Step6()
+        {
+            AddNewTimetable.IsEnabled = false;
+            UndoDeleteTimetable.IsEnabled = false;
+            RedoDeleteTimetable.IsEnabled = false;
+            MessageBox.Show("Congratulations! You have finished timetables tutorial.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            TutorialHomePage.ShowTutorialHomePage();
+    }       
         public void AddContent()
         {
             int timetableIndex = 1;
@@ -97,7 +106,7 @@ namespace Railway
             {
                 foreach (Timetable timetable in trainline.Timetables)
                 {
-                    OneTimetableTutorial oneTimetable = new OneTimetableTutorial(this, Window, timetable, Step);                  
+                    OneTimetableTutorial oneTimetable = new OneTimetableTutorial(this, Window,timetable, Step);                  
                     addRowPixels(ReadTimetableGrid, oneTimetable.getHeight());
                     Grid.SetRow(oneTimetable, timetableIndex);
 
@@ -117,7 +126,7 @@ namespace Railway
 
         private void AddNewTimetable_Click(object sender, RoutedEventArgs e)
         {
-            Window.Frame.Content = new AddTimetable(Window);
+           //TutorialHomePage.tutorialFrame.Content = new AddTimetableTutorial(this);
         }
         public void RefreshPage()
         {
