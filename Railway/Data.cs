@@ -864,11 +864,16 @@ namespace Railway
 
         private static void AddRailway(Railroad railway)
         {
+            if (NeedRedo())
+            {
+                Data.RailwayStates.RemoveRange(CurrentRailwayIndex + 1, Data.RailwayStates.Count - 1 - CurrentRailwayIndex);
+            }
             Data.RailwayStates.Add(railway);
+            UpperRailwayIndexBound = Data.RailwayStates.Count-2;
         }
 
         private static void SetRailwayIndex(int index)
-        {
+        {         
             Data.CurrentRailwayIndex++;
             UpperRailwayIndexBound++;
         }
