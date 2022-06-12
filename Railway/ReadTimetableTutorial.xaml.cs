@@ -97,7 +97,7 @@ namespace Railway
             RedoDeleteTimetable.IsEnabled = false;
             MessageBox.Show("Congratulations! You have finished timetables tutorial.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             TutorialHomePage.ShowTutorialHomePage();
-    }       
+        }       
         public void AddContent()
         {
             int timetableIndex = 1;

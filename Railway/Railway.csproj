@@ -77,6 +77,9 @@
     <Compile Include="AddingStation.xaml.cs">
       <DependentUpon>AddingStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddingStationTutorial.xaml.cs">
+      <DependentUpon>AddingStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTimetable.xaml.cs">
       <DependentUpon>AddTimetable.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,9 @@
     <Compile Include="OneStation.xaml.cs">
       <DependentUpon>OneStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OneStationTutorial.xaml.cs">
+      <DependentUpon>OneStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OneTimetable.xaml.cs">
       <DependentUpon>OneTimetable.xaml</DependentUpon>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <Compile Include="ReadStations.xaml.cs">
       <DependentUpon>ReadStations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadStationTutorial.xaml.cs">
+      <DependentUpon>ReadStationTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReadTimetable.xaml.cs">
       <DependentUpon>ReadTimetable.xaml</DependentUpon>
@@ -180,9 +189,16 @@
     <Compile Include="UpdateStation.xaml.cs">
       <DependentUpon>UpdateStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateStationTutorial.xaml.cs">
+      <DependentUpon>UpdateStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddingStation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddingStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -248,6 +264,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OneStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OneTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -271,6 +291,10 @@
     <Page Include="ReadStations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReadStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReadTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -321,6 +345,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateStationTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -107,7 +107,7 @@ namespace Railway
         }
         private void StationsBeginTut_Click(object sender, RoutedEventArgs e)
         {
-
+            tutorialFrame.Content = new ReadStationTutorial(this, Window,"step1");
         }
         
         private void button_Click(object sender, RoutedEventArgs e)
