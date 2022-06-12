@@ -103,7 +103,7 @@ namespace Railway
         }
         private void TrainsBeginTut_Click(object sender, RoutedEventArgs e)
         {
-
+            tutorialFrame.Content = new ReadTrainTutorial(this, Window);
         }
         private void StationsBeginTut_Click(object sender, RoutedEventArgs e)
         {

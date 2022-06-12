@@ -29,8 +29,7 @@ namespace Railway
         public OneTrainRoute(Trainline trainline, Railway.MainWindow window)
         {
             InitializeComponent();
-            addFirstStationLabel(trainline);
-            addLastStationLabel(trainline);
+
             addTrainLineName(trainline);
             this.Window = window;
             this.trainline = trainline;

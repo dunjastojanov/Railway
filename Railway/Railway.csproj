@@ -40,6 +40,10 @@
   <PropertyGroup>
     <ApplicationIcon>train.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=2.0.6.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.6\lib\net452\MaterialDesignColors.dll</HintPath>
@@ -135,6 +139,9 @@
     <Compile Include="OneTrainRoute.xaml.cs">
       <DependentUpon>OneTrainRoute.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OneTrainTutorial.xaml.cs">
+      <DependentUpon>OneTrainTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RailwayNetworkOverview.xaml.cs">
       <DependentUpon>RailwayNetworkOverview.xaml</DependentUpon>
     </Compile>
@@ -152,6 +159,9 @@
     </Compile>
     <Compile Include="ReadTrainRoute.xaml.cs">
       <DependentUpon>ReadTrainRoute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadTrainTutorial.xaml.cs">
+      <DependentUpon>ReadTrainTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
@@ -264,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="OneTrainTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RailwayNetworkOverview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -287,6 +301,10 @@
     <Page Include="ReadTrainRoute.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReadTrainTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports.xaml">
       <SubType>Designer</SubType>

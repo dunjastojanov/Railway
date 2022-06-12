@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Dunja\Desktop\HCI\Railway\Railway\App.xaml
-241148930121
-
-39-1693393967
-17-243361167
-AddingStation.xaml;AddTimetable.xaml;AddTrain.xaml;AddTrainRoute.xaml;AdminPage.xaml;BuyTicket.xaml;Login.xaml;MainWindow.xaml;ManagerPage.xaml;MonthlyReport.xaml;OneTimetable.xaml;OneTrain.xaml;OneTrainRoute.xaml;RailwayNetworkOverview.xaml;ReadStations.xaml;ReadTimetable.xaml;ReadTrain.xaml;ReadTrainRoute.xaml;Reports.xaml;RouteReport.xaml;SearchRoute.xaml;SeatButton.xaml;TicketHistory.xaml;TrainSeats.xaml;
+36-442505205
+16-1475928966
+55901107746
+18-924503761
+AddingStation.xaml;AddTimetable.xaml;AddTrain.xaml;AddTrainRoute.xaml;AdminPage.xaml;BuyTicket.xaml;ChooseSeat.xaml;ChooseTrainSeats.xaml;HelpButton.xaml;HelpViewer.xaml;Login.xaml;MainWindow.xaml;ManagerPage.xaml;MonthlyReport.xaml;OneStation.xaml;OneTimetable.xaml;OneTimetableTutorial.xaml;OneTrain.xaml;OneTrainRoute.xaml;OneTrainTutorial.xaml;RailwayNetworkOverview.xaml;ReadStations.xaml;ReadTimetable.xaml;ReadTimetableTutorial.xaml;ReadTrain.xaml;ReadTrainRoute.xaml;ReadTrainTutorial.xaml;Reports.xaml;RouteReport.xaml;SearchRoute.xaml;SeatButton.xaml;TicketHistory.xaml;TrainSeats.xaml;TutorialButtons.xaml;TutorialHomePage.xaml;UpdateStation.xaml;
 
 False
 

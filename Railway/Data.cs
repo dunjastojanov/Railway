@@ -481,6 +481,44 @@ namespace Railway
             return railway;
 
         }
+
+        internal static List<Train> GetTrainsTutorial()
+        {
+            Railroad railway = Data.RailwayStatesTutorial[Data.CurrentRailwayIndex];
+            return railway.Trains;
+        }
+
+        internal static void deleteTrainTutorial(Train oldTrain)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.CurrentRailwayIndex];
+            Railroad newRailway = oldRailway.DeepCopy();
+            List<Trainline> trainlines = newRailway.TrainLines;
+            for (int i = 0; i < trainlines.Count; i++)
+            {
+                List<Timetable> timetables = new List<Timetable>();
+                foreach (Timetable timetable in trainlines[i].Timetables)
+                {
+                    if (timetable.Train.Name != oldTrain.Name)
+                    {
+                        timetables.Add(timetable);
+                    }
+                }
+                trainlines[i].Timetables = timetables;
+            }
+            List<Train> trains = new List<Train>();
+            for (int i = 0; i < newRailway.Trains.Count; i++)
+            {
+                if (newRailway.Trains[i].Name != oldTrain.Name)
+                {
+                    trains.Add(newRailway.Trains[i]);
+                }
+            }
+            newRailway.Trains = trains;
+            newRailway.TrainLines = trainlines;
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
+        }
+
         public static Station getStationByName(String stationName) {
             foreach (Station station in Data.getStations())
             {
