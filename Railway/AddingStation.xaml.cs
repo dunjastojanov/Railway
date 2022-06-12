@@ -91,6 +91,8 @@ namespace Railway
                         Point mousePosition = e.GetPosition(this.mapa);
                         Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                         MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you want to add station to", MessageBoxButton.OK);
+                        if (PushpinIndex != Pushpins.Count - 1)
+                            Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                         Pushpin pin = new Pushpin();
                         pin.Background = new SolidColorBrush(Colors.Blue);
                         pin.Location = pinLocation;
@@ -109,6 +111,8 @@ namespace Railway
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                     MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
+                    if (PushpinIndex != Pushpins.Count - 1)
+                        Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
@@ -126,6 +130,8 @@ namespace Railway
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                     MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
+                    if (PushpinIndex != Pushpins.Count - 1)
+                        Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
