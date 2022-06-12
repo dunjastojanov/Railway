@@ -143,13 +143,15 @@ namespace Railway
 
                 }
                 else
-                {
+                {                  
                     fillInfo();
+                    RedoAddTrainRoute.IsEnabled = false;
                 }
             }
             else
             {
                 fillInfo();
+                RedoAddTrainRoute.IsEnabled = false;
 
             }
 
@@ -217,7 +219,6 @@ namespace Railway
             Label durationLabel = new Label();
             durationLabel.Content = "Trip duration (minutes):";
             durationLabel.HorizontalAlignment = HorizontalAlignment.Right;
-            durationLabel.Foreground = Brushes.White;
             Grid.SetRow(durationLabel, 1);
             Grid.SetColumn(durationLabel, 1);
             grid.Children.Add(durationLabel);
@@ -230,7 +231,6 @@ namespace Railway
             grid.Children.Add(durationTextBox);
 
             Label priceLabel = new Label();
-            priceLabel.Foreground = Brushes.White;
             priceLabel.Content = "Price (rsd):";
             priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
             Grid.SetRow(priceLabel, 2);
@@ -272,7 +272,6 @@ namespace Railway
             Label durationLabel = new Label();
             durationLabel.Content = "Trip duration (minutes):";
             durationLabel.HorizontalAlignment = HorizontalAlignment.Right;
-            durationLabel.Foreground = Brushes.White;
             Grid.SetRow(durationLabel, 1);
             Grid.SetColumn(durationLabel, 1);
             grid.Children.Add(durationLabel);
@@ -283,8 +282,7 @@ namespace Railway
             grid.Children.Add(durationTextBox);
 
             Label priceLabel = new Label();
-            priceLabel.Foreground = Brushes.White;
-            priceLabel.Content = "Price ($):";
+            priceLabel.Content = "Price (rsd):";
             priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
             Grid.SetRow(priceLabel, 2);
             Grid.SetColumn(priceLabel, 1);
@@ -308,22 +306,13 @@ namespace Railway
             infoBetweenStations.Add(info);
         }
 
-        private void addStationLabel()
-        {
-            Label label = new Label();
-            label.Foreground = Brushes.White;
-            string stationName = StationComboBox.SelectedItem.ToString();
-            label.Content = stationName;
-            Grid.SetRow(label, lastStationLabelRow + 2);
-            AddedStationsInfoGrid.Children.Add(label);
-
-        }
+       
 
         private void addStationLabel(String stationName)
         {
             Label label = new Label();
-            label.Foreground = Brushes.White;
             label.Content = stationName;
+            label.Foreground = Brushes.Black;
             Grid.SetRow(label, lastStationLabelRow + 2);
             AddedStationsInfoGrid.Children.Add(label);
 
@@ -419,7 +408,7 @@ namespace Railway
 
                     Console.WriteLine();
 
-                    parameters += $"From {info["startStation"]} to {info["endStation"]} you will travel {info["duration"]} minutes, and you will spend {info["price"]}$\n";
+                    parameters += $"From {info["startStation"]} to {info["endStation"]} you will travel {info["duration"]} minutes, and you will spend {info["price"]}rsd\n";
                 }
 
             }
@@ -540,7 +529,7 @@ namespace Railway
 
         private void UndoAddTrainRoute_Click(object sender, RoutedEventArgs e)
         {
-            int response = (int)MessageBox.Show("Are you sure you want to undo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            int response = (int)MessageBox.Show("Are you sure you want to undo adding a station to trainline?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
                 string st = addedStations[addedStations.Count - 1];
@@ -550,12 +539,12 @@ namespace Railway
             }
             else
             {
-                MessageBox.Show("Undo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Undo adding station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
         private void RedoAddTrainRoute_Click(object sender, RoutedEventArgs e)
         {
-            int response = (int)MessageBox.Show("Are you sure you want to redo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            int response = (int)MessageBox.Show("Are you sure you want to redo adding a station to trainline?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
                 addedStations.Add(removedStations[removedStations.Count - 1]);
@@ -563,7 +552,7 @@ namespace Railway
             }
             else
             {
-                MessageBox.Show("Redo deleting station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Redo adding station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

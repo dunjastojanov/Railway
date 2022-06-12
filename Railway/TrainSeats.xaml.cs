@@ -59,6 +59,7 @@ namespace Railway
                 for (int j = firstColumRows+1; j <= seats.numberOfColumns; j++)
                 {
                     SeatButton seatButton = new SeatButton(wagonNumber, alpha[j], i);
+
                     Grid.SetColumn(seatButton, j + 1);
                     Grid.SetRow(seatButton, i);
 

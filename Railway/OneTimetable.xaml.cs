@@ -60,14 +60,12 @@ namespace Railway
             {
                 Label stationName = new Label();
                 stationName.Content = station.Name;
-                stationName.Foreground = Brushes.White;
                 Grid.SetColumn(stationName, 1);
                 Grid.SetRow(stationName, row);
                 StationsGrid.Children.Add(stationName);
 
                 Label time = new Label();
                 time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-                time.Foreground = Brushes.White;
                 Grid.SetColumn(time, 0);
                 Grid.SetRow(time, row);
                 StationsGrid.Children.Add(time);
@@ -84,14 +82,12 @@ namespace Railway
 
             Label s = new Label();
             s.Content = station.Name;
-            s.Foreground = Brushes.White;
             Grid.SetColumn(s, 1);
             Grid.SetRow(s, row);
             StationsGrid.Children.Add(s);
 
             Label t = new Label();
             t.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-            t.Foreground = Brushes.White;
             Grid.SetColumn(t, 0);
             Grid.SetRow(t, row);
             StationsGrid.Children.Add(t);
@@ -104,14 +100,12 @@ namespace Railway
             {
                 Label stationName = new Label();
                 stationName.Content = station.Name;
-                stationName.Foreground = Brushes.White;
                 Grid.SetColumn(stationName, 3);
                 Grid.SetRow(stationName, row);
                 StationsGrid.Children.Add(stationName);
 
                 Label time = new Label();
                 time.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-                time.Foreground = Brushes.White;
                 Grid.SetColumn(time, 2);
                 Grid.SetRow(time, row);
                 StationsGrid.Children.Add(time);
@@ -125,14 +119,12 @@ namespace Railway
 
             Label sn = new Label();
             sn.Content = station.Name;
-            sn.Foreground = Brushes.White;
             Grid.SetColumn(sn, 3);
             Grid.SetRow(sn, row);
             StationsGrid.Children.Add(sn);
 
             Label tn = new Label();
             tn.Content = $"{datetime.Hour.ToString().PadLeft(2, '0')}:{datetime.Minute.ToString().PadLeft(2, '0')}";
-            tn.Foreground = Brushes.White;
             Grid.SetColumn(tn, 2);
             Grid.SetRow(tn, row);
             StationsGrid.Children.Add(tn);
@@ -252,7 +244,7 @@ namespace Railway
 
         internal double getHeight()
         {
-            return row * 30 + 150;
+            return row * 40 + 150;
         }
 
         private void addRowPixels(Grid grid, double height)

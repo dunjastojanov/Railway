@@ -95,7 +95,7 @@
             <ComboBox SelectionChanged="TrainlineComboBox_Selected" x:Name="TrainlineComboBox" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="0" ToolTip="Trainline to which the timetable applies."  local:HelpProvider.HelpKey="AddTimetable"></ComboBox>
 
             <Label Grid.Column="0" Grid.Row="2" Foreground="Black">Choose train:</Label>
-            <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" ToolTip="Train that will be driven at the time of the timetable on seleceted trainline."></ComboBox>
+            <ComboBox SelectionChanged="TrainComboBox_Selected" x:Name="TrainComboBox" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" ToolTip="Train that will be driven at the time of the timetable on seleceted trainline."></ComboBox>
 
             <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Content="Classic Route      Chose a time when train leaves the first station." Foreground="Black" Margin="0,0.4,0.2,0" FontSize="13"/>
             <Label Grid.Column="0" Grid.Row="5" Foreground="Black">Time (hh:mm):</Label>

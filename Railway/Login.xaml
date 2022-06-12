@@ -71,11 +71,10 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
-
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
             <Border BorderBrush="White" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="0" Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
+            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
             <Label Opacity="1"  Grid.Row="1" Grid.Column="1" Foreground="Black" FontSize="16">E-mail</Label>
             <TextBox  Opacity="1" x:Name="emailTextBox"  Grid.Row="2" Grid.Column="1" ToolTip="Email used for logging in."></TextBox>
             <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="Black" FontSize="16">Password</Label>

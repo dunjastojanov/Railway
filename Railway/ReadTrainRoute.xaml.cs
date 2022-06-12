@@ -81,7 +81,7 @@ namespace Railway
         public void RefreshPage()
         {
             ReadTrainRouteGrid.Children.RemoveRange(0, ReadTrainRouteGrid.Children.Count);
-            ReadTrainRouteGrid.Height = 35;
+            ReadTrainRouteGrid.Height = 0;
             TryDisableUndoRedo();
             AddContent();
         }

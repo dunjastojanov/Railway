@@ -88,8 +88,7 @@ namespace Railway
         public OneTrainRoute(Trainline trainline, Railway.MainWindow window, string user)
         {
             InitializeComponent();
-            addFirstStationLabel(trainline);
-            addLastStationLabel(trainline);
+
             addTrainLineName(trainline);
             this.Window = window;
             this.trainline = trainline;
@@ -167,20 +166,13 @@ namespace Railway
             TitleGrid.Children.Add(trainLineName);
         }
 
-        private void addLastStationLabel(Trainline trainline)
-        {
-            LastStation.Content= trainline.LastStation.Name;
-        }
+      
 
         internal double getHeight()
         {
             return (stationNextRow + 1) * 40 + 120;
         }
 
-        private void addFirstStationLabel(Trainline trainline)
-        {
-            FirstStation.Content = trainline.FirstStation.Name;
-        }
 
 
         private void addRowPixels(Grid grid, double height)
