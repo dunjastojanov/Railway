@@ -18,13 +18,13 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="navbar" Grid.Row="0" Grid.Column="0" Background="#00b0ff">
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
             <StackPanel x:Name="navButtons" Grid.Row="0" Orientation="Vertical" Grid.Column="0">
             </StackPanel>
             <StackPanel x:Name="logOut" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="0">
-                <Button  BorderThickness="0" HorizontalAlignment="Stretch" Height="35" FontSize="15" Content="Logout" Background="#00b0ff" Foreground="FloralWhite" Click="Button_Click_Logout" />
+                <Button  x:Name="logOutButton"  BorderThickness="0" HorizontalAlignment="Stretch" Height="35" FontSize="15" Content="Logout" Background="#00b0ff" Foreground="FloralWhite" Click="Button_Click_Logout" />
             </StackPanel>
         </Grid>
         <Frame x:Name="MainFrame" Grid.Row="0" Grid.Column="1" NavigationUIVisibility="Hidden" />

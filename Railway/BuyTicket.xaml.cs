@@ -28,6 +28,7 @@ namespace Railway
         public int NumberOfPassengers { get; set; }
         public User LogedUser { get; set; }
         public MainWindow MainWindow { get; set; }
+        public List<TicketSeat> BoughtSeats { get; set; }
         public BuyTicket(MainWindow mainWindow, ref List<QuickReservation> quickReservations, DateTime date, int numberOfPassengers, User logedUser)
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Railway
             Date = date;
             NumberOfPassengers = numberOfPassengers;
             DisplayQuickReservations();
+            BoughtSeats = new List<TicketSeat>();
         }
 
         private void DisplayQuickReservations()
@@ -192,30 +194,35 @@ namespace Railway
             Station firstStation = reservation.Trainline.getStation(reservation.FirstStation);
             Station lastStation = reservation.Trainline.getStation(reservation.LastStation);
             DateTime ticketDate = new DateTime(Date.Year, Date.Month, Date.Day, reservation.DepartureTime.Hour, reservation.DepartureTime.Minute, 0);
-            Ticket ticket = new Ticket(LogedUser, firstStation, lastStation, ticketDate, NumberOfPassengers, reservation.Price, reservation.Duration, reservation.Timetable.Train);
-            string parameters = "Departure: " + reservation.DepartureTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.FirstStation  + "\nArrival: " + reservation.ArrivalTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.LastStation + "\nPrice: " + reservation.Price  + " rsd" + "\nDuration: " + reservation.Duration + " minutes";
-            int response = (int)MessageBox.Show("Are you sure you want to buy ticket with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
+            ChooseSeat cs= new ChooseSeat(this, reservation.Timetable.BoughtTickets, reservation.Timetable.Train, NumberOfPassengers);
+            cs.ShowDialog();
+            if (BoughtSeats.Count > 0)
             {
-                //BEZ UNDO I REDO:
-                reservation.Timetable.BoughtTickets.Add(ticket);
-              
-                // SA UNDO I REDO
-                //QuickReservations = Data.BuyTicket(reservation, ticket, firstStation.Name, lastStation.Name, Date, NumberOfPassengers);
-                
-                MessageBox.Show("Ticket successfully bought!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                RefreshPage();
-            }
+                Ticket ticket = new Ticket(LogedUser, firstStation, lastStation, ticketDate, NumberOfPassengers, reservation.Price, reservation.Duration, reservation.Timetable.Train, BoughtSeats);
+                string parameters = "Departure: " + reservation.DepartureTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.FirstStation  + "\nArrival: " + reservation.ArrivalTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.LastStation + "\nPrice: " + reservation.Price  + " rsd" + "\nDuration: " + reservation.Duration + " minutes";
+                int response = (int)MessageBox.Show("Are you sure you want to buy ticket with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (response == 6)
+                {             
+                    reservation.Timetable.BoughtTickets.Add(ticket);                          
+                    MessageBox.Show("Ticket successfully bought!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    RefreshPage();
+                }
+                else
+                {
+                    MessageBox.Show("Buying ticket cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    BoughtSeats = new List<TicketSeat>();
+                }
+            } 
             else
             {
-                MessageBox.Show("Buying ticket cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Choosing seats cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
         public void RefreshPage()
         {
-            //MainWindow.TryDisableUndoRedo();
             DisplayBuyTicket.Children.RemoveRange(0, DisplayBuyTicket.Children.Count);
             DisplayBuyTicket.Height = 0;
+            BoughtSeats = new List<TicketSeat>();
             this.DisplayQuickReservations();
         }
         private void CreateRowsAndCols(Grid grid)

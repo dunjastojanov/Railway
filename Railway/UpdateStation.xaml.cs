@@ -40,9 +40,14 @@ namespace Railway
             MainWindow = window;
             Station = station;
             Pushpins = new List<Pushpin>();
-            Pushpins.Add(SelectedPushpin);
             PushpinIndex = 0;
             InitializeComponent();
+            Pushpin pushpin = new Pushpin();
+            pushpin.Location = Station.Location;
+            pushpin.Name = Station.Name;
+            pushpin.MouseDown += Pushpin_MouseDown;
+            pushpin.ToolTip = pushpin.Name;
+            Pushpins.Add(pushpin);
             TryDisableUnable();
         }
 
@@ -71,6 +76,7 @@ namespace Railway
                 {
                     SelectedPushpin.Location = mapa.ViewportPointToLocation(
                         Point.Add(e.GetPosition(mapa), mouseToMarker));
+                    
                     e.Handled = true;
                 }
             }
@@ -85,11 +91,7 @@ namespace Railway
                 {
 
                     lastConfirmedLocation = mapa.ViewportPointToLocation(Point.Add(e.GetPosition(mapa), mouseToMarker));
-                    SelectedPushpin.Location = lastConfirmedLocation;
-                    SelectedPushpin.Content = station_name.Text;
-                    Pushpins.Add(SelectedPushpin);
-                    PushpinIndex++;
-                    TryDisableUnable();
+                    SelectedPushpin.Location = lastConfirmedLocation;            
                     e.Handled = true;
                 }
             }
@@ -154,16 +156,35 @@ namespace Railway
             {
                 SelectedPushpin.Location = Station.Location;
             }
+            else
+            {
+                if (PushpinIndex != Pushpins.Count - 1)
+                    Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
+                Pushpin pushpin = new Pushpin();
+                pushpin.Location = SelectedPushpin.Location;
+                SelectedPushpin.Name = station_name.Text;
+                SelectedPushpin.ToolTip = station_name.Text;
+                pushpin.Name = station_name.Text;
+                pushpin.MouseDown += Pushpin_MouseDown;
+                pushpin.ToolTip = pushpin.Name;
+                Pushpins.Add(pushpin);
+                PushpinIndex++;
+                TryDisableUnable();
+                e.Handled = true;
+            }
         }
-        private void setPushpin()
+
+        private void SetPushpin()
         {
-            if (PushpinIndex > 0)
+            if (PushpinIndex > -1)
             {
                 Pushpin p = Pushpins[PushpinIndex];
                 mapa.Children.Remove(selectedPushpin);
-                mapa.Children.Add(p);
-                selectedPushpin = p;
-                station_name.Text = (String)p.Content;
+                selectedPushpin.Location = p.Location;
+                selectedPushpin.Name = p.Name;
+                selectedPushpin.ToolTip = p.ToolTip;
+                mapa.Children.Add(selectedPushpin);
+                station_name.Text = (String)selectedPushpin.Name;
             }
             else
             {
@@ -174,18 +195,18 @@ namespace Railway
         private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
             PushpinIndex--;
-            setPushpin();
+            SetPushpin();
             TryDisableUnable();
         }
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
             PushpinIndex++;
-            setPushpin();
+            SetPushpin();
             TryDisableUnable();
         }
         private void TryDisableUnable()
         {
-            if (PushpinIndex < 1)
+            if (PushpinIndex < 1 || Pushpins.Count <= 1)
                 undoUpdateStation.IsEnabled = false;
             else
                 undoUpdateStation.IsEnabled = true;
