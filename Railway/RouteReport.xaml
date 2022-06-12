@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Column="5" Grid.Row="0" Grid.RowSpan="3">
-                <Button ToolTip="Show results of all choosen inputs" Margin="10" x:Name="showRouteReport" Grid.Column="1" Content="Show" Background="#FFFD9B00" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18" Click="showRouteReport_Click"/>
+                <Button ToolTip="Show results of all choosen inputs" Margin="10" x:Name="showRouteReport" Grid.Column="1" Content="Show" Background="#FFFD9B00" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="18" Click="showRouteReport_Click"/>
             </Grid>
             <Grid Grid.Column="1" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
