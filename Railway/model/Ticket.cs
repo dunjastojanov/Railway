@@ -17,10 +17,12 @@ namespace Railway.Model
         public int Duration { get; set; }
         public Train Train { get; set; }
         public User User { get; set; } 
+        public List<TicketSeat> TicketSeats { get; set; }
 
         public Ticket()
         {
             Date = new DateTime();
+            TicketSeats = new List<TicketSeat>();
         }
         public Ticket DeepCopy()
         {
@@ -33,9 +35,14 @@ namespace Railway.Model
             newTicket.Train = Train;
             newTicket.Price = Price;
             newTicket.Duration = Duration;
+            newTicket.TicketSeats = new List<TicketSeat>();
+            foreach (TicketSeat ticketSeat in TicketSeats)
+            {
+                newTicket.TicketSeats.Add(ticketSeat.DeepCopy());
+            }
             return newTicket;
         }
-        public Ticket(User user, Station startStation, Station endStation, DateTime date, int numberOfPassengers, int price, int duration, Train train)
+        public Ticket(User user, Station startStation, Station endStation, DateTime date, int numberOfPassengers, int price, int duration, Train train, List<TicketSeat> ticketSeats)
         {
             User = user;
             StartStation = startStation;
@@ -45,6 +52,8 @@ namespace Railway.Model
             Price = price;
             Duration = duration;
             Train = train;
+            TicketSeats = ticketSeats;
+
         }
         public override string ToString()
         {

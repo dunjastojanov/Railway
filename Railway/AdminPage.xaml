@@ -9,6 +9,12 @@
       Title="AdminPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="welcomeLabel" Grid.Row="0" Content="Welcome to admin home page!" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="21"/>
+        <Label x:Name="selectLabel" Grid.Row="1" Content="Please choose one of the services offered left" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
     </Grid>
 </Page>

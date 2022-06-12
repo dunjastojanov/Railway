@@ -42,6 +42,12 @@ namespace Railway
         public Reports Reports { get; set; }
         public Frame Frame { get; set; }    
         public User LogedUser { get; set; }
+        public Button Trainlines { get; set; }
+        public Button Trains { get; set; }
+        public Button Timetables { get; set; }
+        public Button Stations { get; set; }
+        public Button ReportsButton { get; set; }
+        public Button Tutorials { get; set; }
         
         public MainWindow()
         {
@@ -83,61 +89,75 @@ namespace Railway
         {
             navButtons.Children.RemoveRange(0, navButtons.Children.Count);
 
-            Button routes = new Button();
-            routes.BorderThickness = new Thickness(0);
-            routes.Height = 35;
-            routes.HorizontalAlignment = HorizontalAlignment.Stretch;
-            routes.FontSize = 15;
-            routes.Content = "Trainlines";
-            routes.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            routes.Foreground = Brushes.FloralWhite;
-            routes.Click += Routes_Click;
+            Trainlines = new Button();
+            Trainlines.BorderThickness = new Thickness(0);
+            Trainlines.Height = 35;
+            Trainlines.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Trainlines.FontSize = 15;
+            Trainlines.Content = "Trainlines";
+            Trainlines.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            Trainlines.Foreground = Brushes.FloralWhite;
+            Trainlines.Click += Routes_Click;
 
-            Button trains = new Button();
-            trains.BorderThickness = new Thickness(0);
-            trains.Height = 35;
-            trains.HorizontalAlignment = HorizontalAlignment.Stretch;
-            trains.FontSize = 15;
-            trains.Content = "Trains";
-            trains.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            trains.Foreground = Brushes.FloralWhite;
-            trains.Click += Trains_Click;
+            Trains = new Button();
+            Trains.BorderThickness = new Thickness(0);
+            Trains.Height = 35;
+            Trains.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Trains.FontSize = 15;
+            Trains.Content = "Trains";
+            Trains.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            Trains.Foreground = Brushes.FloralWhite;
+            Trains.Click += Trains_Click;
 
-            Button stations = new Button();
-            stations.BorderThickness = new Thickness(0);
-            stations.Height = 35;
-            stations.HorizontalAlignment = HorizontalAlignment.Stretch;
-            stations.FontSize = 15;
-            stations.Content = "Stations";
-            stations.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            stations.Foreground = Brushes.FloralWhite;
-            stations.Click += Stations_Click;
+            Stations = new Button();
+            Stations.BorderThickness = new Thickness(0);
+            Stations.Height = 35;
+            Stations.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Stations.FontSize = 15;
+            Stations.Content = "Stations";
+            Stations.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            Stations.Foreground = Brushes.FloralWhite;
+            Stations.Click += Stations_Click;
 
-            Button schedules = new Button();
-            schedules.BorderThickness = new Thickness(0);
-            schedules.Height = 35;
-            schedules.HorizontalAlignment = HorizontalAlignment.Stretch;
-            schedules.FontSize = 15;
-            schedules.Content = "Timetables";
-            schedules.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            schedules.Foreground = Brushes.FloralWhite;
-            schedules.Click += Schedules_Click;
+            Timetables = new Button();
+            Timetables.BorderThickness = new Thickness(0);
+            Timetables.Height = 35;
+            Timetables.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Timetables.FontSize = 15;
+            Timetables.Content = "Timetables";
+            Timetables.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            Timetables.Foreground = Brushes.FloralWhite;
+            Timetables.Click += Schedules_Click;
 
-            Button reports = new Button();
-            reports.BorderThickness = new Thickness(0);
-            reports.Height = 35;
-            reports.HorizontalAlignment = HorizontalAlignment.Stretch;
-            reports.FontSize = 15;
-            reports.Content = "Reports";
-            reports.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
-            reports.Foreground = Brushes.FloralWhite;
-            reports.Click += Reports_Click;
+            ReportsButton = new Button();
+            ReportsButton.BorderThickness = new Thickness(0);
+            ReportsButton.Height = 35;
+            ReportsButton.HorizontalAlignment = HorizontalAlignment.Stretch;
+            ReportsButton.FontSize = 15;
+            ReportsButton.Content = "Reports";
+            ReportsButton.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            ReportsButton.Foreground = Brushes.FloralWhite;
+            ReportsButton.Click += Reports_Click;
 
-            navButtons.Children.Add(routes);
-            navButtons.Children.Add(trains);
-            navButtons.Children.Add(stations);
-            navButtons.Children.Add(schedules);
-            navButtons.Children.Add(reports);
+            navButtons.Children.Add(Trainlines);
+            navButtons.Children.Add(Trains);
+            navButtons.Children.Add(Stations);
+            navButtons.Children.Add(Timetables);
+            navButtons.Children.Add(ReportsButton);
+
+            Tutorials = new Button();
+            Tutorials.Name = "tutorial";
+            Tutorials.BorderThickness = new Thickness(0);
+            Tutorials.Height = 35;
+            Tutorials.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Tutorials.FontSize = 15;
+            Tutorials.Content = "Tutorial";
+            Tutorials.Background = new SolidColorBrush(Color.FromRgb(0, 176, 255));
+            Tutorials.Foreground = Brushes.FloralWhite;
+            Tutorials.Click += Tutorial_Click;           
+            logOut.Children.Remove(logOutButton);
+            logOut.Children.Add(Tutorials);
+            logOut.Children.Add(logOutButton);
 
         }
         public void CreateUserNavbar()
@@ -326,7 +346,10 @@ namespace Railway
         {
             ShowLogin();
         }
-
+        private void Tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new TutorialHomePage(this);
+        }
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
@@ -336,6 +359,7 @@ namespace Railway
                 HelpProvider.ShowHelp(str, this);
             }
         }
+
 
     }
 }
