@@ -29,10 +29,7 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-
-        
-
-        <Border BorderBrush="Black" BorderThickness="1"  Background="White" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
         <Grid x:Name="undoRedo" Grid.Row="1" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="42*"/>
@@ -51,16 +48,16 @@
             <Button x:Name="redoAddStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click"  Background="#FFFD9B00" Foreground="White" />
             <local:HelpButton Grid.Column="6" Grid.Row="1" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
-        <Label Content="Add station" Margin="10" Grid.Column="1" Grid.Row="2"  Foreground="Black" FontSize="20" />
-        <Label Content="Station name: " Margin="10" Grid.Column="1" Grid.Row="4"  Foreground="Black" FontSize="16" />
-        <TextBox x:Name="station_name" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Margin="10" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
+        <Label Content="Add station" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2"  Foreground="Black" FontSize="20" />
+        <Label Content="Station name:" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4"  Foreground="Black" FontSize="16" />
+        <TextBox x:Name="station_name" VerticalAlignment="Center" Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Margin="10,0,0,0" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
         <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="3" TextWrapping="WrapWithOverflow" Text="To add a station drag and drop the icon" Foreground="Black" FontSize="16" />
         <Grid x:Name="point" Grid.Column="1" Grid.Row="6" Grid.RowSpan="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="85*"/>
                 <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Station pin:"  Grid.Column="0" Foreground="Black" FontSize="16" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="10"/>
+            <Label Content="Station pin:" Grid.Column="0" Foreground="Black" FontSize="16" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="10,0,0,0"/>
             <Ellipse 
             MouseMove="Ellipse_MouseMove" Grid.Column="1" 
             x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Height="15" Width="15"/>

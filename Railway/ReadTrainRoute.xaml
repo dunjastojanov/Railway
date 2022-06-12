@@ -38,8 +38,6 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-
         <Grid x:Name="readTrainRoutePanel" Grid.Row="0" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="33*"/>
@@ -50,7 +48,7 @@
                 <ColumnDefinition Width="18*"/>
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="AddNewTrainRoute" Grid.Column="1" Content="Add New Trainline" Click="AddNewTrainRoute_Click" ToolTip="Adding new trainline."></Button>
+            <Button x:Name="AddNewTrainRoute" Grid.Column="1" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add New Trainline" Click="AddNewTrainRoute_Click" ToolTip="Adding new trainline."></Button>
             <Button x:Name="UndoDeleteTrainRoute" Grid.Column="3" Content="Undo" Click="UndoDeleteTrainRoute_Click"></Button>
             <Button x:Name="RedoDeleteTrainRoute" Grid.Column="5" Content="Redo" Click="RedoDeleteTrainRoute_Click"></Button>
             <local:HelpButton Grid.Column="6" Click="HelpButton_Click"></local:HelpButton>
