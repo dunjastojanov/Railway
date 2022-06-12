@@ -95,7 +95,7 @@ namespace Railway
         }
         private void TimetablesBeginTut_Click(object sender, RoutedEventArgs e)
         {
-            tutorialFrame.Content = new ReadTimetableTutorial(this);
+            tutorialFrame.Content = new ReadTimetableTutorial(this, Window);
         }
         private void TrainlinesBeginTut_Click(object sender, RoutedEventArgs e)
         {
