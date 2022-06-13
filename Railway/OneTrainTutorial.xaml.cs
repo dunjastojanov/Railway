@@ -31,16 +31,22 @@ namespace Railway
             this.Train = train;
             Window = window;
 
-            DeleteButton.IsEnabled = false;
-            EditButton.IsEnabled = false;
+            
 
             if (step == 1)
             {
                 DeleteButton.IsEnabled = true;
+                EditButton.IsEnabled = false;
             }
             else if (step == 4)
             {
+                DeleteButton.IsEnabled = false;
                 EditButton.IsEnabled = true;
+            }
+            else
+            {
+                DeleteButton.IsEnabled = false;
+                EditButton.IsEnabled = false;
             }
           
 
@@ -60,17 +66,15 @@ namespace Railway
 
             Data.deleteTrainTutorial(Train);
             int ok = (int)MessageBox.Show($"Train {Train.Name} successfully deleted!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            Window.ShowReadTrain(false);
-
-            rt.Step = 2;
             rt.RefreshPage();
+            rt.Step = 2;
             rt.DoStep();
 
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            //Window.MainFrame.Content = new AddTrainTutorial(Window, Train);
+            Window.MainFrame.Content = new AddTrainTutorial(Window, Train, rt);
         }
 
 

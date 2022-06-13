@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:Railway"
       xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="Railway.RailwayNetworkOverview"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="RailwayNetworkOverview">
 
     <Grid x:Name="railwayNetworkOverviewGrid">
@@ -18,16 +17,14 @@
         </Grid.RowDefinitions>
         <WPF:Map x:Name="mapa" 
             ZoomLevel="7"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"
-            Height="450"
-            Width="800"
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"
             CredentialsProvider="Z22NcVTmQLM7xdYB3JUH~2KTwUSVQ71smVR32aiHY7w~AgpJmZQy6EajKEtAjchqViLmh3PuMYWUtoYG8xreQEA7JeI_9fruGjOQcQTfCrdy">
             <WPF:MapPolyline Stroke="Blue" StrokeThickness="5" Opacity="0.7" Locations="{Binding Locations}"/>
             <WPF:MapItemsControl ItemsSource="{Binding Stations, UpdateSourceTrigger=PropertyChanged}" >
                 <WPF:MapItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <WPF:Pushpin Location="{Binding Location}"></WPF:Pushpin>
+                        <WPF:Pushpin Location="{Binding Location}" ToolTip="{Binding Name}"></WPF:Pushpin>
                     </DataTemplate>
                 </WPF:MapItemsControl.ItemTemplate>
             </WPF:MapItemsControl>

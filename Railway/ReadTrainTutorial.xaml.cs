@@ -91,12 +91,18 @@ namespace Railway
                         break;
 
                     }
+                case 6:
+                    {
+                        Step6();
+                        break;
+                    }
             }
 
 
         }
 
         private async Task Step1() {
+            RefreshPage();
             await Task.Delay(600);
             UndoDeleteTrain.IsEnabled = false;
             RedoDeleteTrain.IsEnabled = false;
@@ -106,6 +112,7 @@ namespace Railway
         }
     
         private void Step2() {
+            RefreshPage();
             UndoDeleteTrain.IsEnabled = true;
             RedoDeleteTrain.IsEnabled = false;
             AddNewTrain.IsEnabled = false;
@@ -114,13 +121,15 @@ namespace Railway
         }
     
         private void Step3() {
+            RefreshPage();
             UndoDeleteTrain.IsEnabled = false;
             RedoDeleteTrain.IsEnabled = true;
             AddNewTrain.IsEnabled = false;
-            MessageBox.Show("Please select button 'Undo' to undo deleting train.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select button 'Redo' to redo deleting train.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     
         private void Step4() {
+            RefreshPage();
             UndoDeleteTrain.IsEnabled = false;
             RedoDeleteTrain.IsEnabled = false;
             AddNewTrain.IsEnabled = false;
@@ -128,6 +137,8 @@ namespace Railway
         }
     
         private void Step5() {
+            RefreshPage();
+            Window.MainFrame.Content = this;
             UndoDeleteTrain.IsEnabled = false;
             RedoDeleteTrain.IsEnabled = false;
             AddNewTrain.IsEnabled = true;
@@ -136,6 +147,8 @@ namespace Railway
         }
     
         private void Step6() {
+            RefreshPage();
+            Window.MainFrame.Content = this;
             UndoDeleteTrain.IsEnabled = false;
             RedoDeleteTrain.IsEnabled = false;
             AddNewTrain.IsEnabled = false;
@@ -156,16 +169,12 @@ namespace Railway
 
         private void AddNewTrain_Click(object sender, RoutedEventArgs e)
         {
-            //Window.MainFrame.Content = new AddTrainTutorial(Window);
+            Window.MainFrame.Content = new AddTrainTutorial(Window, this);
         }
         public void RefreshPage()
         {
             ReadTrainGrid.Children.RemoveRange(0, ReadTrainGrid.Children.Count);
             ReadTrainGrid.Height = 35;
-
-            UndoDeleteTrain.IsEnabled = false;
-            RedoDeleteTrain.IsEnabled = false;
-            AddNewTrain.IsEnabled = false;
 
             AddContent();
         }

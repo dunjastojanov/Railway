@@ -32,6 +32,7 @@ namespace Railway
             InitializeComponent();
             Window = window;
 
+
             TimeTableName.Content =timetable.Name;
             TimeTableName.Foreground = new SolidColorBrush(Colors.Black);
             TrainName.Content = timetable.Train.Name;
@@ -94,6 +95,7 @@ namespace Railway
             row = 1;
 
             station = timetable.Trainline.LastStation;
+            datetime = timetable.TimeFromLastStation;
 
             while (station.PathToPreviousStation != null)
             {
@@ -198,6 +200,7 @@ namespace Railway
             row = 1;
 
             station = timetable.Trainline.LastStation;
+            datetime = timetable.TimeFromLastStation;
 
             while (station.PathToPreviousStation != null)
             {
@@ -256,6 +259,13 @@ namespace Railway
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (Data.canBeDeleted(timetable) == false)
+            {
+                int ok = (int)MessageBox.Show("Timetable cannot be deleted because there are tickets already bought for it", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             int response = (int)MessageBox.Show($"Are you sure you want to delete timetable {timetable.Name}?\n", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {

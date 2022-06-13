@@ -388,25 +388,25 @@ namespace Railway
             List<Ticket> tickets555 = new List<Ticket>() { ticket5555 };
 
             Timetable timetable1 = new Timetable("Red voznje 11", train1, days1, time1, time6, tickets1);
-            Timetable timetable11 = new Timetable("Red voznje 12", train2, days2, time2, time7, tickets11);
+            Timetable timetable11 = new Timetable("Red voznje 12", train2, days2, time2, time7, new List<Ticket>());
             List<Timetable> timetables1 = new List<Timetable>() { timetable1, timetable11 };
 
             Timetable timetable2 = new Timetable("Red voznje 21", train2, days3, time3, time9, tickets2);
-            Timetable timetable22 = new Timetable("Red voznje 22", train3, days4, time4, time10, tickets22);
+            Timetable timetable22 = new Timetable("Red voznje 22", train3, days4, time4, time10, new List<Ticket>());
             Timetable timetable222 = new Timetable("Red voznje 23", train4, days5, time5, time13, tickets222);
             List<Timetable> timetables2 = new List<Timetable>() { timetable2, timetable22, timetable222 };
 
             Timetable timetable3 = new Timetable("Red voznje 31", train1, days6, time6, time9, tickets3);
             Timetable timetable33 = new Timetable("Red voznje 32", train1, days7, time7, time10, tickets33);
             Timetable timetable333 = new Timetable("Red voznje 33", train4, days8, time8, time11, tickets333);
-            Timetable timetable3333 = new Timetable("Red voznje 34", train4, days9, time9, time14, tickets3333);
+            Timetable timetable3333 = new Timetable("Red voznje 34", train4, days9, time9, time14, new List<Ticket>());
             List<Timetable> timetables3 = new List<Timetable>() { timetable3, timetable33, timetable333, timetable3333 };
 
             Timetable timetable4 = new Timetable("Red voznje 41", train2, days10, time7, time14, tickets4);
             List<Timetable> timetables4 = new List<Timetable>() { timetable4 };
 
             Timetable timetable5 = new Timetable("Red voznje 51", train1, days9, time1, time11, tickets5);
-            Timetable timetable55 = new Timetable("Red voznje 53", train3, days2, time3, time13, tickets55);
+            Timetable timetable55 = new Timetable("Red voznje 53", train3, days2, time3, time13, new List<Ticket>());
             Timetable timetable555 = new Timetable("Red voznje 52", train3, days3, time2, time12, tickets555);
             List<Timetable> timetables5 = new List<Timetable>() { timetable5, timetable55, timetable555 };
 
@@ -475,16 +475,143 @@ namespace Railway
 
 
             Data.AddRailway(railway);
-            Data.SetRailwayIndex(0);
+            Data.SetRailwayIndex();
             Data.CurrentRailwayIndex = 0;
             Data.UpperRailwayIndexBound = 0;
             return railway;
 
         }
 
+        internal static void editTrainLineTutorial(List<Dictionary<string, object>> infoBetweenStations, string name)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            List<Station> stations = createStationsFromInfoBetweenStations(infoBetweenStations);
+
+            List<Trainline> trainlines = GetTrainLines();
+
+            for (int i = 0; i < trainlines.Count; i++)
+            {
+
+                Trainline t = trainlines[i].DeepCopy();
+
+                if (t.Name == name)
+                {
+                    t.FirstStation = stations[0];
+                    t.LastStation = stations[stations.Count - 1];
+
+                    trainlines[i] = t;
+                }
+            }
+
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial();
+        }
+
+        internal static void deleteTrainRouteTutorial(string name)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            int index = -1;
+            List<Trainline> trainlines = newRailway.TrainLines;
+
+            for (int i = 0; i < trainlines.Count; i++)
+            {
+
+                Trainline t = trainlines[i].DeepCopy();
+
+                if (t.Name == name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            trainlines.RemoveAt(index);
+
+
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial();
+        }
+
+        internal static void editTrainTutorial(Seats chosenSeats, string name, int numberOfWagons, Train oldTrain)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+            Seats seats = new Seats(numberOfWagons, chosenSeats.numberOfColumns, chosenSeats.numberOfSeatsPerColumn);
+            Train train = new Train(name, seats);
+            List<Trainline> trainlines = newRailway.TrainLines;
+            foreach (Trainline trainline in trainlines)
+            {
+                foreach (Timetable timetable in trainline.Timetables)
+                {
+                    if (timetable.Train.Name == oldTrain.Name)
+                    {
+                        timetable.Train = train;
+                        foreach (Ticket ticket in timetable.BoughtTickets)
+                        {
+                            ticket.Train = train;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < newRailway.Trains.Count; i++)
+            {
+                if (newRailway.Trains[i].Name == oldTrain.Name)
+                {
+                    newRailway.Trains[i] = train;
+                }
+            }
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial();
+        }
+
+        internal static void addNewStationTutorial(Station station)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+            newRailway.Stations.Add(station);
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial();
+        }
+
+        internal static void deleteStationTutorial(Station station)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            newRailway.RemoveStation(station);
+
+            List<Trainline> trainlines = new List<Trainline>();
+            foreach (Trainline trainline in newRailway.TrainLines)
+            {
+                if (!trainline.ContainsStation(station))
+                {
+                    trainlines.Add(trainline);
+                }
+            }
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial();
+        }
+
+        internal static IEnumerable<Station> getStationsTutorials()
+        {
+            Railroad railway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            return railway.Stations;
+        }
+
+
         internal static List<Train> GetTrainsTutorial()
         {
-            Railroad railway = Data.RailwayStatesTutorial[Data.CurrentRailwayIndex];
+            Railroad railway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
             return railway.Trains;
         }
 
@@ -492,19 +619,7 @@ namespace Railway
         {
             Railroad oldRailway = Data.RailwayStatesTutorial[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            List<Trainline> trainlines = newRailway.TrainLines;
-            for (int i = 0; i < trainlines.Count; i++)
-            {
-                List<Timetable> timetables = new List<Timetable>();
-                foreach (Timetable timetable in trainlines[i].Timetables)
-                {
-                    if (timetable.Train.Name != oldTrain.Name)
-                    {
-                        timetables.Add(timetable);
-                    }
-                }
-                trainlines[i].Timetables = timetables;
-            }
+            
             List<Train> trains = new List<Train>();
             for (int i = 0; i < newRailway.Trains.Count; i++)
             {
@@ -513,10 +628,11 @@ namespace Railway
                     trains.Add(newRailway.Trains[i]);
                 }
             }
+
             newRailway.Trains = trains;
-            newRailway.TrainLines = trainlines;
+
             Data.AddRailwayTutorial(newRailway);
-            Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
+            Data.SetRailwayIndexTutorial();
         }
 
         public static Station getStationByName(String stationName) {
@@ -546,21 +662,22 @@ namespace Railway
             newRailway.TrainLines = trainlines;
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
+
+        
         public static void addNewStation(Station station) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
             newRailway.Stations.Add(station);
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
 
         public static void updateStation(String oldStationName,Station updatedStation) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            //obrisi staru i dodaj novu posto koristimo dictionary
             for (int i = 0; i < newRailway.Stations.Count; i++)
             {
                 if (newRailway.Stations[i].Name == oldStationName)
@@ -578,8 +695,10 @@ namespace Railway
             }
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
+
+
 
         public static void CreateTutorialData()
         {
@@ -609,7 +728,7 @@ namespace Railway
             trainline.Timetables = timetables;
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         internal static void deleteTimetableTutorial(Timetable timetable)
@@ -632,8 +751,11 @@ namespace Railway
             trainline.Timetables = timetables;
 
             Data.AddRailwayTutorial(newRailway);
-            Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
+            Data.SetRailwayIndexTutorial();
         }
+
+        
+
 
         internal static void editTimetable(Train chosenTrain, DateTime chosenStartTime, DateTime chosenEndTime, List<string> days, Timetable oldTimetable)
         {
@@ -666,7 +788,7 @@ namespace Railway
             newRailway.TrainLines = trainlines;
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         internal static void AddTimetable(Train chosenTrain, Trainline chosenTrainline, DateTime chosenStartTime, DateTime chosenEndTime, List<string> days)
@@ -690,7 +812,7 @@ namespace Railway
             newRailway.TrainLines = trainlines;
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         public static List<Station> getStations()
@@ -710,7 +832,7 @@ namespace Railway
             newRailway.Trains.Add(train);
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         internal static void editTrain(Seats chosenSeats, string name, int numberOfWagons, Train oldTrain)
@@ -743,7 +865,7 @@ namespace Railway
             }
             newRailway.TrainLines = trainlines;
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         internal static void deleteTrain(Train oldTrain)
@@ -774,23 +896,14 @@ namespace Railway
             newRailway.Trains = trains;
             newRailway.TrainLines = trainlines;
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         public static List<Train> GetTrains()
         {
-            //List<Train> trains = new List<Train>();
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
             return railway.Trains;
-            //foreach (Trainline trainline in railway.TrainLines)
-            //{
-            //    foreach (Timetable timetable in trainline.Timetables)
-            //    {
-            //        if (!trains.Contains(timetable.Train))
-            //            trains.Add(timetable.Train);
-            //    }
-            //}
-            //return trains;
+
         }
 
         public static Train GetTrain(String name)
@@ -829,7 +942,7 @@ namespace Railway
          
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         internal static void editTrainLine(List<Dictionary<string, object>> infoBetweenStations, string name)
@@ -858,7 +971,7 @@ namespace Railway
             newRailway.TrainLines = trainlines;
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
         }
 
         public static User GetLogedUser(string username, string password)
@@ -872,7 +985,7 @@ namespace Railway
             return null;
         }
 
-        private static void SetRailwayIndexTutorial(int index)
+        private static void SetRailwayIndexTutorial()
         {
             Data.RailwayIndexTutorial++;           
         }
@@ -902,11 +1015,16 @@ namespace Railway
 
         private static void AddRailway(Railroad railway)
         {
+            if (NeedRedo())
+            {
+                Data.RailwayStates.RemoveRange(CurrentRailwayIndex + 1, Data.RailwayStates.Count - 1 - CurrentRailwayIndex);
+            }
             Data.RailwayStates.Add(railway);
+            UpperRailwayIndexBound = Data.RailwayStates.Count-2;
         }
 
-        private static void SetRailwayIndex(int index)
-        {
+        private static void SetRailwayIndex()
+        {         
             Data.CurrentRailwayIndex++;
             UpperRailwayIndexBound++;
         }
@@ -969,7 +1087,7 @@ namespace Railway
             newRailway.AddTrainline(trainline);
 
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
 
         }
 
@@ -1013,7 +1131,7 @@ namespace Railway
             Railroad newRailway = oldRailway.DeepCopy();
             newRailway.AddBoughtTicket(reservation.Trainline, reservation.Timetable, ticket);
             Data.AddRailway(newRailway);
-            Data.SetRailwayIndex(Data.RailwayIndex + 1);
+            Data.SetRailwayIndex();
             return GetQuickReservations(startStation, endStation, travelDate, numOfTickets);
         }    
  
@@ -1129,6 +1247,29 @@ namespace Railway
                 }
             }
             return quickReservations;
+        }
+
+        public static bool canBeDeleted(Trainline trainline)
+        {
+            
+
+            foreach (Timetable timetable in trainline.Timetables)
+            {
+                if (timetable.BoughtTickets.Count > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool canBeDeleted(Timetable timetable)
+        {
+            if (timetable.BoughtTickets.Count > 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

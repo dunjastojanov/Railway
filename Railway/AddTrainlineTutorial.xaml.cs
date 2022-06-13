@@ -19,7 +19,7 @@ namespace Railway
     /// <summary>
     /// Interaction logic for AddTrainRoute.xaml
     /// </summary>
-    public partial class AddTrainRoute : Page
+    public partial class AddTrainlineTutorial : Page
     {
         Trainline trainline = null;
         int lastStationLabelRow;
@@ -30,36 +30,56 @@ namespace Railway
         int maxSteps;
         int maxStepsEditing;
 
+        TextBox durationText;
+        bool durationTextAbleToChange;
+        TextBox priceText;
+        bool priceTextAbleToChange;
+
+        int Step;
+
+        ReadTrainlineTutorial readTrainlineTutorial;
+
+
         Railway.MainWindow Window;
 
-        public AddTrainRoute(Railway.MainWindow window)
+        public AddTrainlineTutorial(Railway.MainWindow window, ReadTrainlineTutorial readTrainlineTutorial)
         {
             this.Window = window;
+            this.readTrainlineTutorial = readTrainlineTutorial;
             InitializeComponent();
             maxSteps = 0;
             maxStepsEditing = 0;
 
+            durationTextAbleToChange = false;
+            priceTextAbleToChange = false;
+
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
-            addedStationsEditing = new List<String>();
             removedStations = new List<String>();
 
             lastStationLabelRow = -1;
 
+            StationComboBox.IsEnabled = false;
+            saveButton.IsEnabled = false;
 
-            foreach (Station station in Data.getStations())
+
+            foreach (string stationName in Data.GetStationNames())
             {
-                StationComboBox.Items.Add(station.Name);
+                StationComboBox.Items.Add(stationName);
 
             }
-            TryDisableUndoRedo();
+
+            Step = 1;
+            DoStep();
 
         }
 
-        public AddTrainRoute(Railway.MainWindow window, Trainline trainline)
+        public AddTrainlineTutorial(Railway.MainWindow window, Trainline trainline, ReadTrainlineTutorial readTrainlineTutorial)
         {
             this.Window = window;
+            this.readTrainlineTutorial = readTrainlineTutorial;
             InitializeComponent();
+
 
             this.trainline = trainline;
 
@@ -70,6 +90,7 @@ namespace Railway
             addedStationsEditing = new List<String>();
             removedStations = new List<String>();
             lastStationLabelRow = -1;
+            saveButton.IsEnabled = false;
 
 
             foreach (string stationName in Data.GetStationNames())
@@ -80,7 +101,95 @@ namespace Railway
 
             AddContentForEditing();
             maxStepsEditing = addedStationsEditing.Count;
-            TryDisableUndoRedo();
+
+            Step = 1;
+            DoStep();
+
+        }
+
+        public void DoStep()
+        {
+            switch (Step)
+            {
+                case 1:
+                    {
+                        Step1();
+                        break;
+                    }
+                case 2:
+                    {
+                        Step2();
+                        break;
+                    }
+                case 3:
+                    {
+                        Step3();
+                        break;
+                    }
+                case 4:
+                    {
+                        Step4();
+                        break;
+                    }
+                case 5:
+                    {
+                        Step5();
+                        break;
+
+                    }
+            }
+
+
+        }
+
+        public async void Step1()
+        {
+            await Task.Delay(600);
+            StationComboBox.IsEnabled = true;
+            MessageBox.Show("Please select a station from dropdowm menu right of the text choose label.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        public void Step2()
+        {
+            if (trainline != null)
+            {
+                Step++;
+                DoStep();
+            }
+            else
+            {
+                StationComboBox.IsEnabled = true;
+                MessageBox.Show("Please select another station from dropdowm menu right of the text choose label.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+        }
+        public void Step3()
+        {
+            StationComboBox.IsEnabled = false;
+            durationText.IsEnabled = true;
+            priceText.IsEnabled = false;
+            durationTextAbleToChange = true;
+            MessageBox.Show("Please fill in the duration of the trip between stations above and below.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            durationText.Focus();
+        }
+        public void Step4()
+        {
+            durationTextAbleToChange = false;
+            priceTextAbleToChange = true;
+            StationComboBox.IsEnabled = false;
+            durationText.IsEnabled = false;
+            priceText.IsEnabled = true;
+            MessageBox.Show("Please fill in the price of the trip between stations above and below.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            priceText.Focus();
+        }
+        public void Step5()
+        {
+            priceTextAbleToChange = false;
+            StationComboBox.IsEnabled = false;
+            durationText.IsEnabled = false;
+            priceText.IsEnabled = false;
+            saveButton.IsEnabled = true;
+            MessageBox.Show("Please select the save button.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void AddContentForEditing()
@@ -96,13 +205,13 @@ namespace Railway
                 AddedStationsInfoGrid.Height = AddedStationsInfoGrid.Height + 30 + 90;
                 path = station.PathToNextStation;
 
-                
+
                 addRowPixels(AddedStationsInfoGrid, 90);
 
                 addRowPixels(AddedStationsInfoGrid, 30);
                 addStationLabel(station.Name);
 
-                
+
                 lastStationLabelRow += 2;
 
                 station = path.NextStation;
@@ -122,13 +231,31 @@ namespace Railway
             addedStationsEditing.Add(station.Name);
             addRowPixels(AddedStationsInfoGrid, 90);
 
-            
+
             addBetweenStationInfoGrid(path.Price, path.Duration);
 
 
             addStationLabel(station.Name);
 
             lastStationLabelRow += 2;
+        }
+
+        private void durationChange(object sender, RoutedEventArgs e)
+        {
+            if (durationText.Text.Length > 1 && durationTextAbleToChange == true)
+            {
+                Step++;
+                DoStep();
+            }
+        }
+
+        private void priceChange(object sender, RoutedEventArgs e)
+        {
+            if (priceText.Text.Length > 1 && priceTextAbleToChange == true)
+            {
+                Step++;
+                DoStep();
+            }
         }
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
@@ -143,14 +270,16 @@ namespace Railway
                 }
                 else
                 {
-                    fillInfo();
-                    RedoAddTrainRoute.IsEnabled = false;
+                    fillNewInfo();
+                    Step++;
+                    DoStep();
                 }
             }
             else
             {
-                fillInfo();
-                RedoAddTrainRoute.IsEnabled = false;
+                fillNewInfo();
+                Step++;
+                DoStep();
 
             }
 
@@ -176,32 +305,30 @@ namespace Railway
                 lastStationLabelRow += 2;
             }
         }
-        private void fillInfo()
+
+
+        private void fillNewInfo()
         {
             AddedStationsInfoGrid.Height = AddedStationsInfoGrid.Height + 30 + 90;
-
+            
             if (StationComboBox.SelectedItem != null)
             {
-                string parameter = StationComboBox.SelectedItem.ToString();
-                int response = (int)MessageBox.Show("Are you sure you want to add station " + parameter + "?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (response == 6)
+                maxSteps++;
+                maxStepsEditing++;
+                addedStations.Add(StationComboBox.SelectedItem.ToString());
+
+                addStationLabel(StationComboBox.SelectedItem.ToString());
+
+                if (addedStations.Count > 1)
                 {
-                    maxSteps++;
-                    maxStepsEditing++;
-                    addedStations.Add(StationComboBox.SelectedItem.ToString());
-                    RefreshPage();
-                }
-                else
-                {
-                    MessageBox.Show("Adding station to the train route cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    addNewBetweenStationInfoGrid(addedStations[addedStations.Count - 2], addedStations[addedStations.Count - 1]);
                 }
 
-            }
-            else
-            {
-                MessageBox.Show("Station must be chosen before clicking ADD button.", "Station not found.", MessageBoxButton.OK, MessageBoxImage.Error);
+                lastStationLabelRow += 2;
+                
             }
         }
+
 
         private void addBetweenStationInfoGrid(int price, int duration)
         {
@@ -223,8 +350,8 @@ namespace Railway
             grid.Children.Add(durationLabel);
 
             TextBox durationTextBox = new TextBox();
+            durationTextBox.IsEnabled = false;
             durationTextBox.Text = duration.ToString();
-            durationTextBox.MaxLength = 5;
             Grid.SetRow(durationTextBox, 1);
             Grid.SetColumn(durationTextBox, 2);
             durationTextBox.ToolTip = "Duration of the trip beetwen the stations above and below.";
@@ -232,15 +359,14 @@ namespace Railway
 
             Label priceLabel = new Label();
             priceLabel.Content = "Price (rsd):";
-            
             priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
             Grid.SetRow(priceLabel, 2);
             Grid.SetColumn(priceLabel, 1);
             grid.Children.Add(priceLabel);
 
             TextBox priceTextBox = new TextBox();
+            priceTextBox.IsEnabled = false;
             priceTextBox.Text = price.ToString();
-            priceTextBox.MaxLength = 5;
             Grid.SetRow(priceTextBox, 2);
             Grid.SetColumn(priceTextBox, 2);
             priceTextBox.ToolTip = "Price for the trip between the stations above and below.";
@@ -279,7 +405,7 @@ namespace Railway
             grid.Children.Add(durationLabel);
 
             TextBox durationTextBox = new TextBox();
-            durationTextBox.MaxLength = 5;
+            durationTextBox.IsEnabled = false;
             Grid.SetRow(durationTextBox, 1);
             Grid.SetColumn(durationTextBox, 2);
             grid.Children.Add(durationTextBox);
@@ -292,7 +418,62 @@ namespace Railway
             grid.Children.Add(priceLabel);
 
             TextBox priceTextBox = new TextBox();
-            priceTextBox.MaxLength = 5;
+            priceTextBox.IsEnabled = false;
+            Grid.SetRow(priceTextBox, 2);
+            Grid.SetColumn(priceTextBox, 2);
+            grid.Children.Add(priceTextBox);
+
+            Grid.SetRow(grid, lastStationLabelRow + 1);
+            AddedStationsInfoGrid.Children.Add(grid);
+
+            Dictionary<String, object> info = new Dictionary<string, object>();
+            info.Add("startStation", lastStation);
+            info.Add("endStation", station);
+            info.Add("durationTextBox", durationTextBox);
+            info.Add("priceTextBox", priceTextBox);
+
+
+            infoBetweenStations.Add(info);
+        }
+
+        private void addNewBetweenStationInfoGrid(string lastStation, string station)
+        {
+            Grid grid = new Grid();
+            addColumnStars(grid, 2);
+            addColumnStars(grid, 4);
+            addColumnStars(grid, 3);
+            addColumnStars(grid, 3);
+            addRowStars(grid, 1);
+            addRowStars(grid, 2);
+            addRowStars(grid, 2);
+            addRowStars(grid, 1);
+
+            Label durationLabel = new Label();
+            durationLabel.Content = "Trip duration (minutes):";
+            durationLabel.HorizontalAlignment = HorizontalAlignment.Right;
+            Grid.SetRow(durationLabel, 1);
+            Grid.SetColumn(durationLabel, 1);
+            grid.Children.Add(durationLabel);
+
+            TextBox durationTextBox = new TextBox();
+            durationText = durationTextBox;
+            durationText.TextChanged += durationChange;
+            durationText.IsEnabled = false;
+            Grid.SetRow(durationTextBox, 1);
+            Grid.SetColumn(durationTextBox, 2);
+            grid.Children.Add(durationTextBox);
+
+            Label priceLabel = new Label();
+            priceLabel.Content = "Price (rsd):";
+            priceLabel.HorizontalAlignment = HorizontalAlignment.Right;
+            Grid.SetRow(priceLabel, 2);
+            Grid.SetColumn(priceLabel, 1);
+            grid.Children.Add(priceLabel);
+
+            TextBox priceTextBox = new TextBox();
+            priceText = priceTextBox;
+            priceText.TextChanged += priceChange;
+            priceText.IsEnabled = false;
             Grid.SetRow(priceTextBox, 2);
             Grid.SetColumn(priceTextBox, 2);
             grid.Children.Add(priceTextBox);
@@ -350,6 +531,9 @@ namespace Railway
             int duration;
             int price;
 
+            bool durationBad = false;
+            bool priceBad = false;
+
             String parameters = "";
 
 
@@ -365,6 +549,7 @@ namespace Railway
 
                 if (durationString == "")
                 {
+                    durationBad = true;
                     messages += $"You must fill trip duration between {info["startStation"]} and {info["endStation"]}.\n";
                 }
                 else
@@ -377,6 +562,7 @@ namespace Railway
                     }
                     catch (Exception)
                     {
+                        durationBad = true;
                         messages += $"Trip duration between {info["startStation"]} and {info["endStation"]} must be a number.\n";
                     }
 
@@ -389,6 +575,7 @@ namespace Railway
 
                 if (priceString == "")
                 {
+                    priceBad = true;
                     messages += $"You must fill price between {info["startStation"]} and {info["endStation"]}.\n";
                 }
 
@@ -397,12 +584,13 @@ namespace Railway
                     try
                     {
                         price = Int32.Parse(priceString);
-
+                        
 
                         info["price"] = price;
                     }
                     catch (FormatException)
                     {
+                        priceBad = true;
                         messages += $"Price between {info["startStation"]} and {info["endStation"]} must be a number.\n";
                     }
                 }
@@ -422,151 +610,43 @@ namespace Railway
 
                 if (trainline == null)
                 {
-                    int response = (int)MessageBox.Show("Are you sure you want to add a train route with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (response == 6)
-                    {
 
-                        Data.AddTrainLine(infoBetweenStations);
-                        int ok = (int)MessageBox.Show("Train route successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrainRoute(true);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
+                    int ok = (int)MessageBox.Show("Train route successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Window.MainFrame.Content = readTrainlineTutorial;
+                    readTrainlineTutorial.Step++;
+                    readTrainlineTutorial.DoStep();
+
                 }
 
                 else
                 {
-                    int response = (int)MessageBox.Show("Are you sure you want to edit a train route with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (response == 6)
-                    {
 
-                        Data.editTrainLine(infoBetweenStations, trainline.Name);
-                        int ok = (int)MessageBox.Show("Train route successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrainRoute(true);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
+                    Data.editTrainLineTutorial(infoBetweenStations, trainline.Name);
+                    int ok = (int)MessageBox.Show("Train route successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Window.MainFrame.Content = readTrainlineTutorial;
+                    readTrainlineTutorial.Step++;
+                    readTrainlineTutorial.DoStep();
                 }
 
             }
             else
             {
                 MessageBox.Show(messages, "Inadequate parameters", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
 
-
-        }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (trainline == null)
-            {
-                int response = (int)MessageBox.Show("Are you sure you want to cancel train route addition?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (response == 6)
+                if (priceBad == true)
                 {
-
-                    MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrainRoute(true);
+                    priceText.IsEnabled = true;
                 }
 
-            }
-
-            else
-            {
-                int response = (int)MessageBox.Show("Are you sure you want to cancel train route editing?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (response == 6)
+                if (durationBad == true)
                 {
-
-                    MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrainRoute(true);
+                    durationText.IsEnabled = true;
                 }
 
-            }
-        }
-        public void RefreshPage()
-        {
-            infoBetweenStations.Clear();
-            TryDisableUndoRedo();
-            AddContentForAdding();
-        }
-        private void TryDisableUndoRedo()
-        {
-            if (trainline != null)
-            {
-                RedoAddTrainRoute.IsEnabled = false;
-                UndoAddTrainRoute.IsEnabled = false;
-                return;
-            }
-
-            if (addedStationsEditing == null)
-            {
-                if (addedStations.Count == 0)
-                {
-                    UndoAddTrainRoute.IsEnabled = false;
-                    maxSteps = 0;
-                }
-                else
-                    UndoAddTrainRoute.IsEnabled = true;
-            }
-            else
-            {
-                if (addedStations.Count == addedStationsEditing.Count)
-                {
-                    UndoAddTrainRoute.IsEnabled = false;
-                    maxSteps = maxStepsEditing;
-                }
-                else
-                    UndoAddTrainRoute.IsEnabled = true;
-            }
-            if (addedStationsEditing == null)
-            {
-                if (addedStations.Count == maxSteps)
-                    RedoAddTrainRoute.IsEnabled = false;
-                else
-                    RedoAddTrainRoute.IsEnabled = true;
-            }
-            else
-            {
-                if (addedStations.Count == maxStepsEditing)
-                    RedoAddTrainRoute.IsEnabled = false;
-                else
-                    RedoAddTrainRoute.IsEnabled = true;
+                MessageBox.Show("Fill in duration and/or price fields with correct parameters and click on the save button again.", "Inadequate parameters", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
-        }
-
-        private void UndoAddTrainRoute_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to undo adding a station to trainline?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                string st = addedStations[addedStations.Count - 1];
-                removedStations.Add(st);
-                addedStations.Remove(st);
-                RefreshPage();
-            }
-            else
-            {
-                MessageBox.Show("Undo adding station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-        private void RedoAddTrainRoute_Click(object sender, RoutedEventArgs e)
-        {
-            int response = (int)MessageBox.Show("Are you sure you want to redo adding a station to trainline?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (response == 6)
-            {
-                addedStations.Add(removedStations[removedStations.Count - 1]);
-                RefreshPage();
-            }
-            else
-            {
-                MessageBox.Show("Redo adding station cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)

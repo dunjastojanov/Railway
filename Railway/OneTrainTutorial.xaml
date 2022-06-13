@@ -32,8 +32,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the train." Background="#FFFD9B00" Foreground="White" Margin="3" VerticalAlignment="Center" ></Button>
-        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the train." Background="#FFFD9B00" Foreground="White" Margin="3" VerticalAlignment="Center"></Button>
+        <Button IsEnabled="False" x:Name="EditButton" Content="Edit" Grid.Column="1" Grid.Row="1" Click="EditButton_Click" ToolTip="Editing the train." Background="#FFFD9B00" Foreground="White" Margin="3" VerticalAlignment="Center" ></Button>
+        <Button IsEnabled="False" x:Name="DeleteButton" Content="Delete" Grid.Column="3" Grid.Row="1" Click="DeleteButton_Click" ToolTip="Deleting the train." Background="#FFFD9B00" Foreground="White" Margin="3" VerticalAlignment="Center"></Button>
         <Label x:Name="NameLabel" Grid.Row="1" Grid.Column="7" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
     </Grid>
     <Grid  x:Name="NumbersGrid" Grid.Row="3" Grid.Column="1">

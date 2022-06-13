@@ -31,7 +31,6 @@ namespace Railway
         {
             InitializeComponent();
             Window = window;
-            AddTutorialNavbar();
             Data.CreateTutorialData();
             ShowTutorialHomePage();
         }
@@ -91,6 +90,8 @@ namespace Railway
 
         public void ShowTutorialHomePage()
         {
+            Window.MainFrame.Content = this;
+            AddTutorialNavbar();
             tutorialFrame.Content = new TutorialButtons(this);
         }
         private void TimetablesBeginTut_Click(object sender, RoutedEventArgs e)
@@ -99,7 +100,7 @@ namespace Railway
         }
         private void TrainlinesBeginTut_Click(object sender, RoutedEventArgs e)
         {
-
+            tutorialFrame.Content = new ReadTrainlineTutorial(this, Window);
         }
         private void TrainsBeginTut_Click(object sender, RoutedEventArgs e)
         {
@@ -107,7 +108,7 @@ namespace Railway
         }
         private void StationsBeginTut_Click(object sender, RoutedEventArgs e)
         {
-
+            tutorialFrame.Content = new ReadStationTutorial(this, Window,"step1");
         }
         
         private void button_Click(object sender, RoutedEventArgs e)

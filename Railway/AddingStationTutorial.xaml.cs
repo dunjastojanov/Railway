@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,20 +18,28 @@ using Railway.Model;
 namespace Railway
 {
     /// <summary>
-    /// Interaction logic for AddingStation.xaml
+    /// Interaction logic for AddingStationTutorial.xaml
     /// </summary>
-    public partial class AddingStation : Page
+    public partial class AddingStationTutorial : Page
     {
         public List<Station> Stations { get; set; }
 
         private Pushpin lastPushpin;
         List<Pushpin> Pushpins { get; set; }
-        int  PushpinIndex {get;set;}
+        int PushpinIndex { get; set; }
         private Railway.MainWindow Window { get; set; }
-        public AddingStation(Railway.MainWindow window)
+        public string Step { get; set; }
+        public string ReadStationStep { get; set; }
+        public TutorialHomePage TutorialHomePage { get; set; }
+        public bool wasHere { get; set; }
+        public AddingStationTutorial(TutorialHomePage tutorialHomePage, Railway.MainWindow window, String stepReadStation)
         {
+            wasHere = true;
+            TutorialHomePage = tutorialHomePage;
             this.DataContext = this;
             this.Window = window;
+            ReadStationStep = stepReadStation;
+            Data.FillData();
             Stations = Data.getStations();
             Pushpins = new List<Pushpin>();
             PushpinIndex = -1;
@@ -45,8 +52,90 @@ namespace Railway
                 pushpin.ToolTip = item.Name;
                 mapa.Children.Add(pushpin);
             }
-            TryDisableUnable();
+            Step = "step1";
+            undoAddStation.IsEnabled = false;
+            redoAddStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            DoStep();
+
         }
+        public void DoStep()
+        {
+            switch (Step)
+            {
+                case "step1":
+                    Step1();
+                    break;
+                case "step2":
+                    Step2();
+                    break;
+                case "step3":
+                    Step3();
+                    break;
+                case "step4":
+                    Step4();
+                    break;
+                case "step5":
+                    Step5();
+                    break;
+
+            }
+        }
+        public async Task Step1()
+        {
+            await Task.Delay(600);
+            undoAddStation.IsEnabled = false;
+            redoAddStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            addStation_BTN.IsEnabled = false;
+            station_name.Focus();
+            MessageBox.Show("Type into blank space to set station name.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Station name must have minimum 5 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void Step2()
+        {
+            MessageBox.Show("Move pin on the map to change station location.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoAddStation.IsEnabled = false;
+            redoAddStation.IsEnabled = false;
+            mapa.IsEnabled = true;
+            addStation_BTN.IsEnabled = false;
+            station_name.IsEnabled = false;
+            
+        }
+
+        public void Step3()
+        {
+            MessageBox.Show("Press undo button to revert to last set station location.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoAddStation.IsEnabled = true;
+            redoAddStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            addStation_BTN.IsEnabled = false;
+        }
+
+        public void Step4()
+        {
+            MessageBox.Show("Press redo button to reset station location to previously set location.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoAddStation.IsEnabled = false;
+            redoAddStation.IsEnabled = true;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            addStation_BTN.IsEnabled = false;
+        }
+
+        public void Step5()
+        {
+            MessageBox.Show("Press add station to add the station.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoAddStation.IsEnabled = false;
+            redoAddStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            addStation_BTN.IsEnabled = true;
+            
+        }
+
+
 
         private void Ellipse_MouseMove(object sender, MouseEventArgs e)
         {
@@ -87,84 +176,65 @@ namespace Railway
                     if (messageBoxResult == MessageBoxResult.Yes)
                     {
                         mapa.Children.Remove(lastPushpin);
-                        e.Handled = true;
                         Point mousePosition = e.GetPosition(this.mapa);
                         Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                         MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you want to add station to", MessageBoxButton.OK);
-                        if (PushpinIndex != Pushpins.Count - 1)
-                            Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                         Pushpin pin = new Pushpin();
                         pin.Background = new SolidColorBrush(Colors.Blue);
                         pin.Location = pinLocation;
-                        pin.Tag = station_name.Text;
-                        pin.ToolTip = station_name.Text;
+                        pin.Tag= station_name.Text;
                         lastPushpin = pin;
                         mapa.Children.Add(lastPushpin);
                         Pushpins.Add(lastPushpin);
                         PushpinIndex++;
-                        TryDisableUnable();
                     }
                 }
                 else if (lastPushpin == null)
                 {
-                    e.Handled = true;
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                     MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
-                    if (PushpinIndex != Pushpins.Count - 1)
-                        Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
-                    pin.Tag = station_name.Text;
-                    pin.ToolTip = station_name.Text;
+                    pin.Tag= station_name.Text;
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
                     Pushpins.Add(lastPushpin);
                     PushpinIndex++;
-                    TryDisableUnable();
                 }
                 else
                 {
-                    e.Handled = true;
                     Point mousePosition = e.GetPosition(this.mapa);
                     Location pinLocation = mapa.ViewportPointToLocation(mousePosition);
                     MessageBox.Show("Latitude: " + pinLocation.Latitude + "\nLongitude: " + pinLocation.Longitude, "Geographic position of the place you wnat to add station to", MessageBoxButton.OK);
-                    if (PushpinIndex != Pushpins.Count - 1)
-                        Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                     Pushpin pin = new Pushpin();
                     pin.Background = new SolidColorBrush(Colors.Blue);
                     pin.Location = pinLocation;
                     pin.Tag = station_name.Text;
-                    pin.ToolTip = station_name.Text;
                     lastPushpin = pin;
                     mapa.Children.Add(lastPushpin);
                     Pushpins.Add(lastPushpin);
                     PushpinIndex++;
-                    TryDisableUnable();
                 }
                 e.Handled = true;
+                Step = "step3";
+                DoStep();
             }
         }
 
         private void addStation_Click(object sender, RoutedEventArgs e)
         {
-            String pattern = @"^[A-Za-z]+[A-Za-z\s]*$";
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to add a new station?", "Creating new station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 if (station_name.Text == "")
                 {
                     MessageBox.Show("Station name is empty.\nPlease enter station name.", "Creating new station confirmation");
-                } else if (lastPushpin==null) {
-                    MessageBox.Show("You didn't choose location.\nPlease drag the pin to map.", "Creating new station confirmation");
                 }
-
-                
-
-                else if (!Regex.Match(station_name.Text, pattern).Success)
+                else if (lastPushpin == null)
                 {
-                    MessageBox.Show($"Name must begin with a letter and can contain only letters and spaces.\n", "Creating new station confirmation");
+                    MessageBox.Show("You didn't choose location.\nPlease drag the pin to map.", "Creating new station confirmation");
                 }
                 else
                 {
@@ -172,10 +242,12 @@ namespace Railway
                     bool sameLocation = false;
                     foreach (Station station1 in Stations)
                     {
-                        if (station1.Name == station_name.Text) {
+                        if (station1.Name == station_name.Text)
+                        {
                             sameName = true;
                         }
-                        if (station1.Location.Longitude == lastPushpin.Location.Longitude && station1.Location.Latitude == lastPushpin.Location.Latitude) {
+                        if (station1.Location.Longitude == lastPushpin.Location.Longitude && station1.Location.Latitude == lastPushpin.Location.Latitude)
+                        {
                             sameLocation = true;
                         }
 
@@ -183,21 +255,23 @@ namespace Railway
                     if (!sameName && !sameLocation)
                     {
                         Station station = new Station(station_name.Text, lastPushpin.Location.Longitude, lastPushpin.Location.Latitude);
-                        Data.addNewStation(station);
+                        Data.addNewStationTutorial(station);
                         lastPushpin = null;
                         station_name.Text = "";
                         MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
-                        Window.ShowReadStations(true);
+                        TutorialHomePage.tutorialFrame.Content = new ReadStationTutorial(TutorialHomePage, Window, "step5");
                     }
                     else if (!sameName)
                     {
                         MessageBox.Show("You have to name your station diffrently", "Creating new station confirmation");
                     }
-                    else if (!sameLocation) {
+                    else if (!sameLocation)
+                    {
                         MessageBox.Show("You have to set new location for this station, because it already exists", "Creating new station confirmation");
                     }
                 }
             }
+
         }
 
         private void setPushpin()
@@ -220,30 +294,30 @@ namespace Railway
         {
             PushpinIndex--;
             setPushpin();
-            TryDisableUnable();
+            Step = "step4";
+            DoStep();
         }
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
             PushpinIndex++;
             setPushpin();
-            TryDisableUnable();
+            
+            Step = "step5"; 
+            DoStep();
         }
-        private void TryDisableUnable()
-        {
-            if (PushpinIndex < 0)
-                undoAddStation.IsEnabled = false;
-            else
-                undoAddStation.IsEnabled = true;
-            if (PushpinIndex == Pushpins.Count-1)
-                redoAddStation.IsEnabled = false;
-            else
-                redoAddStation.IsEnabled = true;    
-
-        }
-
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             HelpProvider.ShowHelp("AddStation", Window);
+        }
+
+        private void station_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (station_name.Text.Length > 5 && wasHere)
+            {
+                wasHere = false;
+                Step = "step2";
+                DoStep();
+            }
         }
     }
 }

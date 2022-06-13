@@ -81,14 +81,26 @@
     <Compile Include="AddingStation.xaml.cs">
       <DependentUpon>AddingStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddingStationTutorial.xaml.cs">
+      <DependentUpon>AddingStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTimetable.xaml.cs">
       <DependentUpon>AddTimetable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTimetableTutorial.xaml.cs">
+      <DependentUpon>AddTimetableTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddTrain.xaml.cs">
       <DependentUpon>AddTrain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTrainlineTutorial.xaml.cs">
+      <DependentUpon>AddTrainlineTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTrainRoute.xaml.cs">
       <DependentUpon>AddTrainRoute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTrainTutorial.xaml.cs">
+      <DependentUpon>AddTrainTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
@@ -127,6 +139,9 @@
     <Compile Include="OneStation.xaml.cs">
       <DependentUpon>OneStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OneStationTutorial.xaml.cs">
+      <DependentUpon>OneStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OneTimetable.xaml.cs">
       <DependentUpon>OneTimetable.xaml</DependentUpon>
     </Compile>
@@ -135,6 +150,9 @@
     </Compile>
     <Compile Include="OneTrain.xaml.cs">
       <DependentUpon>OneTrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OneTrainlineTutorial.xaml.cs">
+      <DependentUpon>OneTrainlineTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="OneTrainRoute.xaml.cs">
       <DependentUpon>OneTrainRoute.xaml</DependentUpon>
@@ -148,6 +166,9 @@
     <Compile Include="ReadStations.xaml.cs">
       <DependentUpon>ReadStations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReadStationTutorial.xaml.cs">
+      <DependentUpon>ReadStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReadTimetable.xaml.cs">
       <DependentUpon>ReadTimetable.xaml</DependentUpon>
     </Compile>
@@ -156,6 +177,9 @@
     </Compile>
     <Compile Include="ReadTrain.xaml.cs">
       <DependentUpon>ReadTrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadTrainlineTutorial.xaml.cs">
+      <DependentUpon>ReadTrainlineTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReadTrainRoute.xaml.cs">
       <DependentUpon>ReadTrainRoute.xaml</DependentUpon>
@@ -190,19 +214,38 @@
     <Compile Include="UpdateStation.xaml.cs">
       <DependentUpon>UpdateStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateStationTutorial.xaml.cs">
+      <DependentUpon>UpdateStationTutorial.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddingStation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddingStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AddTimetableTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTrain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AddTrainlineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTrainRoute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTrainTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +301,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OneStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OneTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -269,6 +316,10 @@
     <Page Include="OneTrain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OneTrainlineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OneTrainRoute.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -286,6 +337,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ReadStationTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ReadTimetable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -297,6 +352,10 @@
     <Page Include="ReadTrain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReadTrainlineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReadTrainRoute.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -339,6 +398,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateStationTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

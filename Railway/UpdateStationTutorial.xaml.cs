@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +18,9 @@ using Railway.Model;
 namespace Railway
 {
     /// <summary>
-    /// Interaction logic for UpdateStation.xaml
+    /// Interaction logic for UpdateStationTutorial.xaml
     /// </summary>
-    public partial class UpdateStation : Page
+    public partial class UpdateStationTutorial : Page
     {
         private Vector mouseToMarker;
 
@@ -31,26 +30,107 @@ namespace Railway
         public String oldStationName { get; set; }
         public Railway.MainWindow MainWindow;
 
-        public Location lastConfirmedLocation;//ovome dodeljuj poslednju izabranu lokaciju  i moram je postaviti ako ne zeli 
+        public Location lastConfirmedLocation; 
         List<Pushpin> Pushpins { get; set; }
         int PushpinIndex { get; set; }
-        public UpdateStation(Railway.MainWindow window, Station station)
+        public string Step { get; set; }
+
+        public TutorialHomePage TutorialHomePage;
+        public int textChange { get; set; }
+        public UpdateStationTutorial(TutorialHomePage tutorialHomePage, Railway.MainWindow window, String stepReadStation ,Station station)
         {
+            textChange = 1;
             this.DataContext = this;
+            TutorialHomePage = tutorialHomePage;
             oldStationName = station.Name;
             MainWindow = window;
             Station = station;
             Pushpins = new List<Pushpin>();
             PushpinIndex = 0;
-            InitializeComponent();
             Pushpin pushpin = new Pushpin();
             pushpin.Location = Station.Location;
             pushpin.Tag = Station.Name;
             pushpin.MouseDown += Pushpin_MouseDown;
             pushpin.ToolTip = pushpin.Tag;
             Pushpins.Add(pushpin);
-            TryDisableUnable();
+            Step = "step1";
+            InitializeComponent();
+            textChange++;
+            DoStep();
         }
+        public void DoStep() {
+            switch (Step) {
+                case "step1":
+                    updateStep1Async();
+                    break;
+                case "step2":
+                    updateStep2();
+                    break;
+                case "step3":
+                    updateStep3();
+                    break;
+                case "step4":
+                    updateStep4();
+                    break;
+                case "step5":
+                    updateStep5();
+                    break;
+            }
+        }
+        public async Task updateStep1Async() {
+
+            await Task.Delay(600);
+            station_name.Focus();
+            station_name.SelectAll();
+            MessageBox.Show("Type in the blank space to change station name.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Station name must have minimum 5 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoUpdateStation.IsEnabled = false;
+            redoUpdateStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            updateStation.IsEnabled = false;
+        }
+
+        public void updateStep2()
+        {
+            MessageBox.Show("Move pin on the map to change station location.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoUpdateStation.IsEnabled = false;
+            redoUpdateStation.IsEnabled = false;
+            mapa.IsEnabled = true;
+            updateStation.IsEnabled = false;
+            station_name.IsEnabled = false;
+
+        }
+
+        public void updateStep3()
+        {
+            MessageBox.Show("Press undo button to revert to last changes.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoUpdateStation.IsEnabled = true;
+            redoUpdateStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            updateStation.IsEnabled = false;
+        }
+
+        public void updateStep4()
+        {
+            MessageBox.Show("Press redo button to reset station location to previously set location.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoUpdateStation.IsEnabled = false;
+            redoUpdateStation.IsEnabled = true;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            updateStation.IsEnabled = false;
+        }
+
+        public void updateStep5()
+        {
+            MessageBox.Show("Press update station to update all the changes.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            undoUpdateStation.IsEnabled = false;
+            redoUpdateStation.IsEnabled = false;
+            mapa.IsEnabled = false;
+            station_name.IsEnabled = false;
+            updateStation.IsEnabled = true;
+        }
+
 
         private void Pushpin_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -70,14 +150,14 @@ namespace Railway
 
         private void mapa_MouseMove(object sender, MouseEventArgs e)
         {
-            
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 if (dragPin && SelectedPushpin != null)
                 {
                     SelectedPushpin.Location = mapa.ViewportPointToLocation(
                         Point.Add(e.GetPosition(mapa), mouseToMarker));
-                    
+
                     e.Handled = true;
                 }
             }
@@ -92,7 +172,7 @@ namespace Railway
                 {
 
                     lastConfirmedLocation = mapa.ViewportPointToLocation(Point.Add(e.GetPosition(mapa), mouseToMarker));
-                    SelectedPushpin.Location = lastConfirmedLocation;            
+                    SelectedPushpin.Location = lastConfirmedLocation;
                     e.Handled = true;
                 }
             }
@@ -100,7 +180,6 @@ namespace Railway
 
         private void updateStation_Click(object sender, RoutedEventArgs e)
         {
-            String pattern = @"^[A-Za-z]+[A-Za-z\s]*$";
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to update chosen station?", "Update station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
@@ -108,30 +187,27 @@ namespace Railway
                 {
                     MessageBox.Show("Station name is empty.\nPlease enter station name.", "Update station confirmation");
                 }
-                else if (!Regex.Match(station_name.Text, pattern).Success)
-                {
-                    MessageBox.Show($"Name must begin with a letter and can contain only letters and spaces.\n", "Creating new station confirmation");
-                }
                 else
                 {
                     String newName = station_name.Text;
                     bool sameName = false;
                     bool sameLocation = false;
-                    var collection=Data.getStations().Where(a=> a.Name!=Station.Name);
+                    var collection = Data.getStations().Where(a => a.Name != Station.Name);
                     foreach (Station station1 in collection)
                     {
                         if (station1.Name == newName)
                         {
                             sameName = true;
                         }
-                        if (SelectedPushpin!=null && station1.Location.Longitude == SelectedPushpin.Location.Longitude && station1.Location.Latitude == SelectedPushpin.Location.Latitude)
+                        if (SelectedPushpin != null && station1.Location.Longitude == SelectedPushpin.Location.Longitude && station1.Location.Latitude == SelectedPushpin.Location.Latitude)
                         {
                             sameLocation = true;
                         }
                     }
                     if (!sameName && !sameLocation)
                     {
-                        if (SelectedPushpin == null) { 
+                        if (SelectedPushpin == null)
+                        {
                             SelectedPushpin = new Pushpin();
                             SelectedPushpin.Location = new Location(Station.Location.Latitude, Station.Location.Longitude);
                         }
@@ -141,8 +217,8 @@ namespace Railway
                         Data.updateStation(oldStationName, newStation);
                         station_name.Text = "";
                         MessageBox.Show("You have succesfully updated station", "Update station confirmation");
-                        MainWindow.ShowReadStations(true);
-                    }
+                        TutorialHomePage.tutorialFrame.Content= new ReadStationTutorial(TutorialHomePage,MainWindow,"step6")
+;                    }
                     else if (!sameName)
                     {
                         MessageBox.Show("You have to set new name for this station, because it already exists", "Update station confirmation");
@@ -168,15 +244,16 @@ namespace Railway
                     Pushpins.RemoveRange(PushpinIndex + 1, Pushpins.Count - 1 - PushpinIndex);
                 Pushpin pushpin = new Pushpin();
                 pushpin.Location = SelectedPushpin.Location;
-                SelectedPushpin.Tag = station_name.Text;
+                SelectedPushpin.Tag = station_name.Text;//treba da se stavi tag 
                 SelectedPushpin.ToolTip = station_name.Text;
                 pushpin.Tag = station_name.Text;
                 pushpin.MouseDown += Pushpin_MouseDown;
-                pushpin.ToolTip = pushpin.Tag;
+                pushpin.ToolTip = pushpin.Name;
                 Pushpins.Add(pushpin);
                 PushpinIndex++;
-                TryDisableUnable();
                 e.Handled = true;
+                Step = "step3";
+                DoStep();
             }
         }
 
@@ -202,30 +279,30 @@ namespace Railway
         {
             PushpinIndex--;
             SetPushpin();
-            TryDisableUnable();
+            Step = "step4";
+            DoStep();
         }
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
             PushpinIndex++;
             SetPushpin();
-            TryDisableUnable();
-        }
-        private void TryDisableUnable()
-        {
-            if (PushpinIndex < 1 || Pushpins.Count <= 1)
-                undoUpdateStation.IsEnabled = false;
-            else
-                undoUpdateStation.IsEnabled = true;
-            if (PushpinIndex == Pushpins.Count - 1)
-                redoUpdateStation.IsEnabled = false;
-            else
-                redoUpdateStation.IsEnabled = true;
-
+            Step = "step5";
+            DoStep();
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             HelpProvider.ShowHelp("EditStation", MainWindow);
+        }
+
+        private void station_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (station_name.Text.Length > 5  && textChange%2==0)
+            {
+                Step = "step2";
+                DoStep();
+                textChange++;
+            }
         }
     }
 }

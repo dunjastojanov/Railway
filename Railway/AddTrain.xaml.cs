@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +49,8 @@ namespace Railway
 
             name = train.Name;
             numberOfWagons = train.seats.numberOfWagons;
+            SeatDistributionLabel.Content = $"Seat distribution: Number of rows: { train.seats.numberOfSeatsPerColumn}\tNumber of Columns: { train.seats.numberOfColumns}";
+         
 
             NameTextBox.Text = name;
             NumberOfWagonsTextBox.Text = numberOfWagons.ToString();
@@ -134,13 +137,6 @@ namespace Railway
 
 
 
-        private void addColumnPixels(Grid grid, double width)
-        {
-            var cd = new ColumnDefinition();
-            cd.Width = new GridLength(width);
-            grid.ColumnDefinitions.Add(cd);
-        }
-
         private void choseSeats(object sender, RoutedEventArgs e)
         {
 
@@ -152,7 +148,7 @@ namespace Railway
             string numberOfColumnsString = text.Split('\n')[1];
 
             int numberOfColums = Int32.Parse(numberOfColumnsString.Split(':')[1].Substring(1));
-            text = $"Seat distribution: {numberOfRowsString} {numberOfColumnsString}";
+            text = $"Seat distribution: {numberOfRowsString}\t{numberOfColumnsString}";
 
             chosenSeats = new Seats(1, numberOfColums, numberOfRows);
 
@@ -182,6 +178,13 @@ namespace Railway
             if (name == "")
             {
                 messages += $"You must type in the name.\n";
+            }
+
+            String pattern = @"^[A-Za-z]+[A-Za-z\s]*$";
+            
+            if (!Regex.Match(name, pattern).Success)
+            {
+                messages += $"Name must begin with a letter and can contain only letters and spaces.\n";
             }
 
             if (numberOfWagonsString == "")

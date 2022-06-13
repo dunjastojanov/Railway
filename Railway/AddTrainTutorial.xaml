@@ -1,13 +1,12 @@
-﻿<Page x:Class="Railway.AddTrain"
+﻿<Page x:Class="Railway.AddTrainTutorial"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
-      d:DesignHeight="430" d:DesignWidth="637"
-       local:HelpProvider.HelpKey="AddTrain"
-      Title="AddTrain">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddTrainTutorial">
 
     <Page.Resources>
         <Style TargetType="Page">
@@ -81,9 +80,9 @@
             </Grid.ColumnDefinitions>
 
             <Label Content="Name: " Foreground="Black" HorizontalAlignment="Right"></Label>
-            <TextBox x:Name="NameTextBox" Grid.Column="1" ToolTip="Name of the new train."></TextBox>
+            <TextBox x:Name="NameTextBox" Grid.Column="1" ToolTip="Name of the new train." TextChanged="NameTextBox_TextChanged"></TextBox>
             <Label Grid.Column="2" Content="Number of wagons: " Foreground="Black" HorizontalAlignment="Right"></Label>
-            <TextBox x:Name="NumberOfWagonsTextBox" Grid.Column="3" ToolTip="Number of wagons for the new train."></TextBox>
+            <TextBox x:Name="NumberOfWagonsTextBox" Grid.Column="3" ToolTip="Number of wagons for the new train." TextChanged="NumberOfWagonsTextBox_TextChanged"></TextBox>
 
         </Grid>
 
@@ -111,7 +110,7 @@
                         <ColumnDefinition Width="5"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="5"></ColumnDefinition>
-                        
+
                     </Grid.ColumnDefinitions>
                 </Grid>
             </StackPanel>
@@ -120,15 +119,14 @@
         <Grid Grid.Row="7" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="0.75*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1" Background="#FFFD9B00" Foreground="White">Cancel</Button>
             <Button x:Name="saveButton" Click="saveButton_Click" Grid.Column="3" Background="#FFFD9B00" Foreground="White">Save</Button>
-            
+
         </Grid>
 
     </Grid>
