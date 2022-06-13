@@ -1,0 +1,79 @@
+﻿<Page x:Class="Railway.AddingStationTutorial"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      xmlns:local="clr-namespace:Railway"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddingStationTutorial">
+
+    <Grid x:Name="addingStationGrid" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="White" Opacity="0.8" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
+        <Grid x:Name="undoRedo" Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="42*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="24*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="24*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="85*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="undoAddStation" Content="Undo" Grid.Row="1" Grid.Column="2" Click="UndoButton_Click"  Background="#FFFD9B00" Foreground="White" />
+            <Button x:Name="redoAddStation" Content="Redo" Grid.Row="1" Grid.Column="4" Click="RedoButton_Click"  Background="#FFFD9B00" Foreground="White" />
+            <local:HelpButton Grid.Column="6" Grid.Row="1" Click="HelpButton_Click"></local:HelpButton>
+        </Grid>
+        <Label Content="Add station" Margin="10,0,0,0" Grid.Column="1" Grid.Row="2"  Foreground="Black" FontSize="20" />
+        <Label Content="Station name:" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4"  Foreground="Black" FontSize="16" />
+        <TextBox x:Name="station_name" VerticalAlignment="Center" TextChanged="station_name_TextChanged"  Grid.Column="1"  Grid.Row="5" TextWrapping="Wrap" Margin="10,0,0,0" TextAlignment="Justify" FontSize="16" ToolTip="Name of the new station you want to add."/>
+        <TextBlock Margin="10,10,10,0" Grid.Column="1"  Grid.Row="3" TextWrapping="WrapWithOverflow" Text="To add a station drag and drop the icon" Foreground="Black" FontSize="16" />
+        <Grid x:Name="point" Grid.Column="1" Grid.Row="6" Grid.RowSpan="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Station pin:" Grid.Column="0" Foreground="Black" FontSize="16" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="10,0,0,0"/>
+            <Ellipse 
+            MouseMove="Ellipse_MouseMove" Grid.Column="1" 
+            x:Name="LocationPoint" Fill="Red" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Height="15" Width="15"/>
+        </Grid>
+        <Button x:Name="addStation_BTN" FontSize="16" Click="addStation_Click" Content="Add new station" Grid.Column="1" Grid.Row="7" Background="#FFFD9B00" Foreground="White"  Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch"  />
+        <WPF:Map x:Name="mapa"
+                 AllowDrop="True"
+                 Grid.Column="3"
+                 Grid.Row="2"
+                 VerticalContentAlignment="Stretch"
+                 HorizontalContentAlignment="Stretch"
+                 Grid.RowSpan="6"
+                 Margin="10" 
+                 ZoomLevel="9"
+                 Center="44.785197, 20.668373"
+                 Drop="mapa_Drop"
+                 CredentialsProvider="Z22NcVTmQLM7xdYB3JUH~2KTwUSVQ71smVR32aiHY7w~AgpJmZQy6EajKEtAjchqViLmh3PuMYWUtoYG8xreQEA7JeI_9fruGjOQcQTfCrdy" Width="391">
+        </WPF:Map>
+    </Grid>
+</Page>

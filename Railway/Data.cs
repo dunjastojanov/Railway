@@ -481,6 +481,43 @@ namespace Railway
             return railway;
 
         }
+
+        internal static void addNewStationTutorial(Station station)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+            newRailway.Stations.Add(station);
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
+        }
+
+        internal static void deleteStationTutorial(Station station)
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            Railroad newRailway = oldRailway.DeepCopy();
+
+            newRailway.RemoveStation(station);
+
+            List<Trainline> trainlines = new List<Trainline>();
+            foreach (Trainline trainline in newRailway.TrainLines)
+            {
+                if (!trainline.ContainsStation(station))
+                {
+                    trainlines.Add(trainline);
+                }
+            }
+            newRailway.TrainLines = trainlines;
+
+            Data.AddRailwayTutorial(newRailway);
+            Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
+        }
+
+        internal static IEnumerable<Station> getStationsTutorials()
+        {
+            Railroad railway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            return railway.Stations;
+        }
+
         public static Station getStationByName(String stationName) {
             foreach (Station station in Data.getStations())
             {
@@ -510,6 +547,8 @@ namespace Railway
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
         }
+
+        
         public static void addNewStation(Station station) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
@@ -522,7 +561,6 @@ namespace Railway
         public static void updateStation(String oldStationName,Station updatedStation) {
             Railroad oldRailway = Data.RailwayStates[Data.CurrentRailwayIndex];
             Railroad newRailway = oldRailway.DeepCopy();
-            //obrisi staru i dodaj novu posto koristimo dictionary
             for (int i = 0; i < newRailway.Stations.Count; i++)
             {
                 if (newRailway.Stations[i].Name == oldStationName)
@@ -542,6 +580,8 @@ namespace Railway
             Data.AddRailway(newRailway);
             Data.SetRailwayIndex(Data.RailwayIndex + 1);
         }
+
+
 
         public static void CreateTutorialData()
         {
@@ -596,6 +636,9 @@ namespace Railway
             Data.AddRailwayTutorial(newRailway);
             Data.SetRailwayIndexTutorial(Data.RailwayIndex + 1);
         }
+
+        
+
 
         internal static void editTimetable(Train chosenTrain, DateTime chosenStartTime, DateTime chosenEndTime, List<string> days, Timetable oldTimetable)
         {
@@ -741,18 +784,9 @@ namespace Railway
 
         public static List<Train> GetTrains()
         {
-            //List<Train> trains = new List<Train>();
             Railroad railway = Data.RailwayStates[Data.CurrentRailwayIndex];
             return railway.Trains;
-            //foreach (Trainline trainline in railway.TrainLines)
-            //{
-            //    foreach (Timetable timetable in trainline.Timetables)
-            //    {
-            //        if (!trains.Contains(timetable.Train))
-            //            trains.Add(timetable.Train);
-            //    }
-            //}
-            //return trains;
+
         }
 
         public static Train GetTrain(String name)

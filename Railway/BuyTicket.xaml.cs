@@ -153,14 +153,20 @@ namespace Railway
             Grid.SetRowSpan(arrival, 3);
             grid.Children.Add(arrival);
 
-            ComboBox stations = new ComboBox();
+            Label allStation = new Label();
+            allStation.Content = "All stations:";
+            allStation.FontSize = 16;
+            Grid.SetColumn(allStation, 1);
+            Grid.SetRow(allStation, 5);
+            grid.Children.Add(allStation);
+
+            ListBox stations = new ListBox();
             foreach (string station in reservation.AllStations)
                 stations.Items.Add(station);
-            stations.IsEditable = true;
-            stations.IsReadOnly = true;
-            stations.Text = "Stanice";
             stations.FontSize = 15;
+            stations.Margin=new Thickness(0, 0, 10, 0);
             Grid.SetColumn(stations, 2);
+            Grid.SetColumnSpan(stations, 2);
             Grid.SetRow(stations, 5);         
             grid.Children.Add(stations);
 
