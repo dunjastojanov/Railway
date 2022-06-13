@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Railway"
         mc:Ignorable="d"
         Title="ChooseSeat" Height="380" Width="650"
-        MinHeight="380" MinWidth="650">
+        MinHeight="380" MinWidth="650"
+        local:HelpProvider.HelpKey="ChooseSeat">
     <Grid x:Name="chooseSeatGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -23,14 +24,16 @@
         <Grid x:Name="chooseSeatLabel" Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="25*"/>
                 <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="label" Grid.Column="0" FontSize="16" Content="Number of seats to choose:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label x:Name="seatsLeft" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label x:Name="label2" Grid.Column="2" Content="Number of wagon:  " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <ComboBox x:Name="wagonNum" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3" SelectionChanged="ShowTrain_Button_Click"/>
+            <local:HelpButton Grid.Column="5" Click="HelpButton_Click"></local:HelpButton>
         </Grid>
         <Grid x:Name="trainGrid" Grid.Row="2" Grid.Column="1">
             <Grid.ColumnDefinitions>

@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+       local:HelpProvider.HelpKey="ReadTrainline"
       Title="ReadTrainlineTutorial">
 
     <Page.Resources>

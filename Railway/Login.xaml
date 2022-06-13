@@ -80,7 +80,6 @@
             <Label  Opacity="1"  Grid.Row="4" Grid.Column="1"  Foreground="Black" FontSize="16">Password</Label>
             <PasswordBox  Opacity="1"  x:Name="passwordTextBox"  Grid.Row="5" Grid.Column="1" ToolTip="Password used for logging in."></PasswordBox>
             <Button Opacity="1" Grid.Row="7" Grid.Column="1" Background="#FFFD9B00"  Click="Button_Click" >Log in</Button>
-            <l:HelpButton Grid.Column="2" Click="HelpButton_Click"></l:HelpButton>
             <Label  Grid.Row="0" Grid.Column="1" Content="Log in" FontSize="20" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
     </Grid>

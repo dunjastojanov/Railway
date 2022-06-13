@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="637"
+      local:HelpProvider.HelpKey="Reports"
       Title="MonthlyReport">
 
     <Grid Background="White">

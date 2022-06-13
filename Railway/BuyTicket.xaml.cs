@@ -200,7 +200,7 @@ namespace Railway
             Station firstStation = reservation.Trainline.getStation(reservation.FirstStation);
             Station lastStation = reservation.Trainline.getStation(reservation.LastStation);
             DateTime ticketDate = new DateTime(Date.Year, Date.Month, Date.Day, reservation.DepartureTime.Hour, reservation.DepartureTime.Minute, 0);
-            ChooseSeat cs= new ChooseSeat(this, reservation.Timetable.BoughtTickets, reservation.Timetable.Train, NumberOfPassengers);
+            ChooseSeat cs= new ChooseSeat(this, reservation.Timetable.BoughtTickets, reservation.Timetable.Train, NumberOfPassengers,MainWindow);
             cs.ShowDialog();
             if (BoughtSeats.Count > 0)
             {

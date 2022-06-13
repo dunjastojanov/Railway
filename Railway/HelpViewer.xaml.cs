@@ -27,14 +27,14 @@ namespace Railway
             curDir = curDir.Substring(0, curDir.Length - 10);
 
             string path = String.Format("{0}/help/{1}.htm", curDir, key);
-            if (!File.Exists(path))
+            if (File.Exists(path))
             {
-                key = "error";
+                Uri u = new Uri(String.Format("file:///{0}/help/{1}.htm", curDir, key));
+                ch = new JavaScriptControlHelper(originator);
+                wbHelp.ObjectForScripting = ch;
+                wbHelp.Navigate(u);
             }
-            Uri u = new Uri(String.Format("file:///{0}/help/{1}.htm", curDir, key));
-            ch = new JavaScriptControlHelper(originator);
-            wbHelp.ObjectForScripting = ch;
-            wbHelp.Navigate(u);
+            
 
         }
 

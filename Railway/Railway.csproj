@@ -452,6 +452,8 @@
     <Resource Include="images\icons8-bus-seat-top-view-96.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="help\ChooseSeat.htm" />
+    <Content Include="help\index.htm" />
     <Content Include="help\ReadTrain.htm" />
     <Content Include="help\AddTrain.htm" />
     <Content Include="help\EditTrain.htm" />
@@ -468,6 +470,8 @@
     <Content Include="help\Login.htm" />
     <Content Include="help\SearchTicket.htm" />
     <Content Include="help\TicketHistory.htm" />
+    <Resource Include="images\q.png" />
+    <Resource Include="images\icons8-help-96.png" />
     <Resource Include="train.ico" />
     <Resource Include="images\train.ico" />
     <Resource Include="images\info.png" />

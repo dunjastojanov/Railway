@@ -26,8 +26,11 @@ namespace Railway
         Train Train { get; set; }
         public int SeatToTake { get; set; }
         public List<TicketSeat> ChosenSeats { get; set; }
-        public ChooseSeat(BuyTicket buyTicket, List<Ticket> tickets, Train train, int seats)
+
+        public Railway.MainWindow mainWindow;
+        public ChooseSeat(BuyTicket buyTicket, List<Ticket> tickets, Train train, int seats, Railway.MainWindow window)
         {
+            mainWindow = window;
             InitializeComponent();
             BuyTicket = buyTicket;
             BoughtTickets = tickets;
@@ -114,6 +117,11 @@ namespace Railway
             {
                 MessageBox.Show("Choosing seats cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("ChooseSeat", mainWindow);
         }
     }
 }

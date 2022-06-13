@@ -10,7 +10,8 @@ namespace Railway
     {
         public static string GetHelpKey(DependencyObject obj)
         {
-            return obj.GetValue(HelpKeyProperty) as string;
+            string v = obj.GetValue(HelpKeyProperty) as string;
+            return v;
         }
 
         public static void SetHelpKey(DependencyObject obj, string value)

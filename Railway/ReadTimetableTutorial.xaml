@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Railway"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="637"
+       local:HelpProvider.HelpKey="ReadTimetable"
       Title="ReadTimetableTutorial">
 
     <Grid x:Name="MainGridTutorial">
