@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("help/chooseseat.htm")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("help/index.htm")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("help/readtrain.htm")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("help/addtrain.htm")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("help/edittrain.htm")]

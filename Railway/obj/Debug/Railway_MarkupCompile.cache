@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Dunja\Desktop\HCI\Railway\Railway\obj\Debug\
+D:\siit\HCI\stvarno kraj\Railway\Railway\obj\Debug\
 Railway
 none
 false
 DEBUG;TRACE
-C:\Users\Dunja\Desktop\HCI\Railway\Railway\App.xaml
-36-442505205
-16-1475928966
-55901107746
-18-924503761
-AddingStation.xaml;AddTimetable.xaml;AddTrain.xaml;AddTrainRoute.xaml;AdminPage.xaml;BuyTicket.xaml;ChooseSeat.xaml;ChooseTrainSeats.xaml;HelpButton.xaml;HelpViewer.xaml;Login.xaml;MainWindow.xaml;ManagerPage.xaml;MonthlyReport.xaml;OneStation.xaml;OneTimetable.xaml;OneTimetableTutorial.xaml;OneTrain.xaml;OneTrainRoute.xaml;OneTrainTutorial.xaml;RailwayNetworkOverview.xaml;ReadStations.xaml;ReadTimetable.xaml;ReadTimetableTutorial.xaml;ReadTrain.xaml;ReadTrainRoute.xaml;ReadTrainTutorial.xaml;Reports.xaml;RouteReport.xaml;SearchRoute.xaml;SeatButton.xaml;TicketHistory.xaml;TrainSeats.xaml;TutorialButtons.xaml;TutorialHomePage.xaml;UpdateStation.xaml;
+D:\siit\HCI\stvarno kraj\Railway\Railway\App.xaml
+45-732602209
+18-1151397047
+64-1889728447
+18-1504789512
+AddingStation.xaml;AddingStationTutorial.xaml;AddTimetable.xaml;AddTimetableTutorial.xaml;AddTrain.xaml;AddTrainlineTutorial.xaml;AddTrainRoute.xaml;AddTrainTutorial.xaml;AdminPage.xaml;BuyTicket.xaml;ChooseSeat.xaml;ChooseTrainSeats.xaml;HelpButton.xaml;HelpViewer.xaml;Login.xaml;MainWindow.xaml;ManagerPage.xaml;MonthlyReport.xaml;OneStation.xaml;OneStationTutorial.xaml;OneTimetable.xaml;OneTimetableTutorial.xaml;OneTrain.xaml;OneTrainlineTutorial.xaml;OneTrainRoute.xaml;OneTrainTutorial.xaml;RailwayNetworkOverview.xaml;ReadStations.xaml;ReadStationTutorial.xaml;ReadTimetable.xaml;ReadTimetableTutorial.xaml;ReadTrain.xaml;ReadTrainlineTutorial.xaml;ReadTrainRoute.xaml;ReadTrainTutorial.xaml;Reports.xaml;RouteReport.xaml;SearchRoute.xaml;SeatButton.xaml;TicketHistory.xaml;TrainSeats.xaml;TutorialButtons.xaml;TutorialHomePage.xaml;UpdateStation.xaml;UpdateStationTutorial.xaml;
 
 False
 

@@ -131,8 +131,8 @@ namespace Railway
             AddedStationsInfoGrid.Height = AddedStationsInfoGrid.Height + 30 + 90;
             path = station.PathToPreviousStation;
 
-            addedStations.Add(station.Name);
-            addedStationsEditing.Add(station.Name);
+            //addedStations.Add(station.Name);
+            //addedStationsEditing.Add(station.Name);
             addRowPixels(AddedStationsInfoGrid, 90);
 
             
@@ -203,14 +203,9 @@ namespace Railway
                 addRowPixels(AddedStationsInfoGrid, 90);
                 if (lastStationLabelRow > -1)
                 {
-                    Path path = getPathBetweenStation(lastStation, station);
-                    if (path != null)
-                    {
-                        addBetweenStationInfoGrid(path.Price, path.Duration);
-                    }else
-                    {
-                        addBetweenStationInfoGrid(lastStation, station);
-                    }
+                   
+                    addBetweenStationInfoGrid(lastStation, station);
+                    
                 }
                 addStationLabel(station);
                 addRowPixels(AddedStationsInfoGrid, 30);
@@ -531,7 +526,7 @@ namespace Railway
             }
         }
         public void RefreshPage()
-        {
+        {        
            /* var infoList = new List<PathDTO>();
             foreach (var info in infoBetweenStations)
             {
@@ -562,7 +557,8 @@ namespace Railway
                 infoBetweenStationsHistory.RemoveRange(historyIndex + 1, infoBetweenStationsHistory.Count - 1 - historyIndex);
             infoBetweenStationsHistory.Add(infoList);
             historyIndex++;*/
-            infoBetweenStations.Clear();
+            
+            //infoBetweenStations.Clear();
             TryDisableUndoRedo();
             AddContentForAdding();
            
