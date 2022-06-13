@@ -193,7 +193,7 @@ namespace Railway
                     String newName = station_name.Text;
                     bool sameName = false;
                     bool sameLocation = false;
-                    var collection = Data.getStations().Where(a => a.Name != Station.Name);
+                    var collection = Data.getTutorialStations().Where(a => a.Name != Station.Name);
                     foreach (Station station1 in collection)
                     {
                         if (station1.Name == newName)
