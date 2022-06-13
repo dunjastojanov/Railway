@@ -47,6 +47,7 @@ namespace Railway
             Station = station;
             Pushpins = new List<Pushpin>();
             PushpinIndex = 0;
+            Data.FillData();
             Pushpin pushpin = new Pushpin();
             pushpin.Location = Station.Location;
             pushpin.Tag = Station.Name;
@@ -233,6 +234,7 @@ namespace Railway
 
         private void mapa_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            //proveri da li je pushpin selectovan
             MessageBoxResult messageBoxResult1 = MessageBox.Show("Are you sure you want to update location of the station?", "Update station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult1 == MessageBoxResult.No)
             {

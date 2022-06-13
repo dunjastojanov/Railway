@@ -43,7 +43,7 @@
                 <Grid x:Name="ReadTimetableGrid">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid>
                         <Grid.RowDefinitions>

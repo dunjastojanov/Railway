@@ -116,12 +116,12 @@ namespace Railway
             }
             if (ChooseSeat.SeatToTake == 0)
             {
-                MessageBox.Show("You have chosen your seats. If you are satisfied press save, otherwise cancel and try again.", "Seats have been chosen", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You have already chosen all of your seats. If you are satisfied press save. \nYou can unselect the seat by clicking on selected ones or you can exit the window and try again.", "Seats have been chosen", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             if (chosenButton.IsEnabled == false)
             {
-                MessageBox.Show("This seat is aleready taken. Please choose another one.", "Seat taken.", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("This seat is already taken. Please choose another one.", "Seat taken.", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             else

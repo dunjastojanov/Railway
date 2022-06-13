@@ -96,12 +96,17 @@ namespace Railway
                 MessageBox.Show("Please enter ending date.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (startDate.Date > endDate.Date)
+            {
+                MessageBox.Show("Starting date must be before ending date.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             var trainlineName = route.Split(':')[0];
             Tickets = Data.GetRouteReport(trainlineName, startDate, endDate);
             if (Tickets.Count == 0)
             {
-                MessageBox.Show("There are no bougth tickets for the route.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("There are no bougth tickets for time period on this trainline.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

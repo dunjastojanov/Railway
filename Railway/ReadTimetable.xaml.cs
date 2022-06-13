@@ -71,7 +71,7 @@ namespace Railway
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
-            ReadTimetableGrid.Height += height + 10;
+            ReadTimetableGrid.Height += height + 30;
             grid.RowDefinitions.Add(rd);
         }
 
@@ -83,7 +83,7 @@ namespace Railway
         {
             ReadTimetableGrid.Children.RemoveRange(0, ReadTimetableGrid.Children.Count);
             TryDisableUndoRedo();
-            ReadTimetableGrid.Height = 35;
+            ReadTimetableGrid.Height = 45;
             AddContent();
         }
         private void TryDisableUndoRedo()

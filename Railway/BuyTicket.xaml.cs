@@ -171,7 +171,7 @@ namespace Railway
             grid.Children.Add(stations);
 
             Label price = new Label();
-            price.Content = reservation.Price + " rsd";
+            price.Content = reservation.Price * NumberOfPassengers+ " rsd";
             price.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ee964b"));     
             price.FontSize = 18;
             price.VerticalAlignment = VerticalAlignment.Top;
@@ -204,7 +204,7 @@ namespace Railway
             cs.ShowDialog();
             if (BoughtSeats.Count > 0)
             {
-                Ticket ticket = new Ticket(LogedUser, firstStation, lastStation, ticketDate, NumberOfPassengers, reservation.Price, reservation.Duration, reservation.Timetable.Train, BoughtSeats);
+                Ticket ticket = new Ticket(LogedUser, firstStation, lastStation, ticketDate, NumberOfPassengers, reservation.Price , reservation.Duration, reservation.Timetable.Train, BoughtSeats);
                 string parameters = "Departure: " + reservation.DepartureTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.FirstStation  + "\nArrival: " + reservation.ArrivalTime.ToString("dd.MM.yyyy. HH:mm'h'") + ", " + reservation.LastStation + "\nPrice: " + reservation.Price  + " rsd" + "\nDuration: " + reservation.Duration + " minutes";
                 int response = (int)MessageBox.Show("Are you sure you want to buy ticket with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)

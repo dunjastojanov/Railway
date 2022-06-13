@@ -48,7 +48,7 @@ namespace Railway
             DaysLabel.Foreground = new SolidColorBrush(Colors.Black);
             row = 1;
 
-            addRowPixels(StationsGrid, 30);
+            addRowPixels(StationsGrid, 45);
             
             
 
@@ -75,7 +75,7 @@ namespace Railway
                 station = path.NextStation;
                 row++;
 
-                addRowPixels(StationsGrid, 30);
+                addRowPixels(StationsGrid, 45);
                 
 
             }
@@ -138,8 +138,8 @@ namespace Railway
             GridButtons.Children.Remove(EditButton);
             GridButtons.Children.Remove(DeleteButton);
 
-            TimeTableName.Content = "Name: " + timetable.Name;
-            TrainName.Content = "Train: " + timetable.Train.Name;
+            TimeTableName.Content = timetable.Name;
+            TrainName.Content =  timetable.Train.Name;
 
             this.timetable = timetable;
             string days = "";
@@ -152,7 +152,7 @@ namespace Railway
 
             row = 1;
 
-            addRowPixels(StationsGrid, 40);
+            addRowPixels(StationsGrid, 45);
             addRowPixels(StationsGrid, 3);
 
             DateTime datetime = timetable.TimeFromFirstStation;
@@ -180,7 +180,7 @@ namespace Railway
                 station = path.NextStation;
                 row++;
 
-                addRowPixels(StationsGrid, 30);
+                addRowPixels(StationsGrid, 45);
                 addRowPixels(StationsGrid, 5);
 
             }
@@ -244,7 +244,7 @@ namespace Railway
 
         internal double getHeight()
         {
-            return row * 40 + 150;
+            return row * 45 + 150;
         }
 
         private void addRowPixels(Grid grid, double height)

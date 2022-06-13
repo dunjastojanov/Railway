@@ -88,7 +88,7 @@ namespace Railway
         public void CreateAdminNavbar()
         {
             navButtons.Children.RemoveRange(0, navButtons.Children.Count);
-
+            logOut.Children.Remove(Tutorials);
             Trainlines = new Button();
             Trainlines.BorderThickness = new Thickness(0);
             Trainlines.Height = 35;
@@ -163,6 +163,7 @@ namespace Railway
         public void CreateUserNavbar()
         {
             navButtons.Children.RemoveRange(0, navButtons.Children.Count);
+            logOut.Children.Remove(Tutorials);
 
             Button searchTicket = new Button();
             searchTicket.BorderThickness = new Thickness(0);

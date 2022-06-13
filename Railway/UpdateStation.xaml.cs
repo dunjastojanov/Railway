@@ -157,6 +157,9 @@ namespace Railway
 
         private void mapa_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (SelectedPushpin == null) {
+                return;
+            }
             MessageBoxResult messageBoxResult1 = MessageBox.Show("Are you sure you want to update location of the station?", "Update station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult1 == MessageBoxResult.No)
             {

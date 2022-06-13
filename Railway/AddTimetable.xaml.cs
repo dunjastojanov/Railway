@@ -208,7 +208,7 @@ namespace Railway
                 string parameters = $"Train: {chosenTrain.Name}\nRoute:{Route}\n" +
                     $"Time from first station: {chosenStartTime.Hour.ToString().PadLeft(2, '0')}:{chosenStartTime.Minute.ToString().PadLeft(2, '0')}\n" +
                     $"Time from last station back: {chosenEndTime.Hour.ToString().PadLeft(2, '0')}:{chosenEndTime.Minute.ToString().PadLeft(2, '0')}\n" +
-                    daysString;
+                    $"Days: " + daysString;
 
                 if (timetable == null)
                 {
@@ -283,7 +283,15 @@ namespace Railway
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Window.ShowReadTimetable(false);
+            String message = "editing";
+            if (timetable == null)
+                message = "adding";
+
+            int response = (int)MessageBox.Show($"Are you sure you want to cancel {message} a timetable?\n","Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (response == 6)
+            {
+                Window.ShowReadTimetable(false);
+            }
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)

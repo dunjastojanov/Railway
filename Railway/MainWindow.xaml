@@ -26,7 +26,7 @@
             <StackPanel x:Name="navButtons" Grid.Row="0" Orientation="Vertical" Grid.Column="0">
             </StackPanel>
             <StackPanel x:Name="logOut" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="0">
-                <Button  x:Name="logOutButton"  BorderThickness="0" HorizontalAlignment="Stretch" Height="35" FontSize="15" Content="Logout" Background="#00b0ff" Foreground="FloralWhite" Click="Button_Click_Logout" />
+                <Button  x:Name="logOutButton"  BorderThickness="0" HorizontalAlignment="Stretch" Height="35" FontSize="15" Content="Log out" Background="#00b0ff" Foreground="FloralWhite" Click="Button_Click_Logout" />
             </StackPanel>
         </Grid>
         <Frame x:Name="MainFrame" Grid.Row="0" Grid.Column="1" NavigationUIVisibility="Hidden" />

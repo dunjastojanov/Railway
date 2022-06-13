@@ -39,7 +39,6 @@ namespace Railway
             this.DataContext = this;
             this.Window = window;
             ReadStationStep = stepReadStation;
-            Data.FillData();
             Stations = Data.getStations();
             Pushpins = new List<Pushpin>();
             PushpinIndex = -1;

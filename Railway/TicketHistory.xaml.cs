@@ -157,7 +157,7 @@ namespace Railway
             grid.Children.Add(passengers);
 
             Label price = new Label();
-            price.Content = ticket.Price + " rsd";
+            price.Content = ticket.Price * ticket.NumberOfPassengers + " rsd";
             price.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ee964b"));
             price.FontSize = 18;
             price.VerticalAlignment = VerticalAlignment.Top;
