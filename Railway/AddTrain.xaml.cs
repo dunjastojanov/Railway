@@ -216,7 +216,7 @@ namespace Railway
 
                         Data.AddTrain(chosenSeats, name, numberOfWagons);
                         int ok = (int)MessageBox.Show("Train successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrain(true);
+                        Window.ShowReadTrain(false);
                     }
                     else
                     {
@@ -230,7 +230,7 @@ namespace Railway
                     {
                         Data.editTrain(chosenSeats, name, numberOfWagons, train);
                         int ok = (int)MessageBox.Show("Train successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrain(true);
+                        Window.ShowReadTrain(false);
                     }
                     else
                     {
@@ -256,7 +256,7 @@ namespace Railway
                 {
 
                     MessageBox.Show("Train addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrain(true);
+                    Window.ShowReadTrain(false);
                 }
             }
             else
@@ -265,7 +265,7 @@ namespace Railway
                 if (response == 6)
                 {
                     MessageBox.Show("Train addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrain(true);
+                    Window.ShowReadTrain(false);
                 }
 
             }

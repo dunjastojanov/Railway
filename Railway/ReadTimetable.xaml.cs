@@ -100,7 +100,7 @@ namespace Railway
 
         private void UndoDeleteTimetable_Click(object sender, RoutedEventArgs e)
         {
-            int response = (int)MessageBox.Show("Are you sure you want to undo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            int response = (int)MessageBox.Show("Are you sure you want to undo action?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
                 Data.Undo();
@@ -108,12 +108,12 @@ namespace Railway
             }
             else
             {
-                MessageBox.Show("Undo deleting train route cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Undo action cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
         private void RedoDeleteTimetable_Click(object sender, RoutedEventArgs e)
         {
-            int response = (int)MessageBox.Show("Are you sure you want to redo deleting train route?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            int response = (int)MessageBox.Show("Are you sure you want to redo action?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (response == 6)
             {
                 Data.Redo();
@@ -121,7 +121,7 @@ namespace Railway
             }
             else
             {
-                MessageBox.Show("Redo deleting train route cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Redo action cancelled.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

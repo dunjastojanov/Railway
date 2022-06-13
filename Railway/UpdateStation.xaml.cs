@@ -38,7 +38,7 @@ namespace Railway
             this.DataContext = this;
             oldStationName = station.Name;
             MainWindow = window;
-            Station = station;
+            Station = station.DeepCopy();
             Pushpins = new List<Pushpin>();
             PushpinIndex = 0;
             InitializeComponent();
@@ -135,7 +135,7 @@ namespace Railway
                         Data.updateStation(oldStationName, newStation);
                         station_name.Text = "";
                         MessageBox.Show("You have succesfully updated station", "Update station confirmation");
-                        MainWindow.ShowReadStations(true);
+                        MainWindow.ShowReadStations(false);
                     }
                     else if (!sameName)
                     {

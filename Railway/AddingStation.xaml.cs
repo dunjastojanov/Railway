@@ -32,7 +32,6 @@ namespace Railway
         {
             this.DataContext = this;
             this.Window = window;
-            Data.FillData();
             Stations = Data.getStations();
             Pushpins = new List<Pushpin>();
             PushpinIndex = -1;
@@ -179,7 +178,7 @@ namespace Railway
                         lastPushpin = null;
                         station_name.Text = "";
                         MessageBox.Show("You have succesfully added new station", "Creating new station confirmation");
-                        Window.ShowReadStations(true);
+                        Window.ShowReadStations(false);
                     }
                     else if (!sameName)
                     {

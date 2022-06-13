@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Railway"
         mc:Ignorable="d"
         Icon="./images/train.ico"
-        Title="SerbiaTrain" Height="430" Width="750">
+        Title="SerbiaTrain" Height="430" Width="750"
+        MinHeight="430" MinWidth="750">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

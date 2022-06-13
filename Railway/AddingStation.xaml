@@ -74,7 +74,7 @@
                  ZoomLevel="9"
                  Center="44.785197, 20.668373"
                  Drop="mapa_Drop"
-                 CredentialsProvider="Z22NcVTmQLM7xdYB3JUH~2KTwUSVQ71smVR32aiHY7w~AgpJmZQy6EajKEtAjchqViLmh3PuMYWUtoYG8xreQEA7JeI_9fruGjOQcQTfCrdy" Width="391">
+                 CredentialsProvider="Z22NcVTmQLM7xdYB3JUH~2KTwUSVQ71smVR32aiHY7w~AgpJmZQy6EajKEtAjchqViLmh3PuMYWUtoYG8xreQEA7JeI_9fruGjOQcQTfCrdy" >
         </WPF:Map>
     </Grid>
 </Page>

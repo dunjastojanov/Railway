@@ -93,8 +93,7 @@
                     <ColumnDefinition Width="49*"/>
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="UndoAddTrainRoute" Grid.Column="0"  FontSize="16" Content="Undo" Click="UndoAddTrainRoute_Click" Background="#FFFD9B00" Foreground="White"></Button>
-                <Button x:Name="RedoAddTrainRoute" Grid.Column="2"  FontSize="16" Content="Redo" Click="RedoAddTrainRoute_Click" Background="#FFFD9B00" Foreground="White"></Button>
+               
                 <local:HelpButton Grid.Column="3" Click="HelpButton_Click"></local:HelpButton>
             </Grid>
 
