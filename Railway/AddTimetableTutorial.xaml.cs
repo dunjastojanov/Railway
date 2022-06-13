@@ -45,6 +45,7 @@ namespace Railway
             EndTimeChanged = false;
             TrainlineChanged = false;
             InitializeComponent();
+            Monday.IsChecked = false;
             DisableCheckBoxes();
             Window = window;
             ReadTimetableTutorial = readTimetableTutorial;
@@ -73,6 +74,7 @@ namespace Railway
             this.timetable = timetable;
             ReadTimetableTutorial = readTimetableTutorial;
             InitializeComponent();
+            Monday.IsChecked = false;
             Window = window;
             DisableCheckBoxes();
             fillTimeComboBox(StartTimeCombo);
@@ -216,6 +218,7 @@ namespace Railway
             EndTimeCombo.IsEnabled = false;
             EndTimeCombo.Foreground = Brushes.Black;
             Monday.IsEnabled = true;
+            Monday.IsChecked = false;
         }
         private void Step5()
         {
