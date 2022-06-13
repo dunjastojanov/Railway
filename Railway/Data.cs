@@ -42,7 +42,7 @@ namespace Railway
             Seats seats1 = new Seats(5, 4, 12);
             Data.seats.Add(seats1);
 
-            Seats seats2 = new Seats(6, 4, 16);
+            Seats seats2 = new Seats(6, 4, 10);
             Data.seats.Add(seats2);
 
             Seats seats3 = new Seats(3, 5, 14);
@@ -96,9 +96,9 @@ namespace Railway
             Station noviSad1 = noviSad.DeepCopy();
             Station noviSad2 = noviSad.DeepCopy();
 
-            Station staraPazova = new Station("Stara Pazova", 19.833549, 45.267136);
+            Station staraPazova = new Station("Stara Pazova", 20.156877, 44.985613);
 
-            Station staraPazova1 = new Station("Stara Pazova", 19.833549, 45.267136);
+            Station staraPazova1 = new Station("Stara Pazova", 20.156877, 44.985613);
 
 
             Station beograd = new Station("Beograd Centar", 20.394058, 44.854897);

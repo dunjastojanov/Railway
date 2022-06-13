@@ -201,6 +201,12 @@ namespace Railway
         {
             DisplayTicketHistory.Children.RemoveRange(0, DisplayTicketHistory.Children.Count);
             DisplayTicketHistory.Height = 0;
+
+            HelpButton hb = new HelpButton();
+            hb.Click += HelpButton_Click;
+            Grid.SetColumn(hb, 5);
+            DisplayTicketHistory.Children.Add(hb);
+
             this.DisplayTickets();
         }
 

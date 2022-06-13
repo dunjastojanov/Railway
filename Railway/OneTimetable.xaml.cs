@@ -135,6 +135,8 @@ namespace Railway
             InitializeComponent();
             Window = window;
 
+            GridButtons.Children.Remove(EditButton);
+            GridButtons.Children.Remove(DeleteButton);
 
             TimeTableName.Content = "Name: " + timetable.Name;
             TrainName.Content = "Train: " + timetable.Train.Name;

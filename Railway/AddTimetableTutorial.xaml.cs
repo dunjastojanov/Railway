@@ -442,7 +442,14 @@ namespace Railway
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            HelpProvider.ShowHelp("AddTimetable", Window);
+            HelpProvider.ShowHelp("AddTimetable", Window); if (timetable != null)
+            {
+                HelpProvider.ShowHelp("EditTimetable", Window);
+            }
+            else
+            {
+                HelpProvider.ShowHelp("AddTimetable", Window);
+            }
         }
     }
 }

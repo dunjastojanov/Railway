@@ -360,7 +360,14 @@ namespace Railway
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            HelpProvider.ShowHelp("AddTrain", Window);
+            if (train != null)
+            {
+                HelpProvider.ShowHelp("EditTrain", Window);
+            }
+            else
+            {
+                HelpProvider.ShowHelp("AddTrain", Window);
+            }
         }
     }
 }

@@ -21,7 +21,7 @@
     </Grid.ColumnDefinitions>
     <Border Background="White" BorderBrush="Black" CornerRadius="8" BorderThickness="1" Grid.RowSpan="5" Grid.ColumnSpan="2"></Border>
     <Grid Grid.Column="1" Grid.Row="3" Margin="30,0,30,0" Visibility="Visible" Background="Black"></Grid>
-    <Grid Grid.Row="1" Grid.Column="1">
+    <Grid Grid.Row="1" Grid.Column="1" x:Name="GridButtons">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"></ColumnDefinition>
             <ColumnDefinition Width="15*"></ColumnDefinition>

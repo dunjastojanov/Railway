@@ -638,7 +638,15 @@ namespace Railway
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            HelpProvider.ShowHelp("AddTrainline", Window);
+            if (trainline != null)
+            {
+                HelpProvider.ShowHelp("EditTrainline", Window);
+            }
+            else
+            {
+                HelpProvider.ShowHelp("AddTrainline", Window);
+            }
+    
         }
     }
 }
