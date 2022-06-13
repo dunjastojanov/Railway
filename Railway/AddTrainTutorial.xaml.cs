@@ -171,7 +171,7 @@ namespace Railway
 
             chosenSeats = new Seats(1, numberOfColums, numberOfRows);
 
-            MessageBox.Show($"You have chosen seat distribution with {numberOfRows} rows and {numberOfColums} columns.");
+            MessageBox.Show($"You have chosen seat distribution with {numberOfRows} rows and {numberOfColums} columns.", "Seat distribution", MessageBoxButton.OK, MessageBoxImage.Information);
 
             SeatDistributionLabel.Content = text;
 
@@ -269,7 +269,7 @@ namespace Railway
                 MessageBox.Show(messages, "Inadequate parameters", MessageBoxButton.OK, MessageBoxImage.Error);
                 if (messages == $"Number of wagons must be a number.\n")
                 {
-                    MessageBox.Show("Please fill in number of wagons correctly and click on the save button again.");
+                    MessageBox.Show("Please fill in number of wagons correctly and click on the save button again.","Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     NumberOfWagonsTextBox.Text = "";
                     NumberOfWagonsTextBox.IsEnabled = true;
                     NumberOfWagonsTextBox.Focus();
@@ -282,7 +282,7 @@ namespace Railway
             NameTextBox.IsEnabled = true;
             NumberOfWagonsTextBox.IsEnabled = false;
             MessageBox.Show("Please fill in name of the train.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessageBox.Show("Name must have at least four characters in this tutorial.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Name must have at least five characters in this tutorial.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             NameTextBox.Focus();
         }
         public void Step2(){

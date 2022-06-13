@@ -83,7 +83,7 @@ namespace Railway
             station_name.Focus();
             station_name.SelectAll();
             MessageBox.Show("Type in the blank space to change station name.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessageBox.Show("Station name must have minimum 5 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Station name must have minimum 6 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             undoUpdateStation.IsEnabled = false;
             redoUpdateStation.IsEnabled = false;
             mapa.IsEnabled = false;

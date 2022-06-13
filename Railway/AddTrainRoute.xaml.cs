@@ -236,7 +236,7 @@ namespace Railway
                 }
                 else
                 {
-                    MessageBox.Show("Adding station to the train route cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Adding station to the trainline cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
             }
@@ -465,33 +465,33 @@ namespace Railway
 
                 if (trainline == null)
                 {
-                    int response = (int)MessageBox.Show("Are you sure you want to add a train route with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    int response = (int)MessageBox.Show("Are you sure you want to add a trainline with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (response == 6)
                     {
 
                         Data.AddTrainLine(infoBetweenStations);
-                        int ok = (int)MessageBox.Show("Train route successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        int ok = (int)MessageBox.Show("Trainline successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window.ShowReadTrainRoute(false);
                     }
                     else
                     {
-                        MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Trainline addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
 
                 else
                 {
-                    int response = (int)MessageBox.Show("Are you sure you want to edit a train route with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    int response = (int)MessageBox.Show("Are you sure you want to edit a trainline with these parameters?\n" + parameters, "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (response == 6)
                     {
 
                         Data.editTrainLine(infoBetweenStations, trainline.Name);
-                        int ok = (int)MessageBox.Show("Train route successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        int ok = (int)MessageBox.Show("Trainline successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window.ShowReadTrainRoute(false);
                     }
                     else
                     {
-                        MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Trainline editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
 
@@ -508,11 +508,11 @@ namespace Railway
         {
             if (trainline == null)
             {
-                int response = (int)MessageBox.Show("Are you sure you want to cancel train route addition?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                int response = (int)MessageBox.Show("Are you sure you want to cancel trainline addition?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)
                 {
 
-                    MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Trainline addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.ShowReadTrainRoute(false);
                 }
 
@@ -520,11 +520,11 @@ namespace Railway
 
             else
             {
-                int response = (int)MessageBox.Show("Are you sure you want to cancel train route editing?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                int response = (int)MessageBox.Show("Are you sure you want to cancel trainline editing?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (response == 6)
                 {
 
-                    MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Trainline editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.ShowReadTrainRoute(false);
                 }
 

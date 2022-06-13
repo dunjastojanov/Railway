@@ -55,6 +55,7 @@ namespace Railway
 
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
+            addedStationsEditing = new List<string>();
             removedStations = new List<String>();
 
             lastStationLabelRow = -1;
@@ -611,7 +612,7 @@ namespace Railway
                 if (trainline == null)
                 {
 
-                    int ok = (int)MessageBox.Show("Train route successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    int ok = (int)MessageBox.Show("Trainline successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.MainFrame.Content = readTrainlineTutorial;
                     readTrainlineTutorial.Step++;
                     readTrainlineTutorial.DoStep();
@@ -622,7 +623,7 @@ namespace Railway
                 {
 
                     Data.editTrainLineTutorial(infoBetweenStations, trainline.Name);
-                    int ok = (int)MessageBox.Show("Train route successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    int ok = (int)MessageBox.Show("Trainline successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     Window.MainFrame.Content = readTrainlineTutorial;
                     readTrainlineTutorial.Step++;
                     readTrainlineTutorial.DoStep();

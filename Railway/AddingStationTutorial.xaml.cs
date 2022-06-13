@@ -90,7 +90,7 @@ namespace Railway
             addStation_BTN.IsEnabled = false;
             station_name.Focus();
             MessageBox.Show("Type into blank space to set station name.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessageBox.Show("Station name must have minimum 5 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Station name must have minimum 6 characters", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public void Step2()
