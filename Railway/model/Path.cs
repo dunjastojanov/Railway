@@ -18,8 +18,8 @@ namespace Railway.Model
         public Path DeepCopy()
         {
             Path newPath = new Path();
-            newPath.PreviousStation = PreviousStation.DeepCopy();
-            newPath.NextStation = NextStation.DeepCopy();
+            newPath.PreviousStation = PreviousStation;
+            newPath.NextStation = NextStation;
             newPath.Duration = Duration;
             newPath.Price = Price;
             return newPath;

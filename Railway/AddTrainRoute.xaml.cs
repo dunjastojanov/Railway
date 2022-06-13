@@ -1,18 +1,9 @@
 ﻿using Railway.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Railway
 {
@@ -21,14 +12,32 @@ namespace Railway
     /// </summary>
     public partial class AddTrainRoute : Page
     {
+        class PathDTO
+        {
+            public string startStation { get; set; }
+            public string endStation { get; set; }
+            public int price { get; set; }
+            public int duration { get; set; }
+
+            public PathDTO(string startStation, string endStation, int price, int duration)
+            {
+                this.startStation = startStation;
+                this.endStation = endStation;
+                this.price = price;
+                this.duration = duration;
+            }
+        }
         Trainline trainline = null;
         int lastStationLabelRow;
         List<Dictionary<String, object>> infoBetweenStations;
         List<String> addedStations;
         List<String> removedStations;
         List<String> addedStationsEditing;
+        List<List<PathDTO>> infoBetweenStationsHistory;
         int maxSteps;
         int maxStepsEditing;
+        int historyIndex;
+        string Mode { get; set; }
 
         Railway.MainWindow Window;
 
@@ -38,7 +47,9 @@ namespace Railway
             InitializeComponent();
             maxSteps = 0;
             maxStepsEditing = 0;
-
+            Mode = "add";
+            historyIndex = -1;
+            infoBetweenStationsHistory = new List<List<PathDTO>>();
             infoBetweenStations = new List<Dictionary<string, object>>();
             addedStations = new List<String>();
             addedStationsEditing = new List<String>();
@@ -60,12 +71,14 @@ namespace Railway
         {
             this.Window = window;
             InitializeComponent();
+            Mode = "edit";
 
-            this.trainline = trainline;
+            this.trainline = trainline.DeepCopy();
 
             maxSteps = 0;
-
             infoBetweenStations = new List<Dictionary<string, object>>();
+            infoBetweenStationsHistory = new List<List<PathDTO>>();
+            historyIndex = -1;
             addedStations = new List<String>();
             addedStationsEditing = new List<String>();
             removedStations = new List<String>();
@@ -144,18 +157,42 @@ namespace Railway
                 else
                 {
                     fillInfo();
-                    RedoAddTrainRoute.IsEnabled = false;
+
                 }
             }
             else
             {
                 fillInfo();
-                RedoAddTrainRoute.IsEnabled = false;
+
 
             }
 
         }
 
+        private Path getPathBetweenStation(string firstStation, string secondStation)
+        {
+            if (trainline == null)
+                return null;
+            Station currentStation = trainline.FirstStation;
+            Station nextStation = trainline.FirstStation.PathToNextStation.NextStation;
+            while(nextStation.PathToNextStation != null)
+            {
+                if (currentStation.Name.Equals(firstStation) && nextStation.Name.Equals(secondStation))
+                    return currentStation.PathToNextStation;
+                currentStation = currentStation.PathToNextStation.NextStation;
+                nextStation = currentStation.PathToNextStation.NextStation;
+            }
+            if (currentStation.Name.Equals(firstStation) && nextStation.Name.Equals(secondStation))
+                return currentStation.PathToNextStation;
+
+            /*List<PathDTO> currentHistory = infoBetweenStationsHistory[historyIndex];
+            foreach(PathDTO pathDTO in currentHistory)
+            {
+                if (pathDTO.startStation.Equals(firstStation) && pathDTO.Equals(secondStation))
+                    return new Path(null, null, pathDTO.duration, pathDTO.price);
+            }*/
+            return null;
+        }
         private void AddContentForAdding()
         {
             string lastStation = "";
@@ -164,10 +201,16 @@ namespace Railway
             foreach (String station in addedStations)
             {
                 addRowPixels(AddedStationsInfoGrid, 90);
-
                 if (lastStationLabelRow > -1)
                 {
-                    addBetweenStationInfoGrid(lastStation, station);
+                    Path path = getPathBetweenStation(lastStation, station);
+                    if (path != null)
+                    {
+                        addBetweenStationInfoGrid(path.Price, path.Duration);
+                    }else
+                    {
+                        addBetweenStationInfoGrid(lastStation, station);
+                    }
                 }
                 addStationLabel(station);
                 addRowPixels(AddedStationsInfoGrid, 30);
@@ -428,7 +471,7 @@ namespace Railway
 
                         Data.AddTrainLine(infoBetweenStations);
                         int ok = (int)MessageBox.Show("Train route successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrainRoute(true);
+                        Window.ShowReadTrainRoute(false);
                     }
                     else
                     {
@@ -444,7 +487,7 @@ namespace Railway
 
                         Data.editTrainLine(infoBetweenStations, trainline.Name);
                         int ok = (int)MessageBox.Show("Train route successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTrainRoute(true);
+                        Window.ShowReadTrainRoute(false);
                     }
                     else
                     {
@@ -470,7 +513,7 @@ namespace Railway
                 {
 
                     MessageBox.Show("Train route addition cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrainRoute(true);
+                    Window.ShowReadTrainRoute(false);
                 }
 
             }
@@ -482,27 +525,51 @@ namespace Railway
                 {
 
                     MessageBox.Show("Train route editing cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Window.ShowReadTrainRoute(true);
+                    Window.ShowReadTrainRoute(false);
                 }
 
             }
         }
         public void RefreshPage()
         {
+           /* var infoList = new List<PathDTO>();
+            foreach (var info in infoBetweenStations)
+            {
+                string startStation = (string)info["startStation"];
+                string endStation = (string)info["endStation"];
+                int duration;
+                int price;
+                try
+                {
+                   duration = Int32.Parse(((TextBox)info["durationTextBox"]).Text);
+                }
+                catch
+                {
+                    duration = 0;
+                }
+                try
+                {
+                 price = Int32.Parse(((TextBox)info["priceTextBox"]).Text);
+
+                }
+                catch
+                {
+                    price = 0;
+                }
+                infoList.Add(new PathDTO(startStation, endStation, price, duration));
+            }
+            if (historyIndex != infoBetweenStationsHistory.Count - 1 || historyIndex < 0)
+                infoBetweenStationsHistory.RemoveRange(historyIndex + 1, infoBetweenStationsHistory.Count - 1 - historyIndex);
+            infoBetweenStationsHistory.Add(infoList);
+            historyIndex++;*/
             infoBetweenStations.Clear();
             TryDisableUndoRedo();
             AddContentForAdding();
+           
         }
         private void TryDisableUndoRedo()
         {
-            if (trainline != null)
-            {
-                RedoAddTrainRoute.IsEnabled = false;
-                UndoAddTrainRoute.IsEnabled = false;
-                return;
-            }
-
-            if (addedStationsEditing == null)
+           /* if (addedStationsEditing == null)
             {
                 if (addedStations.Count == 0)
                 {
@@ -535,9 +602,7 @@ namespace Railway
                     RedoAddTrainRoute.IsEnabled = false;
                 else
                     RedoAddTrainRoute.IsEnabled = true;
-            }
-
-
+            }*/
         }
 
         private void UndoAddTrainRoute_Click(object sender, RoutedEventArgs e)
@@ -546,6 +611,7 @@ namespace Railway
             if (response == 6)
             {
                 string st = addedStations[addedStations.Count - 1];
+                historyIndex--;
                 removedStations.Add(st);
                 addedStations.Remove(st);
                 RefreshPage();
@@ -561,6 +627,7 @@ namespace Railway
             if (response == 6)
             {
                 addedStations.Add(removedStations[removedStations.Count - 1]);
+                historyIndex++;
                 RefreshPage();
             }
             else

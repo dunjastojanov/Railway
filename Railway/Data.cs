@@ -952,7 +952,7 @@ namespace Railway
 
             List<Station> stations = createStationsFromInfoBetweenStations(infoBetweenStations);
 
-            List<Trainline> trainlines = GetTrainLines();
+            List<Trainline> trainlines = newRailway.TrainLines;
 
             for (int i = 0; i < trainlines.Count; i++)
             {

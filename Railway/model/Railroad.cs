@@ -40,7 +40,7 @@ namespace Railway.Model
             List<Station> stations = new List<Station>();
             foreach (Train item in Trains)
             {
-                trains.Add(item.DeepCopy(item));
+                trains.Add(item.DeepCopy());
             }
             foreach (Station station in Stations)
             {

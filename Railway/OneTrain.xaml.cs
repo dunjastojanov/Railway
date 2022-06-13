@@ -57,7 +57,7 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            Window.MainFrame.Content = new AddTrain(Window, Train);
+            Window.MainFrame.Content = new AddTrain(Window, Train.DeepCopy());
         }
 
       

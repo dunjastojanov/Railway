@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Railway"
         mc:Ignorable="d"
-        Title="ChooseSeat" Height="450" Width="800">
+        Title="ChooseSeat" Height="380" Width="650"
+        MinHeight="380" MinWidth="650">
     <Grid x:Name="chooseSeatGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -26,7 +27,7 @@
                 <ColumnDefinition Width="25*"/>
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="label" Grid.Column="0" FontSize="16" Content="Number of seats to choose:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label x:Name="label" Grid.Column="0" FontSize="16" Content="Number of seats to choose:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label x:Name="seatsLeft" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label x:Name="label2" Grid.Column="2" Content="Number of wagon:  " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <ComboBox x:Name="wagonNum" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3" SelectionChanged="ShowTrain_Button_Click"/>
@@ -39,7 +40,17 @@
             </Grid.ColumnDefinitions>
             <Frame x:Name="trainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
         </Grid>
-        <Button x:Name="saveSeats" Grid.Column="1" Content="   Save   "  FontSize="16" Background="#FFFD9B00" Foreground="White" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center" Click="saveSeats_Click"/>
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="13*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label1" Grid.Column="0" FontSize="16" Content="Number of chosen seats:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="chosenSeats" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="saveSeats" Grid.Column="3" Content="   Save   "  FontSize="16" Background="#FFFD9B00" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Click="saveSeats_Click"/>
+        </Grid>
         
     </Grid>
 </Window>

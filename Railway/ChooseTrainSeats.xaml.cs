@@ -53,13 +53,21 @@ namespace Railway
                 for (int j = 0; j < firstColumRows; j++)
                 {
                     SeatButton seatButton = new SeatButton(wagonNumber, alpha[j], i);
-                    if (SeatTaken(wagonNumber, alpha[j], i) || SeatChosen(wagonNumber, alpha[j], i))
+                    if (SeatTaken(wagonNumber, alpha[j], i))
+                    {
                         seatButton.IsEnabled = false;
+                        ((StackPanel)seatButton.Content).ToolTip = "Seat taken";
+                    }
+                    else if (SeatChosen(wagonNumber, alpha[j], i))
+                    {
+                        seatButton.Background = Brushes.Orange;
+                        seatButton.Tag = new TicketSeat(wagonNumber, alpha[j], i);
+                    }
                     else
                     {
                         seatButton.Tag = new TicketSeat(wagonNumber, alpha[j], i);
-                        seatButton.Click += selectSeat_Click;
                     }
+                    seatButton.Click += selectSeat_Click;
                     Grid.SetColumn(seatButton, j + 1);
                     Grid.SetRow(seatButton, i);
 
@@ -70,13 +78,21 @@ namespace Railway
                 for (int j = firstColumRows + 1; j <= seats.numberOfColumns; j++)
                 {
                     SeatButton seatButton = new SeatButton(wagonNumber, alpha[j], i);
-                    if (SeatTaken(wagonNumber, alpha[j], i) || SeatChosen(wagonNumber, alpha[j], i))
+                    if (SeatTaken(wagonNumber, alpha[j], i))
+                    {
                         seatButton.IsEnabled = false;
+                        ((StackPanel)seatButton.Content).ToolTip = "Seat taken";
+                    }
+                    else if (SeatChosen(wagonNumber, alpha[j], i))
+                    {
+                        seatButton.Background = Brushes.Orange;
+                        seatButton.Tag = new TicketSeat(wagonNumber, alpha[j], i);
+                    }
                     else
                     {
                         seatButton.Tag = new TicketSeat(wagonNumber, alpha[j], i);
-                        seatButton.Click += selectSeat_Click;
                     }
+                    seatButton.Click += selectSeat_Click;
                     Grid.SetColumn(seatButton, j + 1);
                     Grid.SetRow(seatButton, i);
 
@@ -88,26 +104,35 @@ namespace Railway
 
         private void selectSeat_Click(object sender, RoutedEventArgs e)
         {
-
+            Button chosenButton = (Button)sender;
+            if (chosenButton.Background == Brushes.Orange)
+            {
+                MessageBox.Show("Seat unselected.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                TicketSeat seat = (TicketSeat)chosenButton.Tag;
+                ChooseSeat.RemoveSeat(seat);
+                ChooseSeat.IncreaseSeats();
+                chosenButton.Background = new SolidColorBrush(Color.FromRgb(35,63,77));
+                return;
+            }
             if (ChooseSeat.SeatToTake == 0)
+            {
                 MessageBox.Show("You have chosen your seats. If you are satisfied press save, otherwise cancel and try again.", "Seats have been chosen", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            if (chosenButton.IsEnabled == false)
+            {
+                MessageBox.Show("This seat is aleready taken. Please choose another one.", "Seat taken.", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             else
             {
-                int response = (int)MessageBox.Show("Are you sure you want to choose seat?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (response == 6)
-                {
-                    MessageBox.Show("Seat is successfully chosen.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Button chosenButton = (Button)sender;
-                    TicketSeat seat = (TicketSeat)chosenButton.Tag;
-                    ChooseSeat.ChosenSeats.Add(seat);
-                    ChooseSeat.DecreaseSeats();
-                    chosenButton.Background = Brushes.Blue;
-                    chosenButton.IsEnabled = false;
-                }
-                else
-                {
-                    MessageBox.Show("Choosing seat cancelled successfully.", "Cancellation successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                
+                MessageBox.Show("Seat is successfully chosen.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);                
+                TicketSeat seat = (TicketSeat)chosenButton.Tag;
+                ChooseSeat.ChosenSeats.Add(seat);
+                ChooseSeat.DecreaseSeats();
+                chosenButton.Background = Brushes.Orange;         
+               
             }
 
         }

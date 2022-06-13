@@ -45,10 +45,42 @@ namespace Railway
             trainFrame.Content = chooseSeat;
             
         }
+        public void RemoveSeat(TicketSeat seat)
+        {
+            foreach (TicketSeat ticketSeat in ChosenSeats)
+            {
+                if (ticketSeat.Wagon == seat.Wagon && ticketSeat.Row == seat.Row && ticketSeat.Column == seat.Column)
+                {
+                    ChosenSeats.Remove(ticketSeat);
+                    return;
+                }
+            }
+        }
+        public void IncreaseSeats()
+        {
+            SeatToTake++;
+            seatsLeft.Content = SeatToTake.ToString();
+            WriteTicketsNum();
+        }
         public void DecreaseSeats()
         {
             SeatToTake--;
             seatsLeft.Content = SeatToTake.ToString();
+            WriteTicketsNum();
+        }
+        private void WriteTicketsNum()
+        {
+            chosenSeats.Content = "";
+            string seatsnum = "";
+            foreach (TicketSeat ts in ChosenSeats)
+            {
+                seatsnum += ts.Row +  ts.Column.ToString().ToUpper() + ", ";
+            }
+            if (!seatsnum.Equals(""))
+            {
+                seatsnum = seatsnum.Substring(0, seatsnum.Length - 2);
+            }    
+            chosenSeats.Content = seatsnum;
         }
         private List<TicketSeat> filterTakenSeats(int wagon)
         {

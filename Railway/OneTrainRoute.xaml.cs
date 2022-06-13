@@ -71,8 +71,7 @@ namespace Railway
                 
                 Grid.SetRow(priceLabel, stationNextRow + 1);
                 Grid.SetColumn(priceLabel, 2);
-                StationsGrid.Children.Add(priceLabel);
-                
+                StationsGrid.Children.Add(priceLabel);               
 
                 stationNextRow += 2;
 
@@ -180,7 +179,7 @@ namespace Railway
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            Window.MainFrame.Content = new AddTrainRoute(Window, trainline);
+            Window.MainFrame.Content = new AddTrainRoute(Window, trainline.DeepCopy());
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

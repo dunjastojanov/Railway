@@ -26,9 +26,10 @@ namespace Railway.Model
             return "Name: " + Name + "\nNumber of seats: " + seats.getNumberOfSeats();
         }
 
-        public Train DeepCopy(Train oldTrain)
+        public Train DeepCopy()
         {
-            return new Train(oldTrain.Name, oldTrain.seats.DeepCopy());
+            return new Train(Name, seats.DeepCopy());
         }
+
     }
 }

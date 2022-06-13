@@ -26,11 +26,11 @@ namespace Railway.Model
             newStation.Latitude = Latitude;
             newStation.Location = new Location(Latitude, Longitude);
             if (PathToNextStation != null)
-                newStation.PathToNextStation = PathToNextStation; //.DeepCopy()
+                newStation.PathToNextStation = PathToNextStation.DeepCopy(); //.DeepCopy()
             else
                 newStation.PathToNextStation = null;
             if (PathToPreviousStation != null)
-                newStation.PathToPreviousStation = PathToPreviousStation; //.DeepCopy()
+                newStation.PathToPreviousStation = PathToPreviousStation.DeepCopy(); //.DeepCopy()
             else
                 newStation.PathToPreviousStation = null;
             return newStation;

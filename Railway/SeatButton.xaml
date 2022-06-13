@@ -8,7 +8,7 @@
       d:DesignHeight="20" BorderThickness="0" Background="#233f4d"
       >
 
-        <StackPanel x:Name="SeatPanel">
+    <StackPanel x:Name="SeatPanel"  ToolTipService.ShowOnDisabled="True">
             <Image Height="18" Grid.Column="1" Grid.Row="1" Source="./images/icons8-bus-seat-top-view-24.png"></Image>
 
         </StackPanel>

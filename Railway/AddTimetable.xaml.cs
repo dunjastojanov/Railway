@@ -218,7 +218,7 @@ namespace Railway
                     {
                         Data.AddTimetable(chosenTrain, chosenTrainline, chosenStartTime, chosenEndTime, days);
                         int ok = (int)MessageBox.Show("Timetable successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTimetable(true);
+                        Window.ShowReadTimetable(false);
                     }
                     else
                     {
@@ -232,7 +232,7 @@ namespace Railway
                     {
                         Data.editTimetable(chosenTrain, chosenStartTime, chosenEndTime, days, timetable);
                         int ok = (int)MessageBox.Show("Timetable successfully edited!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window.ShowReadTimetable(true);
+                        Window.ShowReadTimetable(false);
                     }
                     else
                     {
@@ -283,12 +283,20 @@ namespace Railway
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Window.ShowReadTimetable(true);
+            Window.ShowReadTimetable(false);
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            HelpProvider.ShowHelp("AddTimetable", Window);
+            if (timetable != null)
+            {
+                HelpProvider.ShowHelp("EditTimetable", Window);
+            }
+            else
+            {
+                HelpProvider.ShowHelp("AddTimetable", Window);
+            }
+            
         }
     }
 }
