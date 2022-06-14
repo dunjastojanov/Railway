@@ -49,6 +49,11 @@ namespace Railway
         {
             int trainlineIndex = 1;
 
+            if (ReadTrainRouteGrid.RowDefinitions.Count > 1)
+            {
+                ReadTrainRouteGrid.RowDefinitions.RemoveRange(1, ReadTrainRouteGrid.RowDefinitions.Count - 1);
+            }
+
             foreach (Trainline trainline in Data.GetTrainLines())
             {
                 OneTrainRoute oneTrainRoute;
@@ -57,20 +62,24 @@ namespace Railway
                 else
                     oneTrainRoute = new OneTrainRoute(trainline, window, "user");
 
+
+                Console.WriteLine(oneTrainRoute);
                 addRowPixels(ReadTrainRouteGrid, oneTrainRoute.getHeight());
                 Grid.SetRow(oneTrainRoute, trainlineIndex);
 
                 ReadTrainRouteGrid.Children.Add(oneTrainRoute);
                 trainlineIndex++;
             }
+
         }
 
         private void addRowPixels(Grid grid, double height)
         {
             var rd = new RowDefinition();
             rd.Height = new GridLength(height);
-            ReadTrainRouteGrid.Height += height + 80;
-            grid.RowDefinitions.Add(rd);
+            ReadTrainRouteGrid.Height += height + 40;
+
+            ReadTrainRouteGrid.RowDefinitions.Add(rd);
         }
 
 
@@ -84,6 +93,7 @@ namespace Railway
             ReadTrainRouteGrid.Height = 0;
             TryDisableUndoRedo();
             AddContent();
+
         }
         private void TryDisableUndoRedo()
         {
