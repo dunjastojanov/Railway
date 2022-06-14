@@ -482,6 +482,12 @@ namespace Railway
 
         }
 
+        internal static List<Station> getTutorialStations()
+        {
+            Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];
+            return oldRailway.Stations;
+        }
+
         internal static void editTrainLineTutorial(List<Dictionary<string, object>> infoBetweenStations, string name)
         {
             Railroad oldRailway = Data.RailwayStatesTutorial[Data.RailwayIndexTutorial];

@@ -193,7 +193,7 @@ namespace Railway
                     String newName = station_name.Text;
                     bool sameName = false;
                     bool sameLocation = false;
-                    var collection = Data.getStations().Where(a => a.Name != Station.Name);
+                    var collection = Data.getTutorialStations().Where(a => a.Name != Station.Name);
                     foreach (Station station1 in collection)
                     {
                         if (station1.Name == newName)
@@ -235,6 +235,8 @@ namespace Railway
         private void mapa_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             //proveri da li je pushpin selectovan
+            if (SelectedPushpin == null)
+                return;
             MessageBoxResult messageBoxResult1 = MessageBox.Show("Are you sure you want to update location of the station?", "Update station confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult1 == MessageBoxResult.No)
             {

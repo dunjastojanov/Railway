@@ -39,11 +39,11 @@ namespace Railway
             this.DataContext = this;
             this.Window = window;
             ReadStationStep = stepReadStation;
-            Stations = Data.getStations();
+            Stations = Data.getTutorialStations();
             Pushpins = new List<Pushpin>();
             PushpinIndex = -1;
             InitializeComponent();
-            foreach (var item in Data.getStations())
+            foreach (var item in Data.getTutorialStations())
             {
                 Location location = new Location(item.Latitude, item.Longitude);
                 Pushpin pushpin = new Pushpin();
@@ -155,7 +155,7 @@ namespace Railway
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
             Location location = null;
-            foreach (var item in Data.getStations())
+            foreach (var item in Data.getTutorialStations())
             {
                 location = new Location(item.Latitude, item.Longitude);
                 Pushpin pushpin = new Pushpin();
